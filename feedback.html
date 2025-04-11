@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulaire de feedback pour le guide de voyage Houston 2025">
+    <meta name="keywords" content="Houston, FIRST Championship, guide de voyage, feedback, commentaires">
+    <title>Feedback - Guide de Voyage Houston 2025</title>
+    <link rel="stylesheet" href="assets/css/improved-style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/icon-192x192.png">
+    <!-- PWA support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0066cc">
+    <!-- Apple touch icons -->
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        .feedback-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        
+        .rating > input {
+            display: none;
+        }
+        
+        .rating > label {
+            position: relative;
+            width: 1.1em;
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+        }
+        
+        .rating > label::before {
+            content: "★";
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .rating > label:hover:before,
+        .rating > label:hover ~ label:before {
+            opacity: 1 !important;
+        }
+        
+        .rating > input:checked ~ label:before {
+            opacity: 1;
+        }
+        
+        .rating:hover > input:checked ~ label:before {
+            opacity: 0.4;
+        }
+        
+        .rating > label {
+            color: #ddd;
+        }
+        
+        .rating > input:checked ~ label {
+            color: #FFD700;
+        }
+        
+        .rating > label:hover,
+        .rating > label:hover ~ label {
+            color: #FFD700;
+        }
+        
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: var(--primary-color-dark);
+        }
+        
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background-color: #e8f5e9;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+        
+        .thank-you h3 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Accessibility skip link -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <h1 class="site-title"><a href="index.html">Guide Houston 2025</a></h1>
+            
+            <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu">
+                <span class="hamburger-icon"></span>
+                <span class="screen-reader-text">Menu</span>
+            </button>
+        </div>
+        
+        <nav class="nav-menu" id="primary-menu" role="navigation" aria-label="Menu principal">
+            <a href="index.html">Accueil</a>
+            <a href="01_Introduction.html">Introduction</a>
+            <a href="02_Space_Center_Kemah.html">Space Center</a>
+            <a href="03_Shopping_Katy_Mills.html">Shopping</a>
+            <a href="04_Safety_Logistics.html">Sécurité</a>
+            <a href="05_Gastronomie.html">Gastronomie</a>
+            <a href="06_FIRST_Championship.html">FIRST</a>
+            <a href="07_Museum_District.html">Musées</a>
+            <a href="08_Hermann_Park_Zoo.html">Hermann Park</a>
+            <a href="09_Thematic_Index.html">Index</a>
+        </nav>
+    </header>
+    
+    <main id="main-content" class="main-content" role="main">
+        <h1>Votre avis nous intéresse</h1>
+        
+        <p>Merci de prendre quelques minutes pour nous donner votre avis sur le Guide de Voyage Houston 2025. Vos commentaires nous aideront à améliorer le guide pour tous les utilisateurs.</p>
+        
+        <div class="feedback-form">
+            <form name="feedback" method="POST" data-netlify="true" id="feedbackForm">
+                <div class="form-group">
+                    <label for="name">Nom (optionnel)</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email (optionnel)</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                
+                <div class="form-group">
+                    <label>Comment évaluez-vous la nouvelle conception du guide ?</label>
+                    <div class="rating">
+                        <input type="radio" id="star5" name="design_rating" value="5" />
+                        <label for="star5" title="5 étoiles">5</label>
+                        <input type="radio" id="star4" name="design_rating" value="4" />
+                        <label for="star4" title="4 étoiles">4</label>
+                        <input type="radio" id="star3" name="design_rating" value="3" />
+                        <label for="star3" title="3 étoiles">3</label>
+                        <input type="radio" id="star2" name="design_rating" value="2" />
+                        <label for="star2" title="2 étoiles">2</label>
+                        <input type="radio" id="star1" name="design_rating" value="1" />
+                        <label for="star1" title="1 étoile">1</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="device">Sur quel appareil consultez-vous principalement le guide ?</label>
+                    <select id="device" name="device">
+                        <option value="">Sélectionnez une option</option>
+                        <option value="smartphone">Smartphone</option>
+                        <option value="tablet">Tablette</option>
+                        <option value="laptop">Ordinateur portable</option>
+                        <option value="desktop">Ordinateur de bureau</option>
+                        <option value="other">Autre</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sections">Quelles sections du guide trouvez-vous les plus utiles ?</label>
+                    <select id="sections" name="sections" multiple size="5">
+                        <option value="introduction">Introduction</option>
+                        <option value="space_center">Space Center & Kemah</option>
+                        <option value="shopping">Shopping à Katy Mills</option>
+                        <option value="safety">Sécurité et Logistique</option>
+                        <option value="gastronomy">Guide Gastronomique</option>
+                        <option value="first">FIRST Championship</option>
+                        <option value="museums">Museum District</option>
+                        <option value="park_zoo">Hermann Park et Zoo</option>
+                        <option value="annexes">Annexes</option>
+                    </select>
+                    <small>Maintenez Ctrl (ou Cmd sur Mac) pour sélectionner plusieurs options</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="improvements">Quelles améliorations suggéreriez-vous pour le guide ?</label>
+                    <textarea id="improvements" name="improvements"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additional_content">Y a-t-il des informations supplémentaires que vous aimeriez voir dans le guide ?</label>
+                    <textarea id="additional_content" name="additional_content"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Envoyer mon avis</button>
+            </form>
+            
+            <div class="thank-you" id="thankYouMessage">
+                <h3>Merci pour votre feedback !</h3>
+                <p>Vos commentaires sont précieux et nous aideront à améliorer le Guide de Voyage Houston 2025.</p>
+                <p><a href="index.html">Retourner à l'accueil</a></p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="site-footer" role="contentinfo">
+        <p>Guide de Voyage Houston 2025 | Dernière mise à jour : Avril 2025</p>
+    </footer>
+    
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top" aria-label="Retour en haut de page">↑</a>
+    
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script src="assets/js/analytics.js"></script>
+    
+    <!-- Form handling script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('feedbackForm');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    // For Netlify forms, we don't need to prevent default
+                    // This is just for the demo to show the thank you message
+                    if (!window.location.hostname.includes('netlify')) {
+                        e.preventDefault();
+                        form.style.display = 'none';
+                        thankYouMessage.style.display = 'block';
+                        
+                        // Track form submission in analytics
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'form_submission', {
+                                'event_category': 'engagement',
+                                'event_label': 'Feedback Form',
+                                'value': 1
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

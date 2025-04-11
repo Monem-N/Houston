@@ -7,16 +7,31 @@ const filesToCache = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/assets/css/style.css',
-  '/assets/css/_base.css',
-  '/assets/css/_typography.css',
-  '/assets/css/_layout.css',
-  '/assets/css/_tables.css',
-  '/assets/css/_images.css',
-  '/assets/css/_special.css',
-  '/assets/css/_print.css',
-  '/assets/script.js',
-  '/assets/front_page.png'
+  '/assets/css/improved-style.css',
+  '/assets/js/main.js',
+  '/assets/icons/icon-192x192.png',
+  '/assets/icons/icon-72x72.png',
+  '/assets/icons/icon-96x96.png',
+  '/assets/icons/icon-128x128.png',
+  '/assets/icons/icon-144x144.png',
+  '/assets/icons/icon-152x152.png',
+  '/assets/icons/icon-192x192.png',
+  '/assets/icons/icon-384x384.png',
+  '/assets/icons/icon-512x512.png',
+  '/01_Introduction.html',
+  '/02_Space_Center_Kemah.html',
+  '/03_Shopping_Katy_Mills.html',
+  '/04_Safety_Logistics.html',
+  '/05_Gastronomie.html',
+  '/06_FIRST_Championship.html',
+  '/07_Museum_District.html',
+  '/08_Hermann_Park_Zoo.html',
+  '/09_Thematic_Index.html',
+  '/A_Transport_Maps.html',
+  '/B_Emergency_Contacts.html',
+  '/C_Shopping_Comparison.html',
+  '/D_Touristanbul.html',
+  '/E_Local_Dining_Shopping.html'
 ];
 
 // Install event - cache assets
@@ -54,7 +69,26 @@ self.addEventListener('fetch', event => {
         if (response) {
           return response;
         }
-        return fetch(event.request);
+
+        // Clone the request
+        const fetchRequest = event.request.clone();
+
+        return fetch(fetchRequest).then(response => {
+          // Check if valid response
+          if (!response || response.status !== 200 || response.type !== 'basic') {
+            return response;
+          }
+
+          // Clone the response
+          const responseToCache = response.clone();
+
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(event.request, responseToCache);
+            });
+
+          return response;
+        });
       })
   );
 });
