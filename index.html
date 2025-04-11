@@ -4,29 +4,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guide de Voyage Houston 2025</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/_print.css" media="print">
-    <script src="assets/script.js"></script>
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #ff9900;
+            --accent-color: #e63946;
+            --text-color: #333333;
+            --light-bg: #f5f5f5;
+            --border-color: #dddddd;
+            --font-main: 'Helvetica Neue', Arial, sans-serif;
+            --font-headings: 'Georgia', serif;
+            --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            --border-radius: 5px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            font-size: 16px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-headings);
+            margin: 1.5rem 0 1rem;
+            line-height: 1.2;
+            color: var(--text-color);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.3rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1rem auto;
+            border-radius: var(--border-radius);
+        }
+
+        /* Layout */
+        .nav-container {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: var(--border-radius);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-container a {
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+        }
+
+        .nav-container a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+        }
+
+        main {
+            min-height: 70vh;
+            background-color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Skip to content link for accessibility */
+        .skip-to-content {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .skip-to-content:focus {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: auto;
+            height: auto;
+            padding: 10px;
+            background: var(--primary-color);
+            color: white;
+            z-index: 9999;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-container a {
+                display: block;
+                text-align: center;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+                color: #000;
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+
+            .nav-container, .skip-to-content {
+                display: none !important;
+            }
+
+            a {
+                color: #000;
+                text-decoration: underline;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+            }
+
+            @page {
+                margin: 2cm;
+            }
+        }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
     <div class="nav-container">
         <a href="index.html">Accueil</a>
-        <a href="01_Introduction.html"></a>
-<a href="02_Space_Center_Kemah.html">Space Center</a>
-<a href="03_Shopping_Katy_Mills.html">Shopping Katy</a>
-<a href="04_Safety_Logistics.html">Safety</a>
-<a href="05_Gastronomie.html"></a>
-<a href="06_FIRST_Championship.html">FIRST</a>
-<a href="07_Museum_District.html">Museum</a>
-<a href="08_Hermann_Park_Zoo.html">Hermann Park</a>
-<a href="09_Thematic_Index.html">Thematic</a>
-<a href="A_Transport_Maps.html">Annexe A</a>
-<a href="B_Emergency_Contacts.html">Annexe B</a>
-<a href="C_Shopping_Comparison.html">Annexe C</a>
-<a href="D_Touristanbul.html">Annexe D</a>
-<a href="E_Local_Dining_Shopping.html">Annexe E</a>
-
+        <a href="01_Introduction.html">Introduction</a>
+        <a href="02_Space_Center_Kemah.html">Space Center</a>
+        <a href="03_Shopping_Katy_Mills.html">Shopping</a>
+        <a href="04_Safety_Logistics.html">Sécurité</a>
+        <a href="05_Gastronomie.html">Gastronomie</a>
+        <a href="06_FIRST_Championship.html">FIRST</a>
+        <a href="07_Museum_District.html">Musées</a>
+        <a href="08_Hermann_Park_Zoo.html">Hermann Park</a>
+        <a href="09_Thematic_Index.html">Index</a>
+        <a href="A_Transport_Maps.html">Transport</a>
+        <a href="B_Emergency_Contacts.html">Urgences</a>
+        <a href="C_Shopping_Comparison.html">Comparatif</a>
+        <a href="D_Touristanbul.html">Touristanbul</a>
+        <a href="E_Local_Dining_Shopping.html">Local</a>
     </div>
 
     <main id="main-content">
@@ -35,32 +236,32 @@
 <h2 id="bienvenue-dans-votre-guide-de-voyage-pour-houston-2025">🌟 Bienvenue dans votre guide de voyage pour Houston 2025</h2>
 <p>Ce guide a été spécialement conçu pour votre séjour à Houston du 14 au 24 avril 2025, incluant votre participation au FIRST Championship. Il combine clarté visuelle, informations essentielles et conseils pratiques pour une expérience optimale.</p>
 <h2 id="sections-principales">📋 Sections Principales</h2>
-<h3 id="01-introduction-et-sommaire"><a href="Main_Sections/01_Introduction.md">01. Introduction et Sommaire</a></h3>
+<h3 id="01-introduction-et-sommaire"><a href="01_Introduction.html">01. Introduction et Sommaire</a></h3>
 <p>Vue d'ensemble du voyage, dates clés et informations essentielles.</p>
-<h3 id="02-space-center-kemah-boardwalk"><a href="Main_Sections/02_Space_Center_Kemah.md">02. Space Center &amp; Kemah Boardwalk</a></h3>
+<h3 id="02-space-center-kemah-boardwalk"><a href="02_Space_Center_Kemah.html">02. Space Center &amp; Kemah Boardwalk</a></h3>
 <p>Journée 20 avril: Exploration spatiale et divertissement en bord de mer.</p>
-<h3 id="03-shopping-a-katy-mills"><a href="Main_Sections/03_Shopping_Katy_Mills.md">03. Shopping à Katy Mills</a></h3>
+<h3 id="03-shopping-a-katy-mills"><a href="03_Shopping_Katy_Mills.html">03. Shopping à Katy Mills</a></h3>
 <p>Journée 21 avril: Aventure shopping dans le plus grand outlet de Houston.</p>
-<h3 id="04-securite-et-logistique"><a href="Main_Sections/04_Safety_Logistics.md">04. Sécurité et Logistique</a></h3>
+<h3 id="04-securite-et-logistique"><a href="04_Safety_Logistics.html">04. Sécurité et Logistique</a></h3>
 <p>Informations pratiques sur les transports, contacts d'urgence et conseils de sécurité.</p>
-<h3 id="05-guide-gastronomique"><a href="Main_Sections/05_Gastronomie.md">05. Guide Gastronomique</a></h3>
+<h3 id="05-guide-gastronomique"><a href="05_Gastronomie.html">05. Guide Gastronomique</a></h3>
 <p>Recommandations de restaurants par catégorie et conseils culinaires.</p>
-<h3 id="06-first-championship"><a href="Main_Sections/06_FIRST_Championship.md">06. FIRST Championship</a></h3>
+<h3 id="06-first-championship"><a href="06_FIRST_Championship.html">06. FIRST Championship</a></h3>
 <p>Journées 16-19 avril: Guide complet de l'événement robotique mondial.</p>
-<h3 id="07-museum-district"><a href="Main_Sections/07_Museum_District.md">07. Museum District</a></h3>
+<h3 id="07-museum-district"><a href="07_Museum_District.html">07. Museum District</a></h3>
 <p>Journée 22 avril: Exploration des musées de renommée mondiale de Houston.</p>
-<h3 id="08-hermann-park-et-zoo"><a href="Main_Sections/08_Hermann_Park_Zoo.md">08. Hermann Park et Zoo</a></h3>
+<h3 id="08-hermann-park-et-zoo"><a href="08_Hermann_Park_Zoo.html">08. Hermann Park et Zoo</a></h3>
 <p>Journée 23 avril: Découverte de la faune et de la flore dans un cadre magnifique.</p>
 <h2 id="annexes">📚 Annexes</h2>
-<h3 id="a-cartes-et-transport"><a href="Annexes/A_Transport_Maps.md">A. Cartes et Transport</a></h3>
+<h3 id="a-cartes-et-transport"><a href="A_Transport_Maps.html">A. Cartes et Transport</a></h3>
 <p>Plans détaillés, options de transport et itinéraires.</p>
-<h3 id="b-contacts-durgence"><a href="Annexes/B_Emergency_Contacts.md">B. Contacts d'Urgence</a></h3>
+<h3 id="b-contacts-durgence"><a href="B_Emergency_Contacts.html">B. Contacts d'Urgence</a></h3>
 <p>Liste complète des numéros d'urgence et services médicaux.</p>
-<h3 id="c-comparatif-shopping"><a href="Annexes/C_Shopping_Comparison.md">C. Comparatif Shopping</a></h3>
+<h3 id="c-comparatif-shopping"><a href="C_Shopping_Comparison.html">C. Comparatif Shopping</a></h3>
 <p>Analyse détaillée des centres commerciaux et outlets.</p>
-<h3 id="d-guide-touristanbul"><a href="Annexes/D_Touristanbul.md">D. Guide Touristanbul</a></h3>
+<h3 id="d-guide-touristanbul"><a href="D_Touristanbul.html">D. Guide Touristanbul</a></h3>
 <p>Informations sur l'excursion gratuite à Istanbul lors de votre escale.</p>
-<h3 id="e-guide-local-manger-acheter"><a href="Annexes/E_Local_Dining_Shopping.md">E. Guide Local - Manger &amp; Acheter</a></h3>
+<h3 id="e-guide-local-manger-acheter"><a href="E_Local_Dining_Shopping.html">E. Guide Local - Manger &amp; Acheter</a></h3>
 <p>Découverte des quartiers, spécialités culinaires et boutiques uniques de Houston.</p>
 <h2 id="comment-utiliser-ce-guide">💡 Comment utiliser ce guide</h2>
 <ul>
