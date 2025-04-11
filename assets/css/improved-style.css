@@ -455,28 +455,109 @@ a[target="_blank"]::after {
 .quick-nav {
   position: sticky;
   top: var(--spacing-lg);
-  background-color: var(--background-alt);
-  padding: var(--spacing-md);
+  background-color: rgba(245, 245, 245, 0.9);
+  padding: var(--spacing-sm);
   border-radius: var(--border-radius);
   margin-bottom: var(--spacing-lg);
+  max-width: 250px;
+  max-height: 60vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--border-color);
+}
+
+.quick-nav.collapsed {
+  max-height: 40px;
+  overflow: hidden;
+}
+
+.quick-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: var(--spacing-xs);
+}
+
+.quick-nav-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--primary-color);
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .quick-nav h4 {
-  margin-top: 0;
+  margin: 0;
+  font-size: 0.95rem;
 }
 
 .quick-nav ul {
   list-style: none;
   padding-left: 0;
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
 }
 
 .quick-nav li {
   margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
 }
 
 .quick-nav a {
   display: block;
-  padding: var(--spacing-xs) 0;
+  padding: var(--spacing-xs) var(--spacing-xs);
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.quick-nav a:hover {
+  background-color: rgba(0, 102, 204, 0.1);
+  text-decoration: none;
+}
+
+.quick-nav-content {
+  transition: opacity 0.3s ease;
+}
+
+.collapsed .quick-nav-content {
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .quick-nav {
+    position: relative;
+    top: 0;
+    max-width: 100%;
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+@media (min-width: 1200px) {
+  .main-content {
+    position: relative;
+  }
+
+  .quick-nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: -280px;
+    width: 250px;
+  }
+
+  .section {
+    position: relative;
+  }
 }
 
 /* Footer */
