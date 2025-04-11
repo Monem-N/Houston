@@ -1,0 +1,234 @@
+/* Special section styles for Houston 2025 Travel Guide */
+
+/* Base special section styles */
+.special-section {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: var(--border-radius);
+}
+
+/* Checklist */
+.checklist {
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--success-color);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: var(--border-radius);
+}
+
+.checklist h3 {
+  color: var(--success-color);
+  margin-top: 0;
+}
+
+.checklist ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.checklist li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 30px;
+}
+
+.checklist li::before {
+  content: '\u2610';
+  position: absolute;
+  left: 0;
+  color: var(--success-color);
+  font-size: 1.2em;
+}
+
+.checklist li.checked::before {
+  content: '\u2611';
+}
+
+/* Important info */
+.important-info {
+  background-color: #fff3cd;
+  border-left: 4px solid var(--warning-color);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: var(--border-radius);
+}
+
+.important-info h3 {
+  color: var(--warning-color);
+  margin-top: 0;
+}
+
+/* Alert */
+.alert {
+  background-color: #f8d7da;
+  border-left: 4px solid var(--danger-color);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: var(--border-radius);
+}
+
+.alert h3 {
+  color: var(--danger-color);
+  margin-top: 0;
+}
+
+/* Kids section */
+.kids-section {
+  background-color: #d1ecf1;
+  border: 2px solid var(--info-color);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.kids-section-title {
+  background-color: var(--info-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9em;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.kids-section h3 {
+  color: var(--info-color);
+  margin-top: 10px;
+}
+
+/* Personal notes */
+.personal-notes {
+  background-color: #e2e3e5;
+  border-left: 4px solid #6c757d;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: var(--border-radius);
+  font-style: italic;
+}
+
+/* Activity icons */
+.activity-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 24px;
+}
+
+.activity-label {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px 0;
+  padding: 3px 8px;
+  border-radius: 15px;
+  background-color: #f0f0f0;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.activity-visit { background-color: #e6f7ff; }
+.activity-eat { background-color: #f6ffe6; }
+.activity-shop { background-color: #fff0e6; }
+.activity-play { background-color: #e6ffe6; }
+.activity-rest { background-color: #f0e6ff; }
+.activity-transport { background-color: #ffe6e6; }
+.activity-photo { background-color: #e6fffa; }
+
+/* Table of contents */
+.toc {
+  background-color: var(--light-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+  box-shadow: var(--box-shadow);
+}
+
+.toc ul {
+  list-style-type: none;
+}
+
+.toc li {
+  margin-bottom: 10px;
+}
+
+.toc-title {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+/* Thematic index */
+.thematic-index {
+  column-count: 2;
+  column-gap: 30px;
+  margin: 30px 0;
+}
+
+@media (max-width: 768px) {
+  .thematic-index {
+    column-count: 1;
+  }
+}
+
+.thematic-index h3 {
+  break-inside: avoid;
+  margin-top: 0;
+}
+
+.thematic-index ul {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+
+.index-letter {
+  font-size: 2em;
+  color: var(--primary-color);
+  font-weight: bold;
+  border-bottom: 2px solid var(--secondary-color);
+  margin-bottom: 10px;
+  break-after: avoid;
+}
+
+.index-entry {
+  margin: 5px 0;
+}
+
+.index-entry .page-ref {
+  color: var(--secondary-color);
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* Cover page */
+.cover-page {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cover-page h1 {
+  font-size: 2.5em;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.cover-page img {
+  max-width: 80%;
+  margin: 30px auto;
+}
+
+.cover-page .subtitle {
+  font-size: 1.5em;
+  margin: 20px 0;
+}
+
+.cover-page .date {
+  font-size: 1.2em;
+  margin-top: 30px;
+  color: #666;
+}

@@ -1,0 +1,161 @@
+/* Table styles for Houston 2025 Travel Guide */
+
+/* Base table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: var(--light-bg);
+}
+
+tr:hover {
+  background-color: rgba(0, 102, 204, 0.05);
+}
+
+/* Caption */
+caption {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: var(--primary-color);
+}
+
+/* Responsive tables */
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+/* Themed tables */
+.restaurant-table th {
+  background-color: var(--secondary-color);
+}
+
+.restaurant-table .price {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.restaurant-table .rating {
+  white-space: nowrap;
+  color: var(--secondary-color);
+}
+
+.transport-table th {
+  background-color: var(--info-color);
+}
+
+.transport-table .time {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.transport-table .cost {
+  white-space: nowrap;
+  color: var(--accent-color);
+}
+
+.schedule-table th {
+  background-color: var(--accent-color);
+}
+
+.schedule-table .date {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.schedule-table .time {
+  white-space: nowrap;
+  color: var(--info-color);
+}
+
+/* Compact tables */
+.table-compact th,
+.table-compact td {
+  padding: 5px;
+  font-size: 0.9em;
+}
+
+/* Bordered tables */
+.table-bordered {
+  border: 2px solid var(--primary-color);
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid var(--border-color);
+}
+
+/* Striped tables */
+.table-striped tr:nth-child(odd) {
+  background-color: var(--light-bg);
+}
+
+.table-striped tr:nth-child(even) {
+  background-color: white;
+}
+
+/* Responsive table patterns for mobile */
+@media (max-width: 768px) {
+  /* Option 1: Horizontal scrolling */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  /* Option 2: Stack rows (uncomment to use) */
+  /*
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  tr {
+    border: 1px solid var(--border-color);
+    margin-bottom: 15px;
+  }
+  
+  td {
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+  
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    content: attr(data-label);
+  }
+  */
+}

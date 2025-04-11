@@ -1,0 +1,249 @@
+/* Print-specific styles for Houston 2025 Travel Guide */
+
+/* Page Setup */
+@page {
+  size: A4;
+  margin: 2cm;
+
+  /* Footer with page numbers */
+  @bottom-center {
+    content: "Page " counter(page);
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    color: #666666;
+  }
+}
+
+@page :first {
+  @bottom-center {
+    content: normal;
+  }
+}
+
+/* Basic elements */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: black;
+  background: white;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  page-break-after: avoid;
+  page-break-inside: avoid;
+  color: #0066cc;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 18pt;
+  text-align: center;
+  border-bottom: 1pt solid #0066cc;
+  padding-bottom: 10pt;
+  page-break-before: always;
+}
+
+h1:first-of-type {
+  page-break-before: avoid;
+}
+
+h2 {
+  font-size: 14pt;
+  border-bottom: 0.5pt solid #dddddd;
+  padding-bottom: 5pt;
+}
+
+h3 {
+  font-size: 12pt;
+}
+
+/* Links */
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a[href^="http"]:after {
+  content: " (" attr(href) ")";
+  font-size: 90%;
+  font-style: italic;
+  color: #666666;
+}
+
+a[href^="#"]:after {
+  content: "";
+}
+
+/* Lists */
+ul, ol {
+  page-break-inside: avoid;
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  page-break-inside: avoid;
+}
+
+th, td {
+  padding: 8pt;
+  border: 0.5pt solid #dddddd;
+}
+
+th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  text-align: left;
+  vertical-align: top;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  page-break-inside: avoid;
+  margin: 1em auto;
+  display: block;
+}
+
+/* Special sections */
+.checklist, .important-info, .alert, .kids-section, .personal-notes {
+  page-break-inside: avoid;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border-radius: 5pt;
+}
+
+.checklist {
+  background-color: #f8f9fa;
+  border-left: 4pt solid #28a745;
+}
+
+.important-info {
+  background-color: #fff3cd;
+  border-left: 4pt solid #ffc107;
+}
+
+.alert {
+  background-color: #f8d7da;
+  border-left: 4pt solid #dc3545;
+}
+
+.kids-section {
+  background-color: #d1ecf1;
+  border: 1pt solid #17a2b8;
+}
+
+.kids-section-title {
+  background-color: #17a2b8;
+  color: white;
+  padding: 2pt 8pt;
+  border-radius: 5pt;
+  font-weight: bold;
+  font-size: 10pt;
+  display: inline-block;
+  margin-bottom: 8pt;
+}
+
+/* Activity labels */
+.activity-label {
+  display: inline-block;
+  padding: 2pt 5pt;
+  border-radius: 5pt;
+  font-size: 10pt;
+  margin: 2pt 0;
+}
+
+/* Hide navigation elements */
+.nav-container, .section-nav, .back-to-top {
+  display: none;
+}
+
+/* Table of contents */
+.toc {
+  page-break-after: always;
+}
+
+/* Emoji */
+.emoji {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 1em;
+  orphans: 3;
+  widows: 3;
+  hyphens: auto; /* Enable hyphenation for better word wrapping */
+}
+
+/* Page breaks */
+.page-break {
+  page-break-before: always;
+}
+
+/* Cover page */
+.cover-page {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cover-page h1 {
+  font-size: 24pt;
+  border: none;
+}
+
+.cover-page img {
+  max-width: 80%;
+  margin: 2em auto;
+}
+
+.cover-page .subtitle {
+  font-size: 14pt;
+  margin: 1em 0;
+}
+
+.cover-page .date {
+  font-size: 12pt;
+  margin-top: 2em;
+}
+
+/* Thematic index */
+.thematic-index {
+  column-count: 1;
+  column-gap: 2em;
+}
+
+/* Image sizes */
+.small-image {
+  max-width: 300px;
+}
+
+.medium-image {
+  max-width: 500px;
+}
+
+.large-image {
+  max-width: 700px;
+}

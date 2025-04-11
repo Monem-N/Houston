@@ -1,0 +1,202 @@
+{
+  "main": {
+    "id": "2279648a02d12c57",
+    "type": "split",
+    "children": [
+      {
+        "id": "e648ed5baf7476a5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b597c04787b822e3",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "04667f6ad1eb9cd4",
+    "type": "split",
+    "children": [
+      {
+        "id": "4d038d69d9f20452",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "47c4dc3948fddcce",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "b79177a8d206fdad",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "87564ca4b5537e01",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1a8703b4d6f21324",
+    "type": "split",
+    "children": [
+      {
+        "id": "c22044c73f6c99ef",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3928b8c1887de46d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "61434f59e2044dc1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "a844e76f07371768",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "77e1bb7b8bf69e63",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "b597c04787b822e3",
+  "lastOpenFiles": [
+    "Annex_/Turkish Airlines TourIstanbul Map.pdf",
+    "Annex_/Itinéraire vers George R. Brown Convention Center.pdf",
+    "Annex_/2025-FIRST-Championship-Event-Guide.pdf",
+    "Annex_",
+    "old/Itinerary.md",
+    "Journées 16 avr 2025- 19 avr 2025.md",
+    "old/Shopping day.md",
+    "Journée 21 avr 2025 Aventure Shopping à Houston.md",
+    "Journée 14 avril 2025 Guide Départ – Arrivée à Houston.md",
+    "old/20 avr 2025-old.md",
+    "old",
+    "untitled folder",
+    "Transport Local pour le FIRST Championship 2025.md",
+    "Touristanbul.md",
+    "Turkish Airlines TourIstanbul Map.pdf",
+    "Journée 20 avril 2025_Space Center Houston.md",
+    "Journée 14 avril 202 Guide Départ – Arrivée à Houston.md",
+    "21 avr 2025 Aventure Shopping à Houston.md",
+    "20 avr 2025-old.md",
+    "16 avr 2025- 19 avr 2025.md",
+    "I. Introduction.md",
+    "Adresses Incontournables.md",
+    "Itinerary.md",
+    "Experiencing Houston.md",
+    "2025-FIRST-Championship-Event-Guide.pdf",
+    "16 avr 2025-19 avr 2025.md",
+    "Turkish Airlines TourIstanbul Map.pdf.crdownload",
+    "Journée 23 avril 2025 Itinéraire familial à Houston_.md",
+    "Journée 22 avril 2025 scientifique à Houston_.md",
+    "23 avr 2025.md",
+    "Shopping day.md",
+    "22 avr 2025.md",
+    "Itinéraire vers George R. Brown Convention Center.pdf",
+    "14 avr 2025-15 avr 2025.md",
+    "Welcome.md"
+  ]
+}

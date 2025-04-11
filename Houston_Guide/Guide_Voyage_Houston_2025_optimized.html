@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guide complet pour le voyage à Houston pour le FIRST Championship 2025">
+    <meta name="author" content="Monem Naifer">
+    <meta name="keywords" content="Houston, FIRST Championship, voyage, guide, 2025">
+    <title>Guide de Voyage Houston 2025</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Style d'impression -->
+    <link rel="stylesheet" href="assets/css/print-styles.css" media="print">
+    
+    <style>
+    /* Variables pour le thème */
+    :root {
+        --primary: #1a73e8;
+        --secondary: #f8f9fa;
+        --accent: #fbbc04;
+        --text: #202124;
+        --light-text: #5f6368;
+        --background: #ffffff;
+        --section-bg: #f8f9fa;
+        --cover-bg: #f0f0f0;
+        --shadow: rgba(0, 0, 0, 0.1);
+        --header-height: 60px;
+    }
+
+    /* Thème sombre */
+    [data-theme="dark"] {
+        --primary: #8ab4f8;
+        --secondary: #303134;
+        --accent: #fdd663;
+        --text: #e8eaed;
+        --light-text: #9aa0a6;
+        --background: #202124;
+        --section-bg: #303134;
+        --cover-bg: #303134;
+        --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Styles de base */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--header-height);
+    }
+
+    body {
+        font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--background);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 0 var(--header-height) 0;
+    }
+
+    /* Barre de navigation fixe */
+    #main-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--header-height);
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        z-index: 1000;
+        box-shadow: 0 2px 4px var(--shadow);
+    }
+
+    #main-header h1 {
+        font-size: 1.2rem;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60%;
+    }
+
+    #header-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #theme-toggle, #print-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 4px;
+    }
+
+    #theme-toggle:hover, #print-btn:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Bouton retour en haut */
+    #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 2px 5px var(--shadow);
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 99;
+    }
+
+    #back-to-top.visible {
+        opacity: 1;
+    }
+
+    /* Table des matières */
+    #toc {
+        background-color: var(--section-bg);
+        border-radius: 8px;
+        padding: 20px;
+        margin: calc(var(--header-height) + 20px) 0 30px;
+        box-shadow: 0 2px 4px var(--shadow);
+    }
+
+    #toc h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 10px;
+    }
+
+    #toc ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #toc li {
+        margin-bottom: 8px;
+    }
+
+    #toc a {
+        text-decoration: none;
+        color: var(--text);
+        display: block;
+        padding: 5px 0;
+        transition: color 0.2s;
+    }
+
+    #toc a:hover {
+        color: var(--primary);
+    }
+
+    .toc-level-1 {
+        font-weight: bold;
+    }
+
+    .toc-level-2 {
+        padding-left: 20px;
+        font-size: 0.95em;
+    }
+
+    /* Contenu */
+    .content-section {
+        background-color: white;
+        border-radius: 8px;
+        padding: 30px;
+        margin: 30px 0;
+        box-shadow: 0 2px 4px var(--shadow);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 1em 0 0.5em;
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: 2em;
+        color: var(--primary);
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 0.3em;
+    }
+
+    h2 {
+        font-size: 1.7em;
+        color: var(--primary);
+    }
+
+    h3 {
+        font-size: 1.4em;
+        color: var(--text);
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+
+    a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    ul, ol {
+        margin: 1em 0;
+        padding-left: 2em;
+    }
+
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    blockquote {
+        margin: 1.5em 0;
+        padding: 1em 1.5em;
+        border-left: 4px solid var(--accent);
+        background-color: var(--section-bg);
+        font-style: italic;
+    }
+
+    hr {
+        margin: 2em 0;
+        border: 0;
+        border-top: 1px solid var(--border-color);
+    }
+
+    img {
+        max-width: 80%;
+        height: auto;
+        display: block;
+        margin: 1.5em auto;
+        border-radius: 4px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2em 0;
+    }
+
+    th, td {
+        padding: 0.75em;
+        border: 1px solid var(--border-color);
+        text-align: left;
+    }
+
+    th {
+        background-color: var(--section-bg);
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: var(--section-bg);
+    }
+
+    /* Navigation flottante */
+    #floating-nav {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 2px 5px var(--shadow);
+        z-index: 99;
+        font-size: 1.5em;
+    }
+
+    #nav-menu {
+        position: fixed;
+        left: -300px;
+        top: var(--header-height);
+        width: 300px;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--background);
+        box-shadow: 2px 0 5px var(--shadow);
+        overflow-y: auto;
+        transition: left 0.3s;
+        z-index: 98;
+        padding: 20px;
+    }
+
+    #nav-menu.active {
+        left: 0;
+    }
+
+    #nav-menu ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #nav-menu li {
+        margin-bottom: 10px;
+    }
+
+    #nav-menu a {
+        text-decoration: none;
+        color: var(--text);
+        display: block;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border-color);
+        transition: color 0.2s;
+    }
+
+    #nav-menu a:hover {
+        color: var(--primary);
+    }
+
+    /* Pied de page */
+    footer {
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
+        color: var(--light-text);
+        font-size: 0.9em;
+        border-top: 1px solid var(--border-color);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        body {
+            padding: 0 10px;
+        }
+        
+        #main-header h1 {
+            font-size: 1rem;
+            max-width: 50%;
+        }
+        
+        .content-section {
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+        }
+        
+        h3 {
+            font-size: 1.3em;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- En-tête fixe -->
+    <header id="main-header">
+        <h1>Guide de Voyage Houston 2025</h1>
+        <div id="header-controls">
+            <button id="theme-toggle" title="Changer de thème"><i class="fas fa-moon"></i></button>
+            <button id="print-btn" title="Imprimer le guide"><i class="fas fa-print"></i></button>
+        </div>
+    </header>
+
+    <!-- Bouton retour en haut -->
+    <div id="back-to-top" title="Retour en haut"><i class="fas fa-arrow-up"></i></div>
+
+    <!-- Table des matières -->
+    <section id="toc" role="navigation" aria-labelledby="toc-title">
+        <h2 id="toc-title">Table des matières</h2>
+        <ul>
+            <li class="toc-level-1"><a href="#Introduction_et_Sommaire---voyage-à-houston">Introduction et Sommaire</a></li>
+            <li class="toc-level-2"><a href="#Introduction_et_Sommaire---voyage-à-houston">Voyage à Houston</a></li>
+            <li class="toc-level-2"><a href="#Introduction_et_Sommaire-avril-2025---first-championship-et-découvertes-texanes">FIRST Championship et Découvertes Texanes</a></li>
+            
+            <li class="toc-level-1"><a href="#Journées_14-15_et_23-24_avril_2025_-_Guide_Arrivée_et_Départ---partie-1--départ-et-arrivée--14-15-avril-">Arrivée et Départ (14-15 & 23-24 avril)</a></li>
+            <li class="toc-level-2"><a href="#Journées_14-15_et_23-24_avril_2025_-_Guide_Arrivée_et_Départ---partie-1--départ-et-arrivée--14-15-avril-">Départ et Arrivée (14-15 avril)</a></li>
+            <li class="toc-level-2"><a href="#Journées_14-15_et_23-24_avril_2025_-_Guide_Arrivée_et_Départ---partie-2--départ-et-retour--23-24-avril-">Départ et Retour (23-24 avril)</a></li>
+            
+            <li class="toc-level-1"><a href="#Journées_16-19_avril_2025_-_Guide_FIRST_Championship_Détaillé_Final---jours-3-6--16-19-avril-2025">FIRST Championship (16-19 avril)</a></li>
+            <li class="toc-level-2"><a href="#Journées_16-19_avril_2025_-_Guide_FIRST_Championship_Détaillé_Final---présentation-de-l-événement">Présentation de l'événement</a></li>
+            <li class="toc-level-2"><a href="#Journées_16-19_avril_2025_-_Guide_FIRST_Championship_Détaillé_Final---programme-jour-par-jour">Programme jour par jour</a></li>
+            
+            <li class="toc-level-1"><a href="#Journée_20_avril_2025_-_Guide_Space_Center_&_Kemah_Détaillé---jour-7--dimanche-20-avril-2025">Space Center & Kemah (20 avril)</a></li>
+            <li class="toc-level-2"><a href="#Journée_20_avril_2025_-_Guide_Space_Center_&_Kemah_Détaillé---space-center-houston">Space Center Houston</a></li>
+            <li class="toc-level-2"><a href="#Journée_20_avril_2025_-_Guide_Space_Center_&_Kemah_Détaillé---kemah-boardwalk">Kemah Boardwalk</a></li>
+            
+            <li class="toc-level-1"><a href="#Journée_21_avril_2025_-_Guide_Shopping_Détaillé_Final----jour-8--lundi-21-avril-2025">Shopping (21 avril)</a></li>
+            <li class="toc-level-2"><a href="#Journée_21_avril_2025_-_Guide_Shopping_Détaillé_Final---présentation-de-la-journée">Présentation de la journée</a></li>
+            <li class="toc-level-2"><a href="#Journée_21_avril_2025_-_Guide_Shopping_Détaillé_Final---comparaison-des-centres-commerciaux">Comparaison des centres commerciaux</a></li>
+            
+            <li class="toc-level-1"><a href="#Journée_22_avril_2025_-_Guide_Museum_District_Détaillé---jour-9--mardi-22-avril-2025">Museum District (22 avril)</a></li>
+            <li class="toc-level-2"><a href="#Journée_22_avril_2025_-_Guide_Museum_District_Détaillé---présentation-de-la-journée">Présentation de la journée</a></li>
+            <li class="toc-level-2"><a href="#Journée_22_avril_2025_-_Guide_Museum_District_Détaillé----informations-essentielles">Informations essentielles</a></li>
+            
+            <li class="toc-level-1"><a href="#Journée_23_avril_2025_-_Guide_Hermann_Park_et_Zoo_Détaillé---jour-10--mercredi-23-avril-2025">Hermann Park et Zoo (23 avril)</a></li>
+            <li class="toc-level-2"><a href="#Journée_23_avril_2025_-_Guide_Hermann_Park_et_Zoo_Détaillé---zoo-de-houston">Zoo de Houston</a></li>
+            <li class="toc-level-2"><a href="#Journée_23_avril_2025_-_Guide_Hermann_Park_et_Zoo_Détaillé---hermann-park">Hermann Park</a></li>
+            
+            <li class="toc-level-1"><a href="#Guide_Gastronomique_et_Shopping_-_Houston_Authentique-------guide-gastronomique-et-shopping">Guides complémentaires</a></li>
+            <li class="toc-level-2"><a href="#Guide_Gastronomique_et_Shopping_-_Houston_Authentique-------guide-gastronomique-et-shopping">Guide Gastronomique et Shopping</a></li>
+            <li class="toc-level-2"><a href="#Guide_Local_Houston___Manger_Acheter-houston---votre-guide-des-adresses-incontournables-autour-du-crowne-plaza-et-du-centre-de-conventions">Guide Local Houston</a></li>
+            <li class="toc-level-2"><a href="#Annexe_-_Downtown_Houston_à_Explorer----downtown-houston-à-explorer">Downtown Houston à Explorer</a></li>
+            <li class="toc-level-2"><a href="#Guide_Pratique_Touristanbul----guide-pratique-touristanbul">Guide Pratique Touristanbul</a></li>
+            <li class="toc-level-2"><a href="#Guide_Activités_Enfants_-_Houston_pour_les_10_ans----houston-pour-les-enfants-de-10-ans">Houston pour les Enfants de 10 ans</a></li>
+        </ul>
+    </section>
+
+    <!-- Contenu principal -->
+    <main role="main">
+        <div id="content" class="content-section">
+            <!-- Le contenu original sera inséré ici via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Navigation flottante -->
+    <div id="floating-nav" onclick="toggleNavMenu()">☰</div>
+    <div id="nav-menu"></div>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>Guide de Voyage Houston 2025 &copy; 2025 Monem Naifer</p>
+        <p>Généré le 10/04/2025 à 22:11</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+    // Charger le contenu original
+    window.addEventListener('DOMContentLoaded', function() {
+        // Charger le contenu original
+        fetch('Guide_Voyage_Houston_2025.html')
+            .then(response => response.text())
+            .then(html => {
+                // Extraire le contenu principal
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                // Trouver tous les éléments de contenu (tout sauf le menu de navigation et les scripts)
+                const content = doc.body.innerHTML;
+                
+                // Insérer le contenu dans notre page
+                document.getElementById('content').innerHTML = content;
+                
+                // Copier le menu de navigation
+                const navMenu = doc.getElementById('nav-menu');
+                if (navMenu) {
+                    document.getElementById('nav-menu').innerHTML = navMenu.innerHTML;
+                }
+                
+                // Initialiser les fonctionnalités après le chargement du contenu
+                initFunctions();
+                
+                // Réduire la taille des images
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    img.style.maxWidth = '80%';
+                    img.style.height = 'auto';
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement du contenu:', error);
+                document.getElementById('content').innerHTML = '<p>Erreur lors du chargement du contenu. Veuillez réessayer.</p>';
+            });
+    });
+
+    // Initialiser les fonctionnalités
+    function initFunctions() {
+        // Fonction pour basculer le thème clair/sombre
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            
+            // Changer l'icône
+            const icon = this.querySelector('i');
+            if (newTheme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+            
+            // Sauvegarder la préférence
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Appliquer le thème sauvegardé
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                const icon = document.querySelector('#theme-toggle i');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+        
+        // Afficher/masquer le bouton de retour en haut
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // Fonction de retour en haut
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Fonction d'impression
+        document.getElementById('print-btn').addEventListener('click', function() {
+            window.print();
+        });
+    }
+
+    // Fonction pour basculer le menu de navigation
+    function toggleNavMenu() {
+        var menu = document.getElementById('nav-menu');
+        menu.classList.toggle('active');
+    }
+
+    // Fermer le menu si on clique ailleurs
+    document.addEventListener('click', function(event) {
+        var menu = document.getElementById('nav-menu');
+        var nav = document.getElementById('floating-nav');
+        if (menu.classList.contains('active') &&
+            !menu.contains(event.target) &&
+            event.target !== nav) {
+            menu.classList.remove('active');
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* Typography styles for Houston 2025 Travel Guide */
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  color: var(--primary-color);
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+h4 {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+}
+
+h5, h6 {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 1em;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  hyphens: auto;
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.labeled-link {
+  display: inline-flex;
+  align-items: center;
+  margin: 2px 0;
+}
+
+.labeled-link::before {
+  content: '\ud83d\udd17';
+  margin-right: 5px;
+  font-size: 0.9em;
+}
+
+.external-link::after {
+  content: ' \u2197';
+  font-size: 0.8em;
+  vertical-align: super;
+}
+
+.section-link {
+  font-weight: bold;
+}
+
+.annexe-link {
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+/* Lists */
+ul, ol {
+  margin: 0 0 1em 1.5em;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+/* Blockquotes */
+blockquote {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border-left: 4px solid var(--primary-color);
+  background-color: var(--light-bg);
+  font-style: italic;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 0.5em;
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* Code */
+code, pre {
+  font-family: monospace;
+  background-color: var(--light-bg);
+  border-radius: var(--border-radius);
+}
+
+code {
+  padding: 2px 4px;
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+/* Emoji */
+.emoji {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+/* Bilingual headers */
+.bilingual-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.bilingual-header .fr {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.bilingual-header .en {
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
+}
