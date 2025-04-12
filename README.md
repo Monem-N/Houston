@@ -51,38 +51,25 @@ The `assets/js/config.js` file contains sensitive information such as the Google
 
 For production deployments, use environment variables from your hosting platform (like Netlify) to store API keys and other sensitive information.
 
-### GitHub Secrets
+### Netlify Environment Variables
 
-To securely store your API keys, we use GitHub Secrets and GitHub Actions to inject them during deployment:
+To securely store your API keys, we use Netlify Environment Variables:
 
-1. Go to your GitHub repository
-2. Click on "Settings" > "Secrets and variables" > "Actions"
-3. Add the following secrets:
+1. Go to your Netlify dashboard
+2. Select your site
+3. Go to "Site settings" > "Build & deploy" > "Environment"
+4. Add the following environment variables:
    - `GOOGLE_MAPS_API_KEY`: Your Google Maps API key
-   - `NETLIFY_AUTH_TOKEN`: Your Netlify authentication token
-   - `NETLIFY_SITE_ID`: Your Netlify site ID
-
-#### How to get Netlify credentials
-
-1. **For the Netlify authentication token**:
-   - Log in to your Netlify account
-   - Go to User settings > Applications > Personal access tokens
-   - Click on "New access token", give it a name, and click on "Generate token"
-   - Copy the generated token
-
-2. **For the Netlify site ID**:
-   - Go to your site in the Netlify dashboard
-   - Go to Site settings > General > Site details
-   - Copy the API ID
+   - `GOOGLE_ANALYTICS_ID`: Your Google Analytics measurement ID (G-KHZ18QKRHG)
 
 ### How it works
 
-When you push to the main branch, GitHub Actions will:
+When Netlify builds your site, it will:
 
-1. Create a `config.js` file with your API key from GitHub Secrets
-2. Deploy the site to Netlify
+1. Run the `build.js` script which generates the `config.js` file using the environment variables
+2. Deploy the site with the generated `config.js` file
 
-This way, your API key is never stored in the repository and is only injected during deployment.
+This way, your API keys are never stored in the repository and are only injected during the build process.
 
 ## Local Development
 

@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = ""  # Leave empty for a simple static site
+  command = "node build.js"  # Exécute le script de build pour générer config.js
 
 # If you decide to use Jekyll later, uncomment these lines:
 # [build]
