@@ -1,6 +1,11 @@
 // Google Analytics for Houston 2025 Travel Guide
 // The measurement ID is loaded from the CONFIG object
 
+// Check if CONFIG is defined
+if (typeof CONFIG === 'undefined') {
+    console.warn('CONFIG object is not defined. Make sure config.js is loaded before analytics.js');
+}
+
 // Google Analytics tag (gtag.js)
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -9,9 +14,14 @@ gtag('js', new Date());
 // Use the measurement ID from the CONFIG object if available, otherwise use a placeholder
 const measurementId = (typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_ANALYTICS_ID)
     ? CONFIG.GOOGLE_ANALYTICS_ID
-    : 'G-XXXXXXXXXX';
+    : 'G-KHZ18QKRHG';
 
-gtag('config', measurementId);
+// Check if gtag function is blocked by an ad blocker
+try {
+    gtag('config', measurementId);
+} catch (error) {
+    console.warn('Google Analytics might be blocked by an ad blocker or browser extension.');
+}
 
 // Custom event tracking
 document.addEventListener('DOMContentLoaded', function() {

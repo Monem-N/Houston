@@ -469,10 +469,25 @@ function initMaps() {
 
 // Fonction pour charger l'API Google Maps
 function loadGoogleMaps() {
+  // Vérifie si CONFIG est défini
+  if (typeof CONFIG === 'undefined') {
+    console.error('CONFIG object is not defined. Make sure config.js is loaded before maps-improved.js');
+    return;
+  }
+
+  // Vérifie si la clé API Google Maps est définie
+  if (!CONFIG.GOOGLE_MAPS_API_KEY) {
+    console.error('Google Maps API key is not defined in CONFIG object');
+    return;
+  }
+
   const script = document.createElement('script');
   script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&callback=initMaps`;
   script.async = true;
   script.defer = true;
+  script.onerror = function() {
+    console.error('Failed to load Google Maps API. Check your API key and network connection.');
+  };
   document.head.appendChild(script);
 }
 
