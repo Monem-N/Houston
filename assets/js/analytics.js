@@ -1,11 +1,17 @@
 // Google Analytics for Houston 2025 Travel Guide
-// Replace 'G-XXXXXXXXXX' with your actual Google Analytics measurement ID when you create one
+// The measurement ID is loaded from the CONFIG object
 
 // Google Analytics tag (gtag.js)
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-XXXXXXXXXX'); // Replace with your actual measurement ID
+
+// Use the measurement ID from the CONFIG object if available, otherwise use a placeholder
+const measurementId = (typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_ANALYTICS_ID)
+    ? CONFIG.GOOGLE_ANALYTICS_ID
+    : 'G-XXXXXXXXXX';
+
+gtag('config', measurementId);
 
 // Custom event tracking
 document.addEventListener('DOMContentLoaded', function() {
@@ -20,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
+
     // Track quick navigation clicks
     const quickNavLinks = document.querySelectorAll('.quick-nav a');
     quickNavLinks.forEach(link => {
@@ -32,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
+
     // Track back to top button clicks
     const backToTopButton = document.querySelector('.back-to-top');
     if (backToTopButton) {
@@ -44,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
+
     // Track external links
     const externalLinks = document.querySelectorAll('a[href^="http"]');
     externalLinks.forEach(link => {
@@ -56,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
+
     // Track time on page
     let startTime = new Date();
     window.addEventListener('beforeunload', function() {

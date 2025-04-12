@@ -14,6 +14,10 @@ const CONFIG = {
   // Cette valeur sera remplacée par le secret GitHub lors du déploiement
   GOOGLE_MAPS_API_KEY: "VOTRE_CLE_API_GOOGLE_MAPS",
 
+  // ID de mesure Google Analytics
+  // Cette valeur sera remplacée par le secret GitHub lors du déploiement
+  GOOGLE_ANALYTICS_ID: "VOTRE_ID_GOOGLE_ANALYTICS",
+
   // Autres configurations
   // ...
 };
