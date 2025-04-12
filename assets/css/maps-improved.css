@@ -3,7 +3,7 @@
  * Version améliorée avec méthodologie BEM, optimisation des SVG et meilleure accessibilité
  */
 
-/* 
+/*
  * Variables globales
  * Ces variables sont utilisées dans tout le fichier pour assurer la cohérence
  */
@@ -17,31 +17,31 @@
   --text-color: #333333;
   --text-color-light: #666666;
   --border-color: #dddddd;
-  
+
   /* Ombres et bordures */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --box-shadow-hover: 0 6px 8px rgba(0, 0, 0, 0.15);
   --border-radius: 8px;
   --border-radius-sm: 4px;
-  
+
   /* Espacements */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-  
+
   /* Typographie */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
-  
+
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
-  
+
   /* Z-index */
   --z-index-map: 1;
   --z-index-controls: 2;
@@ -89,6 +89,21 @@
   z-index: var(--z-index-controls);
 }
 
+.map-filters__title {
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: var(--font-size-md);
+}
+
+.map-filters__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
 .map-filters__item {
   display: flex;
   align-items: center;
@@ -130,6 +145,42 @@
 
 .map-filters__reset:focus-visible {
   box-shadow: 0 0 0 3px var(--primary-color-light);
+}
+
+/* Boutons d'itinéraires */
+.map-filters__button {
+  background-color: white;
+  color: var(--text-color);
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.map-filters__button:hover,
+.map-filters__button:focus-visible {
+  background-color: var(--background-alt);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+.map-filters__button.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.itinerary-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: var(--spacing-xs);
 }
 
 /*
@@ -287,9 +338,19 @@
 .itinerary-controls {
   margin: var(--spacing-md) 0;
   padding: var(--spacing-md);
-  background-color: var(--background-alt);
   border-radius: var(--border-radius);
+}
+
+/* Quand les contrôles ne sont pas dans une info-box */
+.itinerary-controls:not(.info-box .itinerary-controls) {
+  background-color: var(--background-alt);
   box-shadow: var(--box-shadow);
+}
+
+/* Quand les contrôles sont dans une info-box */
+.info-box .itinerary-controls {
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .itinerary-controls__title {
@@ -408,45 +469,50 @@
   .map-container {
     height: 350px;
   }
-  
+
   #main-map {
     height: 450px;
   }
-  
+
   .itinerary-map {
     height: 300px;
   }
-  
+
   /* Filtres et contrôles */
   .map-filters {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
+  .map-filters__items {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .map-filters__item {
+    width: 100%;
+  }
+
+  .map-filters__button {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   .map-filters__reset {
     margin-left: 0;
     margin-top: var(--spacing-sm);
+    width: 100%;
   }
-  
-  .itinerary-controls__buttons {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .itinerary-controls__reset {
-    margin-right: 0;
-    margin-bottom: var(--spacing-sm);
-  }
-  
+
   /* Points d'intérêt */
   .poi-item {
     flex-direction: column;
   }
-  
+
   .poi-item__icon {
     margin-bottom: var(--spacing-xs);
   }
-  
+
   .poi-item__links {
     flex-direction: column;
     align-items: flex-start;
@@ -458,21 +524,21 @@
   .map-container {
     height: 300px;
   }
-  
+
   #main-map {
     height: 400px;
   }
-  
+
   .itinerary-map {
     height: 250px;
   }
-  
+
   .poi-item__name {
     font-size: var(--font-size-md);
   }
 }
 
-/* 
+/*
  * Styles du menu
  * Ces styles sont nécessaires pour le bon fonctionnement du menu
  */
@@ -559,21 +625,38 @@
   .menu-toggle {
     display: block;
   }
-  
+
   .nav-menu {
     display: none;
     width: 100%;
     flex-direction: column;
     padding: var(--spacing-sm);
   }
-  
+
   .nav-menu.is-active {
     display: flex;
   }
-  
+
   .nav-menu a {
     display: block;
     padding: var(--spacing-md);
     text-align: center;
   }
+}
+
+/* Styles for error messages */
+.map-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.map-error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

@@ -24,7 +24,7 @@
 const CONFIG = {
   // Clé API Google Maps
   GOOGLE_MAPS_API_KEY: "AIzaSyAdCsaf0TLy6vvX3rkPC-zno9nsHUeuH-0",
-  
+
   // ID de mesure Google Analytics
   GOOGLE_ANALYTICS_ID: "G-KHZ18QKRHG"
 };
@@ -60,15 +60,17 @@ const CONFIG = {
 <h1>Carte Interactive de Houston</h1>
 <p>Cette carte interactive vous permet de localiser tous les points d'intérêt mentionnés dans le guide. Utilisez les filtres ci-dessous pour afficher ou masquer différentes catégories de lieux.</p>
 <div class="info-box">
-<h3><span class="emoji">📍</span> Itinéraires suggérés</h3>
+<h3 data-itinerary-title="true"><span class="emoji">📍</span> Itinéraires suggérés</h3>
 <p>Découvrez nos <a href="itineraires.html">itinéraires suggérés</a> pour explorer Houston efficacement. Vous pouvez également afficher ces itinéraires directement sur cette carte en utilisant les contrôles ci-dessous.</p>
+<!-- Conteneur vide pour les contrôles d'itinéraires qui sera rempli par JavaScript -->
+<div id="itinerary-controls" class="itinerary-controls"></div>
 </div>
 <!-- Filtres de la carte -->
-<div class="map-filters" id="map-filters">
-<!-- Les filtres seront ajoutés dynamiquement par JavaScript -->
+<div class="map-filters" id="map-filters" aria-label="Filtres de la carte">
+  <!-- Les filtres seront ajoutés dynamiquement par JavaScript -->
 </div>
 <!-- Conteneur de la carte principale -->
-<div class="map-container" id="main-map"></div>
+<div class="map-container" id="main-map" role="region" aria-label="Carte interactive de Houston"></div>
 <h2><span class="emoji">📍</span> Liste des Points d'Intérêt</h2>
 <p>Retrouvez ci-dessous la liste complète de tous les points d'intérêt mentionnés dans le guide, organisés par catégorie.</p>
 <!-- Attractions -->
@@ -264,6 +266,29 @@ const CONFIG = {
 
 <script src="assets/js/maps-improved.js"></script>
 <script src="assets/js/itineraries.js"></script>
+<script>
+  function displayMapError(message) {
+    const mapContainer = document.getElementById('main-map') || document.getElementById('page-map');
+    if (mapContainer) {
+      mapContainer.innerHTML = `
+        <div class="map-error" role="alert" aria-live="assertive">
+          <h3>Impossible de charger la carte</h3>
+          <p>${message}</p>
+          <p>Vous pouvez toujours consulter la liste des points d'intérêt ci-dessous.</p>
+        </div>
+      `;
+      mapContainer.classList.add('map-error-container');
+    }
+  }
+
+  // Ensure menu toggle functionality works correctly
+  document.querySelector('.menu-toggle').addEventListener('click', function () {
+    const menu = document.getElementById('primary-menu');
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !isExpanded);
+    menu.classList.toggle('is-active');
+  });
+</script>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KHZ18QKRHG"></script>
 <script src="assets/js/analytics.js"></script>

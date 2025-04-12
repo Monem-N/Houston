@@ -280,9 +280,29 @@ const SUGGESTED_ITINERARIES = [
 
 // Fonction pour initialiser les itinéraires sur la carte
 function initItineraries(map) {
+  console.log('Début de l\'initialisation des itinéraires');
+
   // Vérifie si l'API Google Maps est chargée
   if (!window.google || !window.google.maps) {
     console.error("L'API Google Maps n'est pas chargée");
+    return;
+  }
+
+  // Vérifie si la carte est valide
+  if (!map) {
+    console.error("La carte n'est pas valide");
+    return;
+  }
+
+  // Vérifie si les itinéraires ont déjà été initialisés
+  let itineraryControls = document.getElementById('itinerary-controls');
+  if (!itineraryControls) {
+    console.error("Le conteneur des itinéraires n'existe pas");
+    return;
+  }
+
+  if (itineraryControls.dataset.initialized === 'true') {
+    console.log("Les itinéraires ont déjà été initialisés");
     return;
   }
 
@@ -292,45 +312,28 @@ function initItineraries(map) {
   // Crée un tableau pour stocker les renderers de directions
   const directionsRenderers = [];
 
-  // Crée un conteneur pour les contrôles d'itinéraires s'il n'existe pas déjà
-  let itineraryControls = document.getElementById('itinerary-controls');
+  // Si le conteneur n'existe pas, on ne fait rien
   if (!itineraryControls) {
-    itineraryControls = document.createElement('div');
-    itineraryControls.id = 'itinerary-controls';
-    itineraryControls.className = 'itinerary-controls';
-
-    // Ajoute le conteneur avant les filtres de la carte
-    const mapFilters = document.getElementById('map-filters');
-    if (mapFilters) {
-      mapFilters.parentNode.insertBefore(itineraryControls, mapFilters);
-    } else {
-      // Si les filtres n'existent pas, ajoute le conteneur avant la carte
-      const mapContainer = document.getElementById('main-map');
-      if (mapContainer) {
-        mapContainer.parentNode.insertBefore(itineraryControls, mapContainer);
-      }
-    }
+    console.warn("Le conteneur des contrôles d'itinéraires n'existe pas dans le HTML");
+    return;
   }
 
-  // Crée un titre pour les contrôles d'itinéraires
-  const title = document.createElement('h3');
-  title.textContent = 'Itinéraires suggérés';
-  itineraryControls.appendChild(title);
-
-  // Crée un paragraphe d'explication
-  const explanation = document.createElement('p');
-  explanation.textContent = 'Sélectionnez un itinéraire pour l\'afficher sur la carte. Cliquez sur les marqueurs pour plus d\'informations.';
-  itineraryControls.appendChild(explanation);
-
-  // Crée un conteneur pour les boutons d'itinéraires
+  // Crée un conteneur pour les boutons d'itinéraires (similaire aux filtres de carte)
   const buttonsContainer = document.createElement('div');
-  buttonsContainer.className = 'itinerary-buttons';
+  buttonsContainer.className = 'map-filters itinerary-buttons';
+  buttonsContainer.setAttribute('aria-label', 'Filtres d\'itinéraires');
   itineraryControls.appendChild(buttonsContainer);
+
+  // Ajoute un titre pour les boutons d'itinéraires
+  const buttonsTitle = document.createElement('div');
+  buttonsTitle.className = 'map-filters__title';
+  buttonsTitle.innerHTML = '<span class="emoji">🗺️</span> Sélectionnez un itinéraire:';
+  buttonsContainer.appendChild(buttonsTitle);
 
   // Crée un bouton pour masquer tous les itinéraires
   const hideAllButton = document.createElement('button');
   hideAllButton.textContent = 'Masquer tous les itinéraires';
-  hideAllButton.className = 'hide-all-button';
+  hideAllButton.className = 'map-filters__reset hide-all-button';
   hideAllButton.addEventListener('click', function() {
     // Masque tous les itinéraires
     directionsRenderers.forEach(renderer => {
@@ -341,6 +344,12 @@ function initItineraries(map) {
     document.querySelectorAll('.itinerary-button').forEach(button => {
       button.classList.remove('active');
     });
+
+    // Supprime tous les marqueurs d'itinéraires
+    if (window.itineraryMarkers && window.itineraryMarkers.length) {
+      window.itineraryMarkers.forEach(marker => marker.setMap(null));
+      window.itineraryMarkers = [];
+    }
 
     // Enregistre l'événement dans Google Analytics si disponible
     if (typeof gtag === 'function') {
@@ -353,8 +362,16 @@ function initItineraries(map) {
   });
   buttonsContainer.appendChild(hideAllButton);
 
+  // Initialise un tableau global pour stocker les marqueurs d'itinéraires
+  window.itineraryMarkers = window.itineraryMarkers || [];
+
+  // Crée un conteneur pour les boutons d'itinéraires
+  const itineraryButtonsContainer = document.createElement('div');
+  itineraryButtonsContainer.className = 'map-filters__items';
+  buttonsContainer.appendChild(itineraryButtonsContainer);
+
   // Crée un bouton pour chaque itinéraire
-  SUGGESTED_ITINERARIES.forEach((itinerary, index) => {
+  SUGGESTED_ITINERARIES.forEach((itinerary) => {
     // Crée un renderer de directions pour cet itinéraire
     const directionsRenderer = new google.maps.DirectionsRenderer({
       map: null, // Ne l'affiche pas encore
@@ -369,17 +386,37 @@ function initItineraries(map) {
     // Ajoute le renderer au tableau
     directionsRenderers.push(directionsRenderer);
 
+    // Crée un item de filtre pour cet itinéraire (similaire aux filtres de catégories)
+    const filterItem = document.createElement('div');
+    filterItem.className = 'map-filters__item';
+
     // Crée un bouton pour cet itinéraire
     const button = document.createElement('button');
-    button.textContent = itinerary.title;
-    button.className = 'itinerary-button';
+    button.innerHTML = `<span class="itinerary-color" style="background-color: ${itinerary.color}"></span> ${itinerary.title}`;
+    button.className = 'map-filters__button itinerary-button';
     button.dataset.itineraryId = itinerary.id;
-    button.style.borderColor = itinerary.color;
+    filterItem.appendChild(button);
 
     // Ajoute l'événement de clic
     button.addEventListener('click', function() {
       // Vérifie si le bouton est déjà actif
       const isActive = button.classList.contains('active');
+
+      // Supprime la classe active de tous les boutons d'itinéraires
+      document.querySelectorAll('.itinerary-button').forEach(btn => {
+        if (btn !== button) btn.classList.remove('active');
+      });
+
+      // Masque tous les itinéraires
+      directionsRenderers.forEach(renderer => {
+        if (renderer !== directionsRenderer) renderer.setMap(null);
+      });
+
+      // Supprime tous les marqueurs d'itinéraires existants
+      if (window.itineraryMarkers && window.itineraryMarkers.length) {
+        window.itineraryMarkers.forEach(marker => marker.setMap(null));
+        window.itineraryMarkers = [];
+      }
 
       if (isActive) {
         // Masque l'itinéraire
@@ -429,6 +466,9 @@ function initItineraries(map) {
                   zIndex: 1000 + waypointIndex
                 });
 
+                // Ajoute le marqueur au tableau global pour pouvoir le supprimer plus tard
+                window.itineraryMarkers.push(marker);
+
                 // Crée une fenêtre d'info pour ce point d'arrêt
                 const infoContent = `
                   <div class="info-window">
@@ -467,6 +507,51 @@ function initItineraries(map) {
               alert(`Erreur lors du calcul de l'itinéraire: ${status}`);
             }
           });
+        } else {
+          // Si l'itinéraire est déjà calculé, recrée les marqueurs
+          itinerary.waypoints.forEach((waypoint, waypointIndex) => {
+            const marker = new google.maps.Marker({
+              position: { lat: waypoint.lat, lng: waypoint.lng },
+              map: map,
+              title: waypoint.name,
+              icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 10,
+                fillColor: itinerary.color,
+                fillOpacity: 1,
+                strokeColor: '#FFFFFF',
+                strokeWeight: 2
+              },
+              zIndex: 1000 + waypointIndex
+            });
+
+            // Ajoute le marqueur au tableau global
+            window.itineraryMarkers.push(marker);
+
+            // Crée une fenêtre d'info pour ce point d'arrêt
+            const infoContent = `
+              <div class="info-window">
+                <h3>${waypoint.name}</h3>
+                <p>${waypoint.description}</p>
+              </div>
+            `;
+
+            const infoWindow = new google.maps.InfoWindow({
+              content: infoContent
+            });
+
+            // Ajoute l'événement de clic
+            marker.addListener('click', function() {
+              // Ferme toutes les fenêtres d'info ouvertes
+              if (window.openInfoWindow) {
+                window.openInfoWindow.close();
+              }
+
+              // Ouvre la fenêtre d'info
+              infoWindow.open(map, marker);
+              window.openInfoWindow = infoWindow;
+            });
+          });
         }
       }
 
@@ -480,8 +565,8 @@ function initItineraries(map) {
       }
     });
 
-    // Ajoute le bouton au conteneur
-    buttonsContainer.appendChild(button);
+    // Ajoute l'item de filtre au conteneur
+    itineraryButtonsContainer.appendChild(filterItem);
   });
 
   // Crée un conteneur pour les détails de l'itinéraire
@@ -489,6 +574,9 @@ function initItineraries(map) {
   itineraryDetails.id = 'itinerary-details';
   itineraryDetails.className = 'itinerary-details';
   itineraryControls.appendChild(itineraryDetails);
+
+  // Marque le conteneur comme initialisé pour éviter les doublons
+  itineraryControls.dataset.initialized = 'true';
 
   // Ajoute un événement de survol pour afficher les détails de l'itinéraire
   document.querySelectorAll('.itinerary-button').forEach(button => {
@@ -563,7 +651,8 @@ function initItineraryPage() {
   });
 
   // Initialise les cartes une fois que l'API Google Maps est chargée
-  window.initItineraryMaps = function() {
+  // Définition d'une propriété globale pour le callback de l'API Google Maps
+  window["initItineraryMaps"] = function() {
     SUGGESTED_ITINERARIES.forEach(itinerary => {
       // Crée une carte pour cet itinéraire
       const mapContainer = document.getElementById(`map-${itinerary.id}`);
@@ -673,19 +762,25 @@ function initItineraryPage() {
 // Fonction pour initialiser les itinéraires lorsque l'API Google Maps est chargée
 function initItinerariesWhenMapsLoaded() {
   try {
-    // Vérifie si la page contient une carte principale
+    // Vérifie si la page contient une carte principale et si la carte est déjà initialisée
     const mainMapContainer = document.getElementById('main-map');
-    if (mainMapContainer && window.google && window.google.maps) {
-      // Récupère la carte
+    if (mainMapContainer && window.mainMap) {
+      // Récupère la carte depuis la variable globale
       const map = window.mainMap;
-      if (map) {
+
+      // Vérifie si les itinéraires ont déjà été initialisés
+      const itineraryControls = document.getElementById('itinerary-controls');
+      if (itineraryControls && !itineraryControls.dataset.initialized) {
+        console.log('Initialisation des itinéraires sur la carte principale');
         // Initialise les itinéraires
         initItineraries(map);
+      } else if (itineraryControls && itineraryControls.dataset.initialized) {
+        console.log('Les itinéraires sont déjà initialisés');
       } else {
-        console.warn('Map object not found in window.mainMap');
+        console.warn('Conteneur des itinéraires non trouvé');
       }
     } else if (mainMapContainer) {
-      console.warn('Google Maps API not loaded yet');
+      console.warn('Carte principale non initialisée');
     }
 
     // Vérifie si la page est la page d'itinéraires
@@ -702,25 +797,21 @@ function initItinerariesWhenMapsLoaded() {
   }
 }
 
-// Modifie la fonction initMaps pour stocker la carte dans une variable globale
-const originalInitMainMap = window.initMainMap;
-window.initMainMap = function() {
-  // Appelle la fonction originale
-  const map = originalInitMainMap();
-
-  // Stocke la carte dans une variable globale
-  window.mainMap = map;
-
-  // Initialise les itinéraires
-  initItinerariesWhenMapsLoaded();
-
-  return map;
-};
+// Pas besoin de modifier la fonction initMainMap car la carte est déjà stockée dans window.mainMap
 
 // Initialise les itinéraires lorsque la page est chargée
 document.addEventListener('DOMContentLoaded', function() {
-  // Vérifie si l'API Google Maps est déjà chargée
-  if (window.google && window.google.maps) {
-    initItinerariesWhenMapsLoaded();
-  }
+  // Attend que la carte soit chargée (peut prendre un peu de temps après le chargement de l'API)
+  const checkMapLoaded = setInterval(function() {
+    if (window.google && window.google.maps && window.mainMap) {
+      clearInterval(checkMapLoaded);
+      console.log('Carte chargée, initialisation des itinéraires');
+      initItinerariesWhenMapsLoaded();
+    }
+  }, 100); // Vérifie toutes les 100ms
+
+  // Arrête de vérifier après 10 secondes pour éviter une boucle infinie
+  setTimeout(function() {
+    clearInterval(checkMapLoaded);
+  }, 10000);
 });

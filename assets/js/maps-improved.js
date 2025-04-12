@@ -346,22 +346,10 @@ function initMainMap() {
     // Ajoute les contrôles de filtrage
     addFilterControls(map, markers);
 
-    // Charge le script des itinéraires s'il n'est pas déjà chargé
-    if (typeof initItineraries === 'function') {
-      // Initialise les itinéraires
-      initItineraries(map);
-    } else {
-      // Charge le script des itinéraires
-      const script = document.createElement('script');
-      script.src = 'assets/js/itineraries.js';
-      script.onload = function() {
-        // Initialise les itinéraires une fois le script chargé
-        if (typeof initItineraries === 'function') {
-          initItineraries(map);
-        }
-      };
-      document.head.appendChild(script);
-    }
+    // Stocke la carte dans une variable globale pour que d'autres scripts puissent y accéder
+    window.mainMap = map;
+
+    // Les itinéraires seront initialisés par le script itineraries.js qui est chargé séparément
 
     return map;
   } catch (error) {
@@ -405,28 +393,27 @@ function initPageMap(mapId, category) {
 
 // Fonction pour ajouter des contrôles de filtrage à la carte
 function addFilterControls(map, allMarkers) {
-  // Récupère le conteneur des filtres
   const filterContainer = document.getElementById('map-filters');
-  if (!filterContainer) return;
+  if (!filterContainer) {
+    console.error('Filter container not found.');
+    return;
+  }
 
-  // Crée un objet pour stocker les marqueurs par catégorie
   const markersByCategory = {};
-
-  // Initialise les catégories
   Object.keys(POINTS_OF_INTEREST).forEach(category => {
     markersByCategory[category] = [];
   });
 
-  // Groupe les marqueurs par catégorie
   let markerIndex = 0;
   Object.keys(POINTS_OF_INTEREST).forEach(category => {
     POINTS_OF_INTEREST[category].forEach(() => {
-      markersByCategory[category].push(allMarkers[markerIndex]);
+      if (allMarkers[markerIndex]) {
+        markersByCategory[category].push(allMarkers[markerIndex]);
+      }
       markerIndex++;
     });
   });
 
-  // Crée les contrôles de filtrage
   const categories = {
     'attractions': { label: 'Attractions', icon: '🏛️', checked: true },
     'shopping': { label: 'Shopping', icon: '🛍️', checked: true },
@@ -435,46 +422,34 @@ function addFilterControls(map, allMarkers) {
     'restaurants': { label: 'Restaurants', icon: '🍽️', checked: true }
   };
 
-  // Crée les cases à cocher
   Object.keys(categories).forEach(category => {
     const { label, icon, checked } = categories[category];
 
     const filterItem = document.createElement('div');
-    filterItem.className = 'filter-item';
+    filterItem.className = 'map-filters__item';
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.id = `filter-${category}`;
     checkbox.checked = checked;
+    checkbox.className = 'map-filters__checkbox';
 
     const filterLabel = document.createElement('label');
     filterLabel.htmlFor = `filter-${category}`;
+    filterLabel.className = 'map-filters__label';
     filterLabel.innerHTML = `${icon} ${label}`;
 
-    // Ajoute l'événement de changement
-    checkbox.addEventListener('change', function() {
+    checkbox.addEventListener('change', function () {
       const isChecked = this.checked;
-
-      // Affiche ou masque les marqueurs
-      markersByCategory[category].forEach(marker => {
-        marker.setVisible(isChecked);
-      });
-
-      // Ajuste la carte si nécessaire
-      if (isChecked) {
-        const visibleMarkers = allMarkers.filter(marker => marker.getVisible());
-        if (visibleMarkers.length > 0) {
-          fitMapToMarkers(map, visibleMarkers);
-        }
+      if (markersByCategory[category]) {
+        markersByCategory[category].forEach(marker => {
+          marker.setVisible(isChecked);
+        });
       }
 
-      // Enregistre l'événement dans Google Analytics si disponible
-      if (typeof gtag === 'function') {
-        gtag('event', isChecked ? 'show_category' : 'hide_category', {
-          'event_category': 'maps',
-          'event_label': category,
-          'value': 1
-        });
+      const visibleMarkers = allMarkers.filter(marker => marker.getVisible());
+      if (visibleMarkers.length > 0) {
+        fitMapToMarkers(map, visibleMarkers);
       }
     });
 
@@ -483,41 +458,39 @@ function addFilterControls(map, allMarkers) {
     filterContainer.appendChild(filterItem);
   });
 
-  // Ajoute un bouton pour réinitialiser les filtres
   const resetButton = document.createElement('button');
-  resetButton.className = 'reset-filters';
+  resetButton.className = 'map-filters__reset';
   resetButton.textContent = 'Réinitialiser les filtres';
 
-  resetButton.addEventListener('click', function() {
-    // Coche toutes les cases
+  resetButton.addEventListener('click', function () {
     Object.keys(categories).forEach(category => {
       const checkbox = document.getElementById(`filter-${category}`);
-      checkbox.checked = true;
+      if (checkbox) checkbox.checked = true;
 
-      // Affiche tous les marqueurs
-      markersByCategory[category].forEach(marker => {
-        marker.setVisible(true);
-      });
+      if (markersByCategory[category]) {
+        markersByCategory[category].forEach(marker => {
+          marker.setVisible(true);
+        });
+      }
     });
 
-    // Ajuste la carte
     fitMapToMarkers(map, allMarkers);
-
-    // Enregistre l'événement dans Google Analytics si disponible
-    if (typeof gtag === 'function') {
-      gtag('event', 'reset_filters', {
-        'event_category': 'maps',
-        'event_label': 'all',
-        'value': 1
-      });
-    }
   });
 
   filterContainer.appendChild(resetButton);
 }
 
+// Fonction pour initialiser les itinéraires (stub pour compatibilité)
+// Cette fonction est remplacée par celle dans itineraries.js
+// eslint-disable-next-line no-unused-vars
+function initItineraries(map) {
+  console.warn('Cette fonction est un stub. Assurez-vous que itineraries.js est chargé.');
+  return;
+}
+
 // Fonction pour initialiser les cartes lorsque l'API Google Maps est chargée
-window.initMaps = function() {
+// @ts-ignore - Définition d'une propriété globale pour le callback de l'API Google Maps
+window["initMaps"] = function() {
   try {
     // Vérifie si la page contient une carte principale
     const mainMapContainer = document.getElementById('main-map');
@@ -589,7 +562,7 @@ function displayMapError(message) {
   const mapContainer = document.getElementById('main-map') || document.getElementById('page-map');
   if (mapContainer) {
     mapContainer.innerHTML = `
-      <div class="map-error">
+      <div class="map-error" role="alert" aria-live="assertive">
         <h3>Impossible de charger la carte</h3>
         <p>${message}</p>
         <p>Vous pouvez toujours consulter la liste des points d'intérêt ci-dessous.</p>
