@@ -525,7 +525,7 @@ function loadGoogleMaps() {
 
   try {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&callback=initMaps`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&callback=initMaps&loading=async`;
     script.async = true;
     script.defer = true;
     script.onerror = function() {
