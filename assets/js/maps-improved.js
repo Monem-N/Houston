@@ -158,6 +158,25 @@ const POINTS_OF_INTEREST = {
   ]
 };
 
+// Fonction pour obtenir une couleur en fonction de la catégorie
+function getCategoryColor(category) {
+  // Couleurs par catégorie
+  const categoryColors = {
+    'attraction': '#FF5722',  // Orange
+    'museum': '#4CAF50',      // Vert
+    'restaurant': '#F44336',  // Rouge
+    'hotel': '#2196F3',       // Bleu
+    'shopping': '#9C27B0',    // Violet
+    'transport': '#FFEB3B',   // Jaune
+    'event': '#FF9800',       // Orange clair
+    'park': '#8BC34A',        // Vert clair
+    'stadium': '#3F51B5'      // Indigo
+  };
+
+  // Retourne la couleur correspondante ou une couleur par défaut
+  return categoryColors[category] || '#607D8B';  // Gris bleu par défaut
+}
+
 // Fonction pour initialiser une carte Google Maps
 function initMap(mapId, center, zoom) {
   // Options de la carte
@@ -198,13 +217,37 @@ function initMap(mapId, center, zoom) {
 
 // Fonction pour ajouter un marqueur à la carte
 function addMarker(map, poi) {
-  // Crée le marqueur
-  const marker = new google.maps.Marker({
+  // Crée une icône personnalisée si un emoji est défini
+  let markerOptions = {
     position: { lat: poi.lat, lng: poi.lng },
     map: map,
     title: poi.name,
     animation: google.maps.Animation.DROP
-  });
+  };
+
+  // Ajoute l'icône si elle est définie
+  if (poi.icon) {
+    markerOptions.icon = {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 10,
+      fillColor: getCategoryColor(poi.category),
+      fillOpacity: 1,
+      strokeColor: '#FFFFFF',
+      strokeWeight: 2,
+      labelOrigin: new google.maps.Point(0, 0)
+    };
+
+    // Ajoute un label avec l'emoji
+    markerOptions.label = {
+      text: poi.icon,
+      color: '#FFFFFF',
+      fontSize: '14px',
+      fontWeight: 'bold'
+    };
+  }
+
+  // Crée le marqueur
+  const marker = new google.maps.Marker(markerOptions);
 
   // Crée la fenêtre d'info
   const infoContent = `
