@@ -1,0 +1,199 @@
+/* 
+ * Houston 2025 - Styles pour les cartes Google Maps
+ */
+
+/* Conteneur de carte */
+.map-container {
+  width: 100%;
+  height: 500px;
+  margin: var(--spacing-lg) 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  position: relative;
+}
+
+/* Carte principale (page dédiée) */
+#main-map {
+  height: 600px;
+}
+
+/* Carte de page */
+#page-map {
+  height: 400px;
+}
+
+/* Conteneur des filtres */
+.map-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--background-alt);
+  border-radius: var(--border-radius);
+}
+
+/* Élément de filtre */
+.filter-item {
+  display: flex;
+  align-items: center;
+  margin-right: var(--spacing-md);
+}
+
+/* Case à cocher de filtre */
+.filter-item input[type="checkbox"] {
+  margin-right: var(--spacing-xs);
+}
+
+/* Étiquette de filtre */
+.filter-item label {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Bouton de réinitialisation des filtres */
+.reset-filters {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-left: auto;
+}
+
+.reset-filters:hover {
+  background-color: var(--primary-color-dark);
+}
+
+/* Fenêtre d'info */
+.info-window {
+  padding: var(--spacing-xs);
+  max-width: 300px;
+}
+
+.info-window h3 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-xs);
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.info-window p {
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
+}
+
+.info-window a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.info-window a:hover {
+  text-decoration: underline;
+}
+
+/* Liste des points d'intérêt */
+.poi-list {
+  margin: var(--spacing-lg) 0;
+}
+
+.poi-list h3 {
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-xs);
+}
+
+.poi-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.poi-icon {
+  font-size: 1.5rem;
+  margin-right: var(--spacing-md);
+  min-width: 30px;
+  text-align: center;
+}
+
+.poi-details {
+  flex: 1;
+}
+
+.poi-name {
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+  font-size: 1.1rem;
+}
+
+.poi-address {
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+}
+
+.poi-description {
+  margin-bottom: var(--spacing-sm);
+}
+
+.poi-links a {
+  margin-right: var(--spacing-md);
+  display: inline-flex;
+  align-items: center;
+}
+
+.poi-links a::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.poi-links a.website::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>');
+}
+
+.poi-links a.directions::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>');
+}
+
+.poi-links a.more-info::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>');
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .map-container {
+    height: 350px;
+  }
+  
+  #main-map {
+    height: 450px;
+  }
+  
+  .map-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .reset-filters {
+    margin-left: 0;
+    margin-top: var(--spacing-sm);
+  }
+  
+  .poi-item {
+    flex-direction: column;
+  }
+  
+  .poi-icon {
+    margin-bottom: var(--spacing-xs);
+  }
+}

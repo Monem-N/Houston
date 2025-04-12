@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carte interactive de Houston avec tous les points d'intérêt du guide de voyage Houston 2025">
+    <meta name="keywords" content="Houston, carte, map, points d'intérêt, attractions, FIRST Championship">
+    <title>Carte Interactive - Guide de Voyage Houston 2025</title>
+    <link rel="stylesheet" href="assets/css/improved-style.css">
+    <link rel="stylesheet" href="assets/css/gallery.css">
+    <link rel="stylesheet" href="assets/css/maps.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/icon-192x192.png">
+    <!-- PWA support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0066cc">
+    <!-- Apple touch icons -->
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+    <!-- Accessibility skip link -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <header class="site-header" role="banner">
+        <div class="header-container">
+            <h1 class="site-title"><a href="index.html">Guide Houston 2025</a></h1>
+            
+            <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu">
+                <span class="hamburger-icon"></span>
+                <span class="screen-reader-text">Menu</span>
+            </button>
+        </div>
+        
+        <nav class="nav-menu" id="primary-menu" role="navigation" aria-label="Menu principal">
+            <a href="index.html">Accueil</a>
+            <a href="01_Introduction.html">Introduction</a>
+            <a href="02_Space_Center_Kemah.html">Space Center</a>
+            <a href="03_Shopping_Katy_Mills.html">Shopping</a>
+            <a href="04_Safety_Logistics.html">Sécurité</a>
+            <a href="05_Gastronomie.html">Gastronomie</a>
+            <a href="06_FIRST_Championship.html">FIRST</a>
+            <a href="07_Museum_District.html">Musées</a>
+            <a href="08_Hermann_Park_Zoo.html">Hermann Park</a>
+            <a href="09_Thematic_Index.html">Index</a>
+            <a href="carte_interactive.html" class="active">Carte</a>
+            <a href="feedback.html">Feedback</a>
+        </nav>
+    </header>
+    
+    <main id="main-content" class="main-content" role="main">
+        <h1>Carte Interactive de Houston</h1>
+        
+        <p>Cette carte interactive vous permet de localiser tous les points d'intérêt mentionnés dans le guide. Utilisez les filtres ci-dessous pour afficher ou masquer différentes catégories de lieux.</p>
+        
+        <!-- Filtres de la carte -->
+        <div id="map-filters" class="map-filters">
+            <!-- Les filtres seront ajoutés dynamiquement par JavaScript -->
+        </div>
+        
+        <!-- Conteneur de la carte principale -->
+        <div id="main-map" class="map-container"></div>
+        
+        <h2><span class="emoji">📍</span> Liste des Points d'Intérêt</h2>
+        
+        <p>Retrouvez ci-dessous la liste complète de tous les points d'intérêt mentionnés dans le guide, organisés par catégorie.</p>
+        
+        <!-- Attractions -->
+        <div class="poi-list">
+            <h3><span class="emoji">🏛️</span> Attractions</h3>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🚀</div>
+                <div class="poi-details">
+                    <div class="poi-name">Space Center Houston</div>
+                    <div class="poi-address">1601 E NASA Pkwy, Houston, TX 77058</div>
+                    <div class="poi-description">Centre officiel des visiteurs du Centre spatial Johnson de la NASA</div>
+                    <div class="poi-links">
+                        <a href="https://spacecenter.org/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Space+Center+Houston" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="02_Space_Center_Kemah.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🎡</div>
+                <div class="poi-details">
+                    <div class="poi-name">Kemah Boardwalk</div>
+                    <div class="poi-address">215 Kipp Ave, Kemah, TX 77565</div>
+                    <div class="poi-description">Parc d'attractions en bord de mer avec restaurants et boutiques</div>
+                    <div class="poi-links">
+                        <a href="https://www.kemahboardwalk.com/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Kemah+Boardwalk" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="02_Space_Center_Kemah.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🦁</div>
+                <div class="poi-details">
+                    <div class="poi-name">Houston Zoo</div>
+                    <div class="poi-address">6200 Hermann Park Dr, Houston, TX 77030</div>
+                    <div class="poi-description">Zoo abritant plus de 6 000 animaux de 900 espèces</div>
+                    <div class="poi-links">
+                        <a href="https://www.houstonzoo.org/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Houston+Zoo" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="08_Hermann_Park_Zoo.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🌳</div>
+                <div class="poi-details">
+                    <div class="poi-name">Hermann Park</div>
+                    <div class="poi-address">6001 Fannin St, Houston, TX 77030</div>
+                    <div class="poi-description">Parc urbain de 445 acres avec jardins, lac et attractions</div>
+                    <div class="poi-links">
+                        <a href="https://hermannpark.org/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Hermann+Park+Houston" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="08_Hermann_Park_Zoo.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Musées -->
+        <div class="poi-list">
+            <h3><span class="emoji">🏛️</span> Musées</h3>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🦖</div>
+                <div class="poi-details">
+                    <div class="poi-name">Museum of Natural Science</div>
+                    <div class="poi-address">5555 Hermann Park Dr, Houston, TX 77030</div>
+                    <div class="poi-description">L'un des musées de sciences naturelles les plus populaires des États-Unis</div>
+                    <div class="poi-links">
+                        <a href="https://www.hmns.org/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Houston+Museum+of+Natural+Science" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="07_Museum_District.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🎨</div>
+                <div class="poi-details">
+                    <div class="poi-name">Museum of Fine Arts</div>
+                    <div class="poi-address">1001 Bissonnet St, Houston, TX 77005</div>
+                    <div class="poi-description">L'un des plus grands musées d'art des États-Unis</div>
+                    <div class="poi-links">
+                        <a href="https://www.mfah.org/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Museum+of+Fine+Arts+Houston" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="07_Museum_District.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Shopping -->
+        <div class="poi-list">
+            <h3><span class="emoji">🛍️</span> Shopping</h3>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🛍️</div>
+                <div class="poi-details">
+                    <div class="poi-name">Katy Mills</div>
+                    <div class="poi-address">5000 Katy Mills Cir, Katy, TX 77494</div>
+                    <div class="poi-description">Centre commercial outlet avec plus de 175 magasins</div>
+                    <div class="poi-links">
+                        <a href="https://www.simon.com/mall/katy-mills" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Katy+Mills+Mall" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="03_Shopping_Katy_Mills.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🛍️</div>
+                <div class="poi-details">
+                    <div class="poi-name">The Galleria</div>
+                    <div class="poi-address">5085 Westheimer Rd, Houston, TX 77056</div>
+                    <div class="poi-description">Le plus grand centre commercial de Houston avec des boutiques de luxe</div>
+                    <div class="poi-links">
+                        <a href="https://www.simon.com/mall/the-galleria" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=The+Galleria+Houston" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="C_Shopping_Comparison.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Événements -->
+        <div class="poi-list">
+            <h3><span class="emoji">🎭</span> Événements</h3>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🤖</div>
+                <div class="poi-details">
+                    <div class="poi-name">FIRST Championship - George R. Brown Convention Center</div>
+                    <div class="poi-address">1001 Avenida De Las Americas, Houston, TX 77010</div>
+                    <div class="poi-description">Lieu principal du FIRST Championship 2025</div>
+                    <div class="poi-links">
+                        <a href="https://www.firstchampionship.org/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=George+R+Brown+Convention+Center" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="06_FIRST_Championship.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hôtels -->
+        <div class="poi-list">
+            <h3><span class="emoji">🏨</span> Hôtels</h3>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🏨</div>
+                <div class="poi-details">
+                    <div class="poi-name">Crowne Plaza Houston Med-Ctr Galleria Area</div>
+                    <div class="poi-address">2712 Southwest Freeway, Houston, TX 77098</div>
+                    <div class="poi-description">Hôtel principal du séjour</div>
+                    <div class="poi-links">
+                        <a href="https://www.ihg.com/crowneplaza/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Crowne+Plaza+Houston+Med-Ctr+Galleria+Area" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="01_Introduction.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Restaurants -->
+        <div class="poi-list">
+            <h3><span class="emoji">🍽️</span> Restaurants</h3>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🌮</div>
+                <div class="poi-details">
+                    <div class="poi-name">Pappasito's Cantina</div>
+                    <div class="poi-address">2536 Richmond Ave, Houston, TX 77098</div>
+                    <div class="poi-description">Restaurant mexicain populaire</div>
+                    <div class="poi-links">
+                        <a href="https://pappasitos.com/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Pappasito's+Cantina+Houston" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="05_Gastronomie.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="poi-item">
+                <div class="poi-icon">🍳</div>
+                <div class="poi-details">
+                    <div class="poi-name">The Breakfast Klub</div>
+                    <div class="poi-address">3711 Travis St, Houston, TX 77002</div>
+                    <div class="poi-description">Restaurant de petit-déjeuner emblématique de Houston</div>
+                    <div class="poi-links">
+                        <a href="https://thebreakfastklub.com/" target="_blank" rel="noopener" class="website">Site officiel</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=The+Breakfast+Klub+Houston" target="_blank" rel="noopener" class="directions">Itinéraire</a>
+                        <a href="05_Gastronomie.html" class="more-info">Plus d'infos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="site-footer" role="contentinfo">
+        <p>Guide de Voyage Houston 2025 | Dernière mise à jour : Avril 2025</p>
+        <p><a href="feedback.html">Donnez-nous votre avis</a> sur le nouveau design du guide</p>
+    </footer>
+    
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top" aria-label="Retour en haut de page">↑</a>
+    
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/gallery.js"></script>
+    <script src="assets/js/maps.js"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script src="assets/js/analytics.js"></script>
+</body>
+</html>
