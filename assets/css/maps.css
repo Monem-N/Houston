@@ -1,5 +1,5 @@
-/* 
- * Houston 2025 - Styles pour les cartes Google Maps
+/*
+ * Houston 2025 - Styles pour les cartes Google Maps et itinéraires
  */
 
 /* Conteneur de carte */
@@ -169,31 +169,181 @@
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>');
 }
 
+/* Styles pour les itinéraires */
+.itinerary-controls {
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  background-color: var(--background-alt);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.itinerary-controls h3 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+}
+
+.itinerary-controls p {
+  margin-bottom: var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+.itinerary-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.itinerary-button {
+  background-color: white;
+  color: var(--text-color);
+  border: 2px solid;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.itinerary-button:hover {
+  background-color: var(--background-alt);
+}
+
+.itinerary-button.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.hide-all-button {
+  background-color: var(--text-color-light);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-right: var(--spacing-md);
+}
+
+.hide-all-button:hover {
+  background-color: var(--text-color);
+}
+
+.itinerary-details {
+  display: none;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.itinerary-details h4 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+}
+
+.itinerary-details ul {
+  margin: 0;
+  padding-left: var(--spacing-md);
+}
+
+.itinerary-details li {
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
+}
+
+/* Page d'itinéraires */
+.itinerary-container {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--background-alt);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.itinerary-container h3 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 3px solid;
+  display: inline-block;
+}
+
+.itinerary-map {
+  width: 100%;
+  height: 400px;
+  margin: var(--spacing-md) 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.waypoints-list {
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-md);
+}
+
+.waypoints-list li {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.5;
+}
+
+.error-message {
+  padding: var(--spacing-md);
+  background-color: #ffebee;
+  color: #c62828;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .map-container {
     height: 350px;
   }
-  
+
   #main-map {
     height: 450px;
   }
-  
+
   .map-filters {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .reset-filters {
     margin-left: 0;
     margin-top: var(--spacing-sm);
   }
-  
+
   .poi-item {
     flex-direction: column;
   }
-  
+
   .poi-icon {
     margin-bottom: var(--spacing-xs);
+  }
+
+  .itinerary-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .itinerary-button {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .hide-all-button {
+    margin-right: 0;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .itinerary-map {
+    height: 300px;
   }
 }

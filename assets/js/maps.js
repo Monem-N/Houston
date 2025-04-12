@@ -299,6 +299,23 @@ function initMainMap() {
   // Ajoute les contrôles de filtrage
   addFilterControls(map, markers);
 
+  // Charge le script des itinéraires s'il n'est pas déjà chargé
+  if (typeof initItineraries === 'function') {
+    // Initialise les itinéraires
+    initItineraries(map);
+  } else {
+    // Charge le script des itinéraires
+    const script = document.createElement('script');
+    script.src = 'assets/js/itineraries.js';
+    script.onload = function() {
+      // Initialise les itinéraires une fois le script chargé
+      if (typeof initItineraries === 'function') {
+        initItineraries(map);
+      }
+    };
+    document.head.appendChild(script);
+  }
+
   return map;
 }
 

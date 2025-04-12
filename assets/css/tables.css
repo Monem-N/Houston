@@ -1,0 +1,218 @@
+/* 
+ * Houston 2025 - Styles pour les tableaux
+ */
+
+/* Style de base pour tous les tableaux */
+table {
+  width: 100%;
+  margin: var(--spacing-md) 0;
+  border-collapse: collapse;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  font-size: 0.95rem;
+  background-color: white;
+}
+
+/* En-têtes de tableau */
+thead {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+thead th {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+/* Cellules du tableau */
+td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+/* Lignes du tableau */
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--background-alt);
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 102, 204, 0.05);
+}
+
+/* Dernière ligne du tableau */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Première colonne (souvent un titre ou une catégorie) */
+tbody tr td:first-child {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Tableaux responsifs */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: var(--spacing-md) 0;
+  position: relative;
+}
+
+/* Indicateur de défilement horizontal */
+.table-container::after {
+  content: '→ Faites défiler horizontalement pour voir plus →';
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.75rem;
+  border-radius: var(--border-radius) 0 0 0;
+}
+
+/* Affiche l'indicateur de défilement uniquement si nécessaire */
+@media (max-width: 768px) {
+  .table-container.scrollable::after {
+    display: block;
+  }
+}
+
+/* Tableaux de comparaison */
+.comparison-table th,
+.comparison-table td {
+  text-align: center;
+}
+
+.comparison-table tbody tr td:first-child {
+  text-align: left;
+}
+
+/* Tableaux de planification */
+.schedule-table th,
+.schedule-table td {
+  text-align: left;
+}
+
+.schedule-table tbody tr td:nth-child(3) {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Tableaux de prix */
+.price-table td:last-child {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Tableaux avec étoiles de notation */
+.rating-stars {
+  color: #f1c40f; /* Jaune pour les étoiles */
+  letter-spacing: 2px;
+}
+
+/* Tableaux avec icônes */
+.table-icon {
+  font-size: 1.2rem;
+  margin-right: var(--spacing-xs);
+  vertical-align: middle;
+}
+
+/* Tableaux avec légende */
+.table-caption {
+  font-style: italic;
+  text-align: center;
+  margin-top: var(--spacing-xs);
+  color: var(--text-color-light);
+  font-size: 0.85rem;
+}
+
+/* Tableaux avec en-têtes de section */
+.section-header {
+  background-color: var(--background-alt);
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Tableaux avec cellules mises en évidence */
+.highlight-cell {
+  background-color: rgba(0, 102, 204, 0.1);
+  font-weight: 600;
+}
+
+/* Tableaux avec bordures arrondies */
+@media (min-width: 769px) {
+  table {
+    border-radius: var(--border-radius);
+  }
+  
+  thead th:first-child {
+    border-top-left-radius: var(--border-radius);
+  }
+  
+  thead th:last-child {
+    border-top-right-radius: var(--border-radius);
+  }
+  
+  tbody tr:last-child td:first-child {
+    border-bottom-left-radius: var(--border-radius);
+  }
+  
+  tbody tr:last-child td:last-child {
+    border-bottom-right-radius: var(--border-radius);
+  }
+}
+
+/* Tableaux avec colonnes de largeur fixe */
+.fixed-column-width-table th,
+.fixed-column-width-table td {
+  width: calc(100% / var(--column-count, 4));
+}
+
+/* Tableaux avec en-têtes de colonne verticaux */
+@media (max-width: 480px) {
+  .vertical-headers-mobile thead {
+    display: none;
+  }
+  
+  .vertical-headers-mobile tbody tr {
+    display: block;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+  }
+  
+  .vertical-headers-mobile tbody td {
+    display: block;
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .vertical-headers-mobile tbody td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: var(--spacing-md);
+    width: 45%;
+    white-space: nowrap;
+    font-weight: 600;
+    text-align: left;
+  }
+  
+  .vertical-headers-mobile tbody td:last-child {
+    border-bottom: none;
+  }
+}
