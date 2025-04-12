@@ -1,0 +1,473 @@
+/*
+ * Houston 2025 - Styles pour les cartes Google Maps et itinéraires
+ * Version améliorée avec méthodologie BEM, optimisation des SVG et meilleure accessibilité
+ */
+
+/* 
+ * Variables globales
+ * Ces variables sont utilisées dans tout le fichier pour assurer la cohérence
+ */
+:root {
+  /* Couleurs */
+  --primary-color: #0066cc;
+  --primary-color-dark: #004499;
+  --primary-color-light: #e6f0fa;
+  --background-color: #ffffff;
+  --background-alt: #f9f9f9;
+  --text-color: #333333;
+  --text-color-light: #666666;
+  --border-color: #dddddd;
+  
+  /* Ombres et bordures */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 6px 8px rgba(0, 0, 0, 0.15);
+  --border-radius: 8px;
+  --border-radius-sm: 4px;
+  
+  /* Espacements */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Typographie */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  
+  /* Z-index */
+  --z-index-map: 1;
+  --z-index-controls: 2;
+  --z-index-popup: 3;
+}
+
+/*
+ * Conteneurs de carte
+ * Styles pour les différents types de conteneurs de carte
+ */
+.map-container {
+  width: 100%;
+  height: 500px;
+  margin: var(--spacing-lg) 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  z-index: var(--z-index-map);
+}
+
+/* Carte principale (page dédiée) */
+#main-map {
+  height: 600px;
+}
+
+/* Carte de page (intégrée dans une page thématique) */
+#page-map {
+  height: 400px;
+}
+
+/*
+ * Filtres de carte
+ * Styles pour les contrôles de filtrage des points d'intérêt
+ */
+.map-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--background-alt);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  z-index: var(--z-index-controls);
+}
+
+.map-filters__item {
+  display: flex;
+  align-items: center;
+  margin-right: var(--spacing-md);
+}
+
+.map-filters__checkbox {
+  margin-right: var(--spacing-xs);
+  cursor: pointer;
+}
+
+.map-filters__checkbox:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.map-filters__label {
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+
+.map-filters__reset {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  margin-left: auto;
+  transition: background-color var(--transition-normal);
+}
+
+.map-filters__reset:hover,
+.map-filters__reset:focus-visible {
+  background-color: var(--primary-color-dark);
+  outline: none;
+}
+
+.map-filters__reset:focus-visible {
+  box-shadow: 0 0 0 3px var(--primary-color-light);
+}
+
+/*
+ * Fenêtres d'information
+ * Styles pour les popups qui apparaissent lorsqu'on clique sur un marqueur
+ */
+.info-window {
+  padding: var(--spacing-xs);
+  max-width: 300px;
+}
+
+.info-window__title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-lg);
+  color: var(--primary-color);
+}
+
+.info-window__description {
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+}
+
+.info-window__link {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: text-decoration var(--transition-normal);
+  font-size: var(--font-size-sm);
+}
+
+.info-window__link:hover,
+.info-window__link:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+/*
+ * Liste des points d'intérêt
+ * Styles pour la liste des points d'intérêt affichée sous la carte
+ */
+.poi-list {
+  margin: var(--spacing-lg) 0;
+}
+
+.poi-list__title {
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-xs);
+  color: var(--text-color);
+}
+
+.poi-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-fast);
+}
+
+.poi-item:hover {
+  background-color: var(--background-alt);
+}
+
+.poi-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.poi-item__icon {
+  font-size: var(--font-size-xl);
+  margin-right: var(--spacing-md);
+  min-width: 30px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.poi-item__details {
+  flex: 1;
+}
+
+.poi-item__name {
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-lg);
+  color: var(--text-color);
+}
+
+.poi-item__address {
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-color-light);
+}
+
+.poi-item__description {
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-md);
+}
+
+.poi-item__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.poi-item__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-normal);
+}
+
+.poi-item__link:hover,
+.poi-item__link:focus-visible {
+  color: var(--primary-color-dark);
+  text-decoration: underline;
+}
+
+.poi-item__link:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Icônes SVG optimisées avec currentColor */
+.poi-item__link::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.poi-item__link.website::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230066cc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='2' y1='12' x2='22' y2='12'></line><path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'></path></svg>");
+}
+
+.poi-item__link.directions::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230066cc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='3 11 22 2 13 21 11 13 3 11'></polygon></svg>");
+}
+
+.poi-item__link.more-info::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230066cc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><line x1='12' y1='16' x2='12' y2='12'></line><line x1='12' y1='8' x2='12.01' y2='8'></line></svg>");
+}
+
+/*
+ * Contrôles d'itinéraires
+ * Styles pour les contrôles permettant d'afficher/masquer les itinéraires
+ */
+.itinerary-controls {
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  background-color: var(--background-alt);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.itinerary-controls__title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+  font-size: var(--font-size-lg);
+}
+
+.itinerary-controls__description {
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.itinerary-controls__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.itinerary-controls__button {
+  background-color: white;
+  color: var(--text-color);
+  border: 2px solid;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-normal);
+}
+
+.itinerary-controls__button:hover,
+.itinerary-controls__button:focus-visible {
+  background-color: var(--background-alt);
+  outline: none;
+}
+
+.itinerary-controls__button:focus-visible {
+  box-shadow: 0 0 0 3px var(--primary-color-light);
+}
+
+.itinerary-controls__button--active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.itinerary-controls__reset {
+  background-color: var(--text-color-light);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  margin-right: var(--spacing-md);
+  transition: background-color var(--transition-normal);
+}
+
+.itinerary-controls__reset:hover,
+.itinerary-controls__reset:focus-visible {
+  background-color: var(--text-color);
+  outline: none;
+}
+
+.itinerary-controls__reset:focus-visible {
+  box-shadow: 0 0 0 3px var(--primary-color-light);
+}
+
+.itinerary-controls__details {
+  display: none;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.itinerary-controls__details-title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+  font-size: var(--font-size-md);
+}
+
+.itinerary-controls__details-list {
+  margin: 0;
+  padding-left: var(--spacing-md);
+}
+
+.itinerary-controls__details-item {
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+}
+
+/*
+ * Cartes d'itinéraires
+ * Styles pour les cartes d'itinéraires individuelles
+ */
+.itinerary-map {
+  width: 100%;
+  height: 400px;
+  margin: var(--spacing-md) 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+/*
+ * Responsive Design
+ * Adaptations pour les différentes tailles d'écran
+ */
+@media (max-width: 768px) {
+  /* Conteneurs de carte */
+  .map-container {
+    height: 350px;
+  }
+  
+  #main-map {
+    height: 450px;
+  }
+  
+  .itinerary-map {
+    height: 300px;
+  }
+  
+  /* Filtres et contrôles */
+  .map-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .map-filters__reset {
+    margin-left: 0;
+    margin-top: var(--spacing-sm);
+  }
+  
+  .itinerary-controls__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .itinerary-controls__reset {
+    margin-right: 0;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  /* Points d'intérêt */
+  .poi-item {
+    flex-direction: column;
+  }
+  
+  .poi-item__icon {
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .poi-item__links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Écrans très petits */
+@media (max-width: 480px) {
+  .map-container {
+    height: 300px;
+  }
+  
+  #main-map {
+    height: 400px;
+  }
+  
+  .itinerary-map {
+    height: 250px;
+  }
+  
+  .poi-item__name {
+    font-size: var(--font-size-md);
+  }
+}

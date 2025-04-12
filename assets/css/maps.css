@@ -2,7 +2,23 @@
  * Houston 2025 - Styles pour les cartes Google Maps et itinéraires
  */
 
-/* Conteneur de carte */
+/* Global Variables */
+:root {
+  --primary-color: #0066cc;
+  --primary-color-dark: #004499;
+  --background-alt: #f9f9f9;
+  --text-color: #333;
+  --text-color-light: #666;
+  --border-color: #ddd;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+}
+
+/* Map Container */
 .map-container {
   width: 100%;
   height: 500px;
@@ -13,17 +29,17 @@
   position: relative;
 }
 
-/* Carte principale (page dédiée) */
+/* Main Map */
 #main-map {
   height: 600px;
 }
 
-/* Carte de page */
+/* Page Map */
 #page-map {
   height: 400px;
 }
 
-/* Conteneur des filtres */
+/* Filters Section */
 .map-filters {
   display: flex;
   flex-wrap: wrap;
@@ -34,25 +50,21 @@
   border-radius: var(--border-radius);
 }
 
-/* Élément de filtre */
-.filter-item {
+.map-filters__item {
   display: flex;
   align-items: center;
   margin-right: var(--spacing-md);
 }
 
-/* Case à cocher de filtre */
-.filter-item input[type="checkbox"] {
+.map-filters__checkbox {
   margin-right: var(--spacing-xs);
 }
 
-/* Étiquette de filtre */
-.filter-item label {
+.map-filters__label {
   cursor: pointer;
   font-size: 0.9rem;
 }
 
-/* Bouton de réinitialisation des filtres */
 .reset-filters {
   background-color: var(--primary-color);
   color: white;
@@ -62,45 +74,49 @@
   cursor: pointer;
   font-size: 0.8rem;
   margin-left: auto;
+  transition: background-color 0.3s ease;
 }
 
-.reset-filters:hover {
+.reset-filters:hover,
+.reset-filters:focus {
   background-color: var(--primary-color-dark);
 }
 
-/* Fenêtre d'info */
+/* Info Window */
 .info-window {
   padding: var(--spacing-xs);
   max-width: 300px;
 }
 
-.info-window h3 {
+.info-window__title {
   margin-top: 0;
   margin-bottom: var(--spacing-xs);
   font-size: 1.1rem;
   color: var(--primary-color);
 }
 
-.info-window p {
+.info-window__description {
   margin-bottom: var(--spacing-xs);
   font-size: 0.9rem;
 }
 
-.info-window a {
+.info-window__link {
   color: var(--primary-color);
   text-decoration: none;
+  transition: text-decoration 0.3s ease;
 }
 
-.info-window a:hover {
+.info-window__link:hover,
+.info-window__link:focus {
   text-decoration: underline;
 }
 
-/* Liste des points d'intérêt */
+/* Points of Interest (POI) List */
 .poi-list {
   margin: var(--spacing-lg) 0;
 }
 
-.poi-list h3 {
+.poi-list__title {
   margin-bottom: var(--spacing-md);
   border-bottom: 1px solid var(--border-color);
   padding-bottom: var(--spacing-xs);
@@ -114,62 +130,68 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.poi-icon {
+.poi-item__icon {
   font-size: 1.5rem;
   margin-right: var(--spacing-md);
   min-width: 30px;
   text-align: center;
 }
 
-.poi-details {
+.poi-item__details {
   flex: 1;
 }
 
-.poi-name {
+.poi-item__name {
   font-weight: bold;
   margin-bottom: var(--spacing-xs);
   font-size: 1.1rem;
 }
 
-.poi-address {
+.poi-item__address {
   margin-bottom: var(--spacing-xs);
   font-size: 0.9rem;
   color: var(--text-color-light);
 }
 
-.poi-description {
+.poi-item__description {
   margin-bottom: var(--spacing-sm);
 }
 
-.poi-links a {
-  margin-right: var(--spacing-md);
-  display: inline-flex;
-  align-items: center;
+.poi-item__links {
+  display: flex;
+  gap: var(--spacing-sm);
 }
 
-.poi-links a::before {
+.poi-item__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.poi-item__link::before {
   content: '';
   display: inline-block;
   width: 16px;
   height: 16px;
-  margin-right: 5px;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.poi-links a.website::before {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>');
+.poi-item__link.website::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor'><circle cx='8' cy='8' r='7'/><line x1='2' y1='8' x2='14' y2='8'/></svg>");
 }
 
-.poi-links a.directions::before {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>');
+.poi-item__link.directions::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor'><polygon points='3 11 22 2 13 21 11 13 3 11'/></svg>");
 }
 
-.poi-links a.more-info::before {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230066cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>');
+.poi-item__link.more-info::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor'><circle cx='8' cy='8' r='7'/><line x1='8' y1='12' x2='8' y2='8'/><line x1='8' y1='6' x2='8.01' y2='6'/></svg>");
 }
 
-/* Styles pour les itinéraires */
+/* Itinerary Controls */
 .itinerary-controls {
   margin: var(--spacing-md) 0;
   padding: var(--spacing-md);
@@ -178,18 +200,13 @@
   box-shadow: var(--box-shadow);
 }
 
-.itinerary-controls h3 {
+.itinerary-controls__title {
   margin-top: 0;
   margin-bottom: var(--spacing-sm);
   color: var(--primary-color);
 }
 
-.itinerary-controls p {
-  margin-bottom: var(--spacing-md);
-  font-size: 0.9rem;
-}
-
-.itinerary-buttons {
+.itinerary-controls__buttons {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
@@ -207,7 +224,8 @@
   transition: all 0.3s ease;
 }
 
-.itinerary-button:hover {
+.itinerary-button:hover,
+.itinerary-button:focus {
   background-color: var(--background-alt);
 }
 
@@ -226,82 +244,15 @@
   cursor: pointer;
   font-size: 0.9rem;
   margin-right: var(--spacing-md);
+  transition: background-color 0.3s ease;
 }
 
-.hide-all-button:hover {
+.hide-all-button:hover,
+.hide-all-button:focus {
   background-color: var(--text-color);
 }
 
-.itinerary-details {
-  display: none;
-  margin-top: var(--spacing-md);
-  padding: var(--spacing-md);
-  background-color: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-}
-
-.itinerary-details h4 {
-  margin-top: 0;
-  margin-bottom: var(--spacing-sm);
-  color: var(--primary-color);
-}
-
-.itinerary-details ul {
-  margin: 0;
-  padding-left: var(--spacing-md);
-}
-
-.itinerary-details li {
-  margin-bottom: var(--spacing-xs);
-  font-size: 0.9rem;
-}
-
-/* Page d'itinéraires */
-.itinerary-container {
-  margin-bottom: var(--spacing-lg);
-  padding: var(--spacing-md);
-  background-color: var(--background-alt);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-}
-
-.itinerary-container h3 {
-  margin-top: 0;
-  margin-bottom: var(--spacing-sm);
-  padding-bottom: var(--spacing-xs);
-  border-bottom: 3px solid;
-  display: inline-block;
-}
-
-.itinerary-map {
-  width: 100%;
-  height: 400px;
-  margin: var(--spacing-md) 0;
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--box-shadow);
-}
-
-.waypoints-list {
-  margin: var(--spacing-md) 0;
-  padding-left: var(--spacing-md);
-}
-
-.waypoints-list li {
-  margin-bottom: var(--spacing-sm);
-  line-height: 1.5;
-}
-
-.error-message {
-  padding: var(--spacing-md);
-  background-color: #ffebee;
-  color: #c62828;
-  border-radius: var(--border-radius);
-  text-align: center;
-}
-
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
   .map-container {
     height: 350px;
@@ -325,17 +276,13 @@
     flex-direction: column;
   }
 
-  .poi-icon {
+  .poi-item__icon {
     margin-bottom: var(--spacing-xs);
   }
 
-  .itinerary-buttons {
+  .itinerary-controls__buttons {
     flex-direction: column;
     align-items: stretch;
-  }
-
-  .itinerary-button {
-    margin-bottom: var(--spacing-xs);
   }
 
   .hide-all-button {
