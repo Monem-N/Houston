@@ -284,56 +284,80 @@ function fitMapToMarkers(map, markers) {
 
 // Fonction pour initialiser la carte principale avec tous les points d'intérêt
 function initMainMap() {
-  // Centre initial sur Houston
-  const houstonCenter = { lat: 29.7604, lng: -95.3698 };
+  try {
+    // Centre initial sur Houston
+    const houstonCenter = { lat: 29.7604, lng: -95.3698 };
 
-  // Initialise la carte
-  const map = initMap('main-map', houstonCenter, 11);
+    // Initialise la carte
+    const map = initMap('main-map', houstonCenter, 11);
 
-  // Ajoute tous les points d'intérêt
-  const markers = addAllPOIs(map);
+    // Stocke la carte dans une variable globale pour que d'autres scripts puissent y accéder
+    window.mainMap = map;
 
-  // Ajuste la carte pour afficher tous les marqueurs
-  fitMapToMarkers(map, markers);
+    // Ajoute tous les points d'intérêt
+    const markers = addAllPOIs(map);
 
-  // Ajoute les contrôles de filtrage
-  addFilterControls(map, markers);
+    // Ajuste la carte pour afficher tous les marqueurs
+    fitMapToMarkers(map, markers);
 
-  // Charge le script des itinéraires s'il n'est pas déjà chargé
-  if (typeof initItineraries === 'function') {
-    // Initialise les itinéraires
-    initItineraries(map);
-  } else {
-    // Charge le script des itinéraires
-    const script = document.createElement('script');
-    script.src = 'assets/js/itineraries.js';
-    script.onload = function() {
-      // Initialise les itinéraires une fois le script chargé
-      if (typeof initItineraries === 'function') {
-        initItineraries(map);
-      }
-    };
-    document.head.appendChild(script);
+    // Ajoute les contrôles de filtrage
+    addFilterControls(map, markers);
+
+    // Charge le script des itinéraires s'il n'est pas déjà chargé
+    if (typeof initItineraries === 'function') {
+      // Initialise les itinéraires
+      initItineraries(map);
+    } else {
+      // Charge le script des itinéraires
+      const script = document.createElement('script');
+      script.src = 'assets/js/itineraries.js';
+      script.onload = function() {
+        // Initialise les itinéraires une fois le script chargé
+        if (typeof initItineraries === 'function') {
+          initItineraries(map);
+        }
+      };
+      document.head.appendChild(script);
+    }
+
+    return map;
+  } catch (error) {
+    console.error('Error in initMainMap:', error);
+    if (typeof Sentry !== 'undefined') {
+      Sentry.captureException(error);
+    }
+    displayMapError('Erreur lors de l\'initialisation de la carte. Veuillez réessayer plus tard.');
+    return null;
   }
-
-  return map;
 }
 
 // Fonction pour initialiser une carte spécifique à une page
 function initPageMap(mapId, category) {
-  // Centre initial sur Houston
-  const houstonCenter = { lat: 29.7604, lng: -95.3698 };
+  try {
+    // Centre initial sur Houston
+    const houstonCenter = { lat: 29.7604, lng: -95.3698 };
 
-  // Initialise la carte
-  const map = initMap(mapId, houstonCenter, 12);
+    // Initialise la carte
+    const map = initMap(mapId, houstonCenter, 12);
 
-  // Ajoute les points d'intérêt de la catégorie spécifiée
-  const markers = addAllPOIs(map, [category]);
+    // Stocke la carte dans une variable globale pour que d'autres scripts puissent y accéder
+    window.pageMap = map;
 
-  // Ajuste la carte pour afficher tous les marqueurs
-  fitMapToMarkers(map, markers);
+    // Ajoute les points d'intérêt de la catégorie spécifiée
+    const markers = addAllPOIs(map, [category]);
 
-  return map;
+    // Ajuste la carte pour afficher tous les marqueurs
+    fitMapToMarkers(map, markers);
+
+    return map;
+  } catch (error) {
+    console.error('Error in initPageMap:', error);
+    if (typeof Sentry !== 'undefined') {
+      Sentry.captureException(error);
+    }
+    displayMapError('Erreur lors de l\'initialisation de la carte. Veuillez réessayer plus tard.');
+    return null;
+  }
 }
 
 // Fonction pour ajouter des contrôles de filtrage à la carte
@@ -353,7 +377,7 @@ function addFilterControls(map, allMarkers) {
   // Groupe les marqueurs par catégorie
   let markerIndex = 0;
   Object.keys(POINTS_OF_INTEREST).forEach(category => {
-    POINTS_OF_INTEREST[category].forEach(poi => {
+    POINTS_OF_INTEREST[category].forEach(() => {
       markersByCategory[category].push(allMarkers[markerIndex]);
       markerIndex++;
     });
@@ -450,51 +474,99 @@ function addFilterControls(map, allMarkers) {
 }
 
 // Fonction pour initialiser les cartes lorsque l'API Google Maps est chargée
-function initMaps() {
-  // Vérifie si la page contient une carte principale
-  const mainMapContainer = document.getElementById('main-map');
-  if (mainMapContainer) {
-    initMainMap();
-  }
+window.initMaps = function() {
+  try {
+    // Vérifie si la page contient une carte principale
+    const mainMapContainer = document.getElementById('main-map');
+    if (mainMapContainer) {
+      initMainMap();
+    }
 
-  // Vérifie si la page contient une carte spécifique
-  const pageMapContainer = document.getElementById('page-map');
-  if (pageMapContainer) {
-    const category = pageMapContainer.dataset.category;
-    if (category) {
+    // Vérifie si la page contient une carte spécifique
+    const pageMapContainer = document.getElementById('page-map');
+    if (pageMapContainer) {
+      const category = pageMapContainer.dataset.category || 'attractions';
       initPageMap('page-map', category);
     }
+  } catch (error) {
+    console.error('Error in initMaps:', error);
+    if (typeof Sentry !== 'undefined') {
+      Sentry.captureException(error);
+    }
+    displayMapError('Erreur lors de l\'initialisation des cartes. Veuillez réessayer plus tard.');
   }
-}
+};
 
 // Fonction pour charger l'API Google Maps
 function loadGoogleMaps() {
   // Vérifie si CONFIG est défini
   if (typeof CONFIG === 'undefined') {
     console.error('CONFIG object is not defined. Make sure config.js is loaded before maps-improved.js');
+    // Affiche un message d'erreur sur la page
+    displayMapError('Erreur de configuration: CONFIG n\'est pas défini. Veuillez réessayer plus tard.');
     return;
   }
 
   // Vérifie si la clé API Google Maps est définie
   if (!CONFIG.GOOGLE_MAPS_API_KEY) {
     console.error('Google Maps API key is not defined in CONFIG object');
+    // Affiche un message d'erreur sur la page
+    displayMapError('Erreur de configuration: Clé API Google Maps manquante. Veuillez réessayer plus tard.');
     return;
   }
 
-  const script = document.createElement('script');
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&callback=initMaps`;
-  script.async = true;
-  script.defer = true;
-  script.onerror = function() {
-    console.error('Failed to load Google Maps API. Check your API key and network connection.');
-  };
-  document.head.appendChild(script);
+  // Vérifie si la clé API Google Maps est valide (au moins 20 caractères)
+  if (CONFIG.GOOGLE_MAPS_API_KEY.length < 20) {
+    console.error('Google Maps API key is invalid (too short)');
+    // Affiche un message d'erreur sur la page
+    displayMapError('Erreur de configuration: Clé API Google Maps invalide. Veuillez réessayer plus tard.');
+    return;
+  }
+
+  try {
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&callback=initMaps`;
+    script.async = true;
+    script.defer = true;
+    script.onerror = function() {
+      console.error('Failed to load Google Maps API. Check your API key and network connection.');
+      // Affiche un message d'erreur sur la page
+      displayMapError('Erreur de chargement de l\'API Google Maps. Vérifiez votre connexion internet.');
+    };
+    document.head.appendChild(script);
+  } catch (error) {
+    console.error('Error loading Google Maps API:', error);
+    // Affiche un message d'erreur sur la page
+    displayMapError('Erreur lors du chargement de l\'API Google Maps. Veuillez réessayer plus tard.');
+  }
+}
+
+// Fonction pour afficher un message d'erreur sur la page
+function displayMapError(message) {
+  const mapContainer = document.getElementById('main-map') || document.getElementById('page-map');
+  if (mapContainer) {
+    mapContainer.innerHTML = `
+      <div class="map-error">
+        <h3>Impossible de charger la carte</h3>
+        <p>${message}</p>
+        <p>Vous pouvez toujours consulter la liste des points d'intérêt ci-dessous.</p>
+      </div>
+    `;
+    mapContainer.classList.add('map-error-container');
+  }
 }
 
 // Charge l'API Google Maps lorsque la page est chargée
 document.addEventListener('DOMContentLoaded', function() {
-  // Vérifie si la page contient une carte
-  if (document.getElementById('main-map') || document.getElementById('page-map')) {
-    loadGoogleMaps();
+  try {
+    // Vérifie si la page contient une carte
+    if (document.getElementById('main-map') || document.getElementById('page-map')) {
+      loadGoogleMaps();
+    }
+  } catch (error) {
+    console.error('Error loading Google Maps:', error);
+    if (typeof Sentry !== 'undefined') {
+      Sentry.captureException(error);
+    }
   }
 });

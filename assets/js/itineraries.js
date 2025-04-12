@@ -672,22 +672,33 @@ function initItineraryPage() {
 
 // Fonction pour initialiser les itinéraires lorsque l'API Google Maps est chargée
 function initItinerariesWhenMapsLoaded() {
-  // Vérifie si la page contient une carte principale
-  const mainMapContainer = document.getElementById('main-map');
-  if (mainMapContainer && window.google && window.google.maps) {
-    // Récupère la carte
-    const map = window.mainMap;
-    if (map) {
-      // Initialise les itinéraires
-      initItineraries(map);
+  try {
+    // Vérifie si la page contient une carte principale
+    const mainMapContainer = document.getElementById('main-map');
+    if (mainMapContainer && window.google && window.google.maps) {
+      // Récupère la carte
+      const map = window.mainMap;
+      if (map) {
+        // Initialise les itinéraires
+        initItineraries(map);
+      } else {
+        console.warn('Map object not found in window.mainMap');
+      }
+    } else if (mainMapContainer) {
+      console.warn('Google Maps API not loaded yet');
     }
-  }
 
-  // Vérifie si la page est la page d'itinéraires
-  const itineraryList = document.getElementById('itinerary-list');
-  if (itineraryList) {
-    // Initialise la page d'itinéraires
-    initItineraryPage();
+    // Vérifie si la page est la page d'itinéraires
+    const itineraryList = document.getElementById('itinerary-list');
+    if (itineraryList) {
+      // Initialise la page d'itinéraires
+      initItineraryPage();
+    }
+  } catch (error) {
+    console.error('Error in initItinerariesWhenMapsLoaded:', error);
+    if (typeof Sentry !== 'undefined') {
+      Sentry.captureException(error);
+    }
   }
 }
 
