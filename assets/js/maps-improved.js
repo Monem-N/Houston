@@ -470,7 +470,7 @@ function initMaps() {
 // Fonction pour charger l'API Google Maps
 function loadGoogleMaps() {
   const script = document.createElement('script');
-  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAdCsaf0TLy6vvX3rkPC-zno9nsHUeuH-0&callback=initMaps`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&callback=initMaps`;
   script.async = true;
   script.defer = true;
   document.head.appendChild(script);
