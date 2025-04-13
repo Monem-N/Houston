@@ -19,7 +19,7 @@
 <link href="assets/icons/icon-192x192.png" rel="apple-touch-icon"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
-<script crossorigin="anonymous" src="https://js-de.sentry-cdn.com/7481e1968a00c3c547e6042e2a75faa8.min.js"></script><script>
+<script src="assets/js/dropdown-menu.js"></script><script crossorigin="anonymous" src="https://js-de.sentry-cdn.com/7481e1968a00c3c547e6042e2a75faa8.min.js"></script><script>
 // Configuration des API
 const CONFIG = {
   // Clé API Google Maps
@@ -31,32 +31,120 @@ const CONFIG = {
   // ID de mesure Google Analytics
   GOOGLE_ANALYTICS_ID: "G-KHZ18QKRHG"
 };
-</script></head>
+</script><link href="assets/css/dropdown-menu.css" rel="stylesheet"/><link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet"/></head>
 <body>
 <!-- Accessibility skip link -->
 <a class="skip-link" href="#main-content">Aller au contenu principal</a>
-<header class="site-header" role="banner">
-<div class="header-container">
-<h1 class="site-title"><a href="index.html">Guide Houston 2025</a></h1>
-<button aria-controls="primary-menu" aria-expanded="false" class="menu-toggle">
-<span class="hamburger-icon"></span>
-<span class="screen-reader-text">Menu</span>
-</button>
+<header class="header">
+<nav class="nav container">
+<div class="nav__data">
+<a class="nav__logo" href="index.html">
+<i class="ri-map-pin-line"></i> Guide Houston 2025
+      </a>
+<div class="nav__toggle" id="nav-toggle">
+<i class="ri-menu-line nav__burger"></i>
+<i class="ri-close-line nav__close"></i>
 </div>
-<nav aria-label="Menu principal" class="nav-menu" id="primary-menu" role="navigation">
-<a href="index.html">Accueil</a>
-<a href="01_Introduction.html">Introduction</a>
-<a href="02_Space_Center_Kemah.html">Space Center</a>
-<a href="03_Shopping_Katy_Mills.html">Shopping</a>
-<a href="04_Safety_Logistics.html">Sécurité</a>
-<a href="05_Gastronomie.html">Gastronomie</a>
-<a href="06_FIRST_Championship.html">FIRST</a>
-<a href="07_Museum_District.html">Musées</a>
-<a href="08_Hermann_Park_Zoo.html">Hermann Park</a>
-<a href="09_Thematic_Index.html">Index</a>
-<a class="active" href="carte_interactive.html">Carte</a>
-<a href="itineraires.html">Itinéraires</a>
-<a href="feedback.html">Feedback</a>
+</div>
+<div class="offline-indicator" id="offline-indicator" style="display: none;">
+      Mode hors ligne - Contenu disponible localement
+    </div>
+<!--=============== NAV MENU ===============-->
+<div class="nav__menu" id="nav-menu">
+<ul class="nav__list">
+<li><a class="nav__link" href="index.html">Accueil</a></li>
+<li><a class="nav__link" href="01_Introduction.html">Introduction</a></li>
+<!--=============== DROPDOWN 1: ATTRACTIONS ===============-->
+<li class="dropdown__item">
+<div class="nav__link dropdown__header">
+<span>Attractions</span> <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+</div>
+<ul class="dropdown__menu">
+<li>
+<a class="dropdown__link" href="02_Space_Center_Kemah.html">
+<i class="ri-rocket-line"></i> Space Center
+              </a>
+</li>
+<li>
+<a class="dropdown__link" href="07_Museum_District.html">
+<i class="ri-building-line"></i> Musées
+              </a>
+</li>
+<li>
+<a class="dropdown__link" href="08_Hermann_Park_Zoo.html">
+<i class="ri-plant-line"></i> Hermann Park
+              </a>
+</li>
+</ul>
+</li>
+<!--=============== DROPDOWN 2: PRATIQUE ===============-->
+<li class="dropdown__item">
+<div class="nav__link dropdown__header">
+<span>Pratique</span> <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+</div>
+<ul class="dropdown__menu">
+<li>
+<a class="dropdown__link" href="03_Shopping_Katy_Mills.html">
+<i class="ri-shopping-bag-line"></i> Shopping
+              </a>
+</li>
+<li>
+<a class="dropdown__link" href="04_Safety_Logistics.html">
+<i class="ri-shield-check-line"></i> Sécurité
+              </a>
+</li>
+<li>
+<a class="dropdown__link" href="05_Gastronomie.html">
+<i class="ri-restaurant-line"></i> Gastronomie
+              </a>
+</li>
+<!--=============== DROPDOWN SUBMENU ===============-->
+<li class="dropdown__subitem">
+<div class="dropdown__link dropdown__header">
+<i class="ri-information-line"></i> <span>Plus d'infos</span> <i class="ri-add-line dropdown__add"></i>
+</div>
+<ul class="dropdown__submenu">
+<li>
+<a class="dropdown__sublink" href="09_Thematic_Index.html">
+<i class="ri-list-check"></i> Index
+                  </a>
+</li>
+<li>
+<a class="dropdown__sublink" href="feedback.html">
+<i class="ri-chat-1-line"></i> Feedback
+                  </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="nav__link" href="06_FIRST_Championship.html">FIRST</a></li>
+<!--=============== DROPDOWN 3: CARTES ===============-->
+<li class="dropdown__item">
+<div class="nav__link dropdown__header active">
+<span>Cartes</span> <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+</div>
+<ul class="dropdown__menu">
+<li>
+<a class="dropdown__link active" href="carte_interactive.html">
+<i class="ri-map-2-line"></i> Carte interactive
+              </a>
+</li>
+<li>
+<a class="dropdown__link" href="itineraires.html">
+<i class="ri-route-line"></i> Itinéraires
+              </a>
+</li>
+</ul>
+</li>
+<!-- Install app button for mobile -->
+<li class="mobile-install" style="display: none;">
+<button class="install-button" id="install-app-mobile">
+<i class="ri-download-2-line"></i> Installer l'application
+          </button>
+</li>
+</ul>
+</div>
 </nav>
 </header>
 <main class="main-content" id="main-content" role="main">
@@ -66,14 +154,14 @@ const CONFIG = {
 <h3 data-itinerary-title="true"><span class="emoji">📍</span> Itinéraires suggérés</h3>
 <p>Découvrez nos <a href="itineraires.html">itinéraires suggérés</a> pour explorer Houston efficacement. Vous pouvez également afficher ces itinéraires directement sur cette carte en utilisant les contrôles ci-dessous.</p>
 <!-- Conteneur vide pour les contrôles d'itinéraires qui sera rempli par JavaScript -->
-<div id="itinerary-controls" class="itinerary-controls"></div>
+<div class="itinerary-controls" id="itinerary-controls"></div>
 </div>
 <!-- Filtres de la carte -->
-<div class="map-filters" id="map-filters" aria-label="Filtres de la carte">
-  <!-- Les filtres seront ajoutés dynamiquement par JavaScript -->
+<div aria-label="Filtres de la carte" class="map-filters" id="map-filters">
+<!-- Les filtres seront ajoutés dynamiquement par JavaScript -->
 </div>
 <!-- Conteneur de la carte principale -->
-<div class="map-container" id="main-map" role="region" aria-label="Carte interactive de Houston"></div>
+<div aria-label="Carte interactive de Houston" class="map-container" id="main-map" role="region"></div>
 <h2><span class="emoji">📍</span> Liste des Points d'Intérêt</h2>
 <p>Retrouvez ci-dessous la liste complète de tous les points d'intérêt mentionnés dans le guide, organisés par catégorie.</p>
 <!-- Attractions -->
@@ -266,7 +354,6 @@ const CONFIG = {
 <!-- JavaScript -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/gallery.js"></script>
-
 <script src="assets/js/maps-improved.js"></script>
 <script src="assets/js/itineraries.js"></script>
 <script>

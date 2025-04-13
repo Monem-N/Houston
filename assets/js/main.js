@@ -3,6 +3,26 @@
  * Handles mobile menu, back to top button, and other interactive elements
  */
 
+// Helper function to check if passive event listeners are supported
+const isPassiveSupported = () => {
+  let passive = false;
+  try {
+    const options = Object.defineProperty({}, "passive", {
+      get: function() {
+        passive = true;
+        return true;
+      }
+    });
+    window.addEventListener("test", null, options);
+    window.removeEventListener("test", null, options);
+  } catch (err) {}
+  return passive;
+};
+
+// Get passive option based on browser support
+const passiveOption = isPassiveSupported() ? { passive: true } : false;
+const nonPassiveOption = isPassiveSupported() ? { passive: false } : false;
+
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
@@ -13,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const expanded = this.getAttribute('aria-expanded') === 'true' || false;
       this.setAttribute('aria-expanded', !expanded);
       navMenu.classList.toggle('is-active');
-    });
+    }, passiveOption);
 
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
@@ -21,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         navMenu.classList.remove('is-active');
         menuToggle.setAttribute('aria-expanded', 'false');
       }
-    });
+    }, passiveOption);
   }
 
   // Back to top button
@@ -34,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         backToTopButton.classList.remove('visible');
       }
-    });
+    }, passiveOption);
 
     backToTopButton.addEventListener('click', function(e) {
       e.preventDefault();
@@ -42,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         top: 0,
         behavior: 'smooth'
       });
-    });
+    }, nonPassiveOption); // Non-passive because we're calling preventDefault()
   }
 
   // Set active menu item based on current page
@@ -74,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
           history.pushState(null, null, targetId);
         }
       }
-    });
+    }, nonPassiveOption); // Non-passive because we're calling preventDefault()
   });
 
   // Add touch feedback to cards
@@ -84,12 +104,12 @@ document.addEventListener('DOMContentLoaded', function() {
     card.addEventListener('touchstart', function() {
       this.style.transform = 'translateY(-3px)';
       this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.12)';
-    });
+    }, passiveOption);
 
     card.addEventListener('touchend', function() {
       this.style.transform = '';
       this.style.boxShadow = '';
-    });
+    }, passiveOption);
   });
 
   // Enhance quick navigation
@@ -141,14 +161,14 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton.addEventListener('click', function() {
       nav.classList.toggle('collapsed');
       toggleButton.innerHTML = nav.classList.contains('collapsed') ? '+' : '−';
-    });
+    }, passiveOption);
 
     // Make the whole header clickable
     header.addEventListener('click', function(e) {
       if (e.target !== toggleButton) {
         toggleButton.click();
       }
-    });
+    }, passiveOption);
 
     // Check if we should start collapsed on mobile
     if (window.innerWidth <= 768) {
@@ -174,5 +194,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     lastScrollTop = st <= 0 ? 0 : st;
-  }, false);
+  }, passiveOption);
 });

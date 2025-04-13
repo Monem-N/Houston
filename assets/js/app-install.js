@@ -3,6 +3,26 @@
  * Handles PWA installation prompts and offline functionality
  */
 
+// Helper function to check if passive event listeners are supported
+const isPassiveSupported = () => {
+  let passive = false;
+  try {
+    const options = Object.defineProperty({}, "passive", {
+      get: function() {
+        passive = true;
+        return true;
+      }
+    });
+    window.addEventListener("test", null, options);
+    window.removeEventListener("test", null, options);
+  } catch (err) {}
+  return passive;
+};
+
+// Get passive option based on browser support
+const passiveOption = isPassiveSupported() ? { passive: true } : false;
+const nonPassiveOption = isPassiveSupported() ? { passive: false } : false;
+
 let deferredPrompt;
 const installButton = document.getElementById('install-app');
 const offlineIndicator = document.getElementById('offline-indicator');
@@ -68,9 +88,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
           }, 5000);
         }
       }
-    });
+    }, passiveOption);
   }
-});
+}, nonPassiveOption); // Non-passive because we're calling preventDefault()
 
 // Listen for the appinstalled event
 window.addEventListener('appinstalled', (e) => {
@@ -93,11 +113,11 @@ window.addEventListener('appinstalled', (e) => {
       appStatusElement.style.display = 'none';
     }, 5000);
   }
-});
+}, passiveOption);
 
 // Monitor the online/offline status
-window.addEventListener('online', updateOfflineStatus);
-window.addEventListener('offline', updateOfflineStatus);
+window.addEventListener('online', updateOfflineStatus, passiveOption);
+window.addEventListener('offline', updateOfflineStatus, passiveOption);
 
 // Update the offline status indicator
 function updateOfflineStatus() {
@@ -128,4 +148,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
+}, passiveOption);

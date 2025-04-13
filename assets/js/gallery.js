@@ -3,6 +3,25 @@
  * Gère les fonctionnalités de galerie d'images et de lightbox
  */
 
+// Helper function to check if passive event listeners are supported
+const isPassiveSupported = () => {
+  let passive = false;
+  try {
+    const options = Object.defineProperty({}, "passive", {
+      get: function() {
+        passive = true;
+        return true;
+      }
+    });
+    window.addEventListener("test", null, options);
+    window.removeEventListener("test", null, options);
+  } catch (err) {}
+  return passive;
+};
+
+// Get passive option based on browser support
+const passiveOption = isPassiveSupported() ? { passive: true } : false;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Sélectionner toutes les images de galerie
     const galleryImages = document.querySelectorAll('.image-gallery img');
@@ -120,23 +139,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         img.addEventListener('click', function() {
             openLightbox(this, gallery);
-        });
+        }, passiveOption);
         
         // Ajouter un indicateur visuel que l'image est cliquable
         img.style.cursor = 'pointer';
     });
     
     // Écouteurs d'événements pour les contrôles de la lightbox
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxPrev.addEventListener('click', showPrevImage);
-    lightboxNext.addEventListener('click', showNextImage);
+    lightboxClose.addEventListener('click', closeLightbox, passiveOption);
+    lightboxPrev.addEventListener('click', showPrevImage, passiveOption);
+    lightboxNext.addEventListener('click', showNextImage, passiveOption);
     
     // Fermer la lightbox en cliquant en dehors de l'image
     lightboxElement.addEventListener('click', function(e) {
         if (e.target === lightboxElement) {
             closeLightbox();
         }
-    });
+    }, passiveOption);
     
     // Navigation au clavier
     document.addEventListener('keydown', function(e) {
@@ -153,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showNextImage();
                 break;
         }
-    });
+    }, passiveOption);
     
     // Lazy loading pour les images
     if ('IntersectionObserver' in window) {
@@ -174,4 +193,4 @@ document.addEventListener('DOMContentLoaded', function() {
             imageObserver.observe(img);
         });
     }
-});
+}, passiveOption);
