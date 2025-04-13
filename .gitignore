@@ -163,3 +163,6 @@ ENV/
 # Build files
 *.log
 >>>>>>> 0fa662c (Update Houston Travel Guide)
+assets/images/events/Icon
+assets/images/general/Icon
+assets/images/restaurants/Icon
