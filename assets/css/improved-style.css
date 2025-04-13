@@ -183,6 +183,13 @@ img {
 /* Header & Navigation */
 .site-header {
   margin-bottom: var(--spacing-xl);
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-container {
@@ -190,6 +197,61 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-md) 0;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Install App Button */
+.install-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.install-button:hover {
+  background-color: var(--secondary-color-dark);
+}
+
+.install-icon {
+  font-size: 1.2rem;
+}
+
+.app-status {
+  display: none;
+  font-size: 0.8rem;
+  color: white;
+  background-color: var(--success-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.app-status.installed {
+  display: inline-block;
+}
+
+/* Offline Indicator */
+.offline-indicator {
+  background-color: var(--warning-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 100%;
 }
 
 .site-title {

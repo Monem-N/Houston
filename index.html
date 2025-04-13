@@ -24,22 +24,48 @@
 const CONFIG = {
   // Clé API Google Maps
   GOOGLE_MAPS_API_KEY: "AIzaSyAdCsaf0TLy6vvX3rkPC-zno9nsHUeuH-0",
-  
+
+  // ID de carte Google Maps
+  GOOGLE_MAPS_MAP_ID: "af8bf941f1e27c9d",
+
   // ID de mesure Google Analytics
   GOOGLE_ANALYTICS_ID: "G-KHZ18QKRHG"
 };
-</script></head>
+</script>
+<!-- Service Worker Registration -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(function(error) {
+          console.error('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+</head>
 <body>
 <!-- Accessibility skip link -->
 <a class="skip-link" href="#main-content">Aller au contenu principal</a>
 <header class="site-header" role="banner">
 <div class="header-container">
 <h1 class="site-title"><a href="index.html">Guide Houston 2025</a></h1>
-<button aria-controls="primary-menu" aria-expanded="false" class="menu-toggle">
-<span class="hamburger-icon"></span>
-<span class="screen-reader-text">Menu</span>
-</button>
+<div class="header-actions">
+  <button id="install-app" class="install-button" style="display: none;">
+    <span class="install-icon">📱</span>
+    <span class="install-text">Installer l'app</span>
+  </button>
+  <div id="app-status" class="app-status"></div>
+  <button aria-controls="primary-menu" aria-expanded="false" class="menu-toggle">
+    <span class="hamburger-icon"></span>
+    <span class="screen-reader-text">Menu</span>
+  </button>
 </div>
+</div>
+<div id="offline-indicator" class="offline-indicator" style="display: none;">Mode hors ligne - Contenu disponible localement</div>
 <nav aria-label="Menu principal" class="nav-menu" id="primary-menu" role="navigation">
 <a class="active" href="index.html">Accueil</a>
 <a href="01_Introduction.html">Introduction</a>
@@ -283,6 +309,7 @@ const CONFIG = {
 <script src="assets/js/main.js"></script>
 <script src="assets/js/gallery.js"></script>
 <script src="assets/js/tables.js"></script>
+<script src="assets/js/app-install.js"></script>
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KHZ18QKRHG"></script>
 

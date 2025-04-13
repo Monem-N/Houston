@@ -184,9 +184,23 @@ function initMap(mapId, center, zoom) {
     center: center,
     zoom: zoom,
     mapTypeControl: true,
+    mapTypeControlOptions: {
+      position: google.maps.ControlPosition.TOP_RIGHT
+    },
     streetViewControl: true,
+    streetViewControlOptions: {
+      position: google.maps.ControlPosition.RIGHT_TOP
+    },
     fullscreenControl: true,
+    fullscreenControlOptions: {
+      position: google.maps.ControlPosition.RIGHT_TOP
+    },
     zoomControl: true,
+    zoomControlOptions: {
+      position: google.maps.ControlPosition.RIGHT_CENTER
+    },
+    rotateControl: true,
+    scaleControl: true,
     styles: [
       {
         "featureType": "poi",
@@ -209,6 +223,12 @@ function initMap(mapId, center, zoom) {
     ]
   };
 
+  // Vérifie si l'ID de carte est défini
+  const mapIdValue = CONFIG.GOOGLE_MAPS_MAP_ID || 'af8bf941f1e27c9d';
+
+  // Ajoute l'ID de carte aux options
+  mapOptions.mapId = mapIdValue;
+
   // Crée la carte
   const map = new google.maps.Map(document.getElementById(mapId), mapOptions);
 
@@ -217,37 +237,85 @@ function initMap(mapId, center, zoom) {
 
 // Fonction pour ajouter un marqueur à la carte
 function addMarker(map, poi) {
-  // Crée une icône personnalisée si un emoji est défini
-  let markerOptions = {
-    position: { lat: poi.lat, lng: poi.lng },
-    map: map,
-    title: poi.name,
-    animation: google.maps.Animation.DROP
-  };
+  let marker;
 
-  // Ajoute l'icône si elle est définie
-  if (poi.icon) {
-    markerOptions.icon = {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 10,
-      fillColor: getCategoryColor(poi.category),
-      fillOpacity: 1,
-      strokeColor: '#FFFFFF',
-      strokeWeight: 2,
-      labelOrigin: new google.maps.Point(0, 0)
-    };
+  try {
+    // Vérifie si l'API AdvancedMarkerElement est disponible
+    if (google.maps.marker && google.maps.marker.AdvancedMarkerElement) {
+      // Crée un élément div pour le contenu du marqueur
+      const markerContent = document.createElement('div');
+      markerContent.className = 'custom-marker';
 
-    // Ajoute un label avec l'emoji
-    markerOptions.label = {
-      text: poi.icon,
-      color: '#FFFFFF',
-      fontSize: '14px',
-      fontWeight: 'bold'
-    };
+      // Crée un élément pour l'emoji ou l'icône
+      const iconElement = document.createElement('div');
+      iconElement.className = 'marker-icon';
+      iconElement.style.backgroundColor = getCategoryColor(poi.category);
+      iconElement.style.color = '#FFFFFF';
+      iconElement.style.borderRadius = '50%';
+      iconElement.style.width = '32px';
+      iconElement.style.height = '32px';
+      iconElement.style.display = 'flex';
+      iconElement.style.justifyContent = 'center';
+      iconElement.style.alignItems = 'center';
+      iconElement.style.fontSize = '16px';
+      iconElement.style.boxShadow = '0 2px 4px rgba(0,0,0,0.3)';
+
+      // Ajoute l'emoji si défini
+      if (poi.icon) {
+        iconElement.textContent = poi.icon;
+      }
+
+      markerContent.appendChild(iconElement);
+
+      // Crée le marqueur avancé
+      marker = new google.maps.marker.AdvancedMarkerElement({
+        position: { lat: poi.lat, lng: poi.lng },
+        map: map,
+        title: poi.name,
+        content: markerContent
+      });
+    } else {
+      // Fallback pour l'ancien API Marker
+      let markerOptions = {
+        position: { lat: poi.lat, lng: poi.lng },
+        map: map,
+        title: poi.name,
+        animation: google.maps.Animation.DROP
+      };
+
+      // Ajoute l'icône si elle est définie
+      if (poi.icon) {
+        markerOptions.icon = {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 10,
+          fillColor: getCategoryColor(poi.category),
+          fillOpacity: 1,
+          strokeColor: '#FFFFFF',
+          strokeWeight: 2,
+          labelOrigin: new google.maps.Point(0, 0)
+        };
+
+        // Ajoute un label avec l'emoji
+        markerOptions.label = {
+          text: poi.icon,
+          color: '#FFFFFF',
+          fontSize: '14px',
+          fontWeight: 'bold'
+        };
+      }
+
+      // Crée le marqueur
+      marker = new google.maps.Marker(markerOptions);
+    }
+  } catch (error) {
+    console.error('Error creating marker:', error);
+    // Fallback à l'ancien API Marker en cas d'erreur
+    marker = new google.maps.Marker({
+      position: { lat: poi.lat, lng: poi.lng },
+      map: map,
+      title: poi.name
+    });
   }
-
-  // Crée le marqueur
-  const marker = new google.maps.Marker(markerOptions);
 
   // Crée la fenêtre d'info
   const infoContent = `
@@ -483,7 +551,7 @@ function addFilterControls(map, allMarkers) {
 // Fonction pour initialiser les itinéraires (stub pour compatibilité)
 // Cette fonction est remplacée par celle dans itineraries.js
 // eslint-disable-next-line no-unused-vars
-function initItineraries(map) {
+function initItineraries(/* map */) {
   console.warn('Cette fonction est un stub. Assurez-vous que itineraries.js est chargé.');
   return;
 }
@@ -540,8 +608,11 @@ function loadGoogleMaps() {
   }
 
   try {
+    // Vérifie si l'ID de carte est défini
+    const mapId = CONFIG.GOOGLE_MAPS_MAP_ID || 'af8bf941f1e27c9d';
+
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&callback=initMaps&loading=async`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&map_ids=${mapId}&v=weekly&callback=initMaps&loading=async`;
     script.async = true;
     script.defer = true;
     script.onerror = function() {
