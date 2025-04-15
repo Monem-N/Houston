@@ -1,107 +1,139 @@
-# Houston Travel Guide 2025
+# Houston Travel Guide - React, Material UI & Vite
 
-This repository contains the Houston Travel Guide for FIRST Championship 2025, a comprehensive guide with information about:
+A comprehensive travel guide for the FIRST Championship 2025 in Houston, Texas, built with React, Material UI, and Vite.
 
-- Transportation in Houston
-- Dining and shopping options
-- Attractions and activities
-- FIRST Championship information
-- Museum District
-- Hermann Park & Zoo
-- And more!
+## Features
 
-## Website
+- Modern, responsive UI built with Material UI
+- Interactive maps with points of interest
+- Comprehensive information about attractions, dining, and events
+- FIRST Championship 2025 specific information
+- Dark/light mode toggle
+- Offline support with PWA capabilities
 
-This guide is hosted on Netlify and can be accessed at: [https://houston2025.netlify.app/](https://houston2025.netlify.app/)
+## Tech Stack
 
-## Configuration
+- React 18
+- TypeScript
+- Material UI 5
+- React Router 6
+- Vite
+- Vitest for testing
+- PWA support
 
-To configure the project, follow these steps:
+## Getting Started
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/Monem-N/Houston.git
-   cd Houston
-   ```
+### Prerequisites
 
-2. Create a configuration file:
-   ```
-   cp assets/js/config.example.js assets/js/config.js
-   ```
+- Node.js (v18 recommended)
+- npm or yarn
 
-3. Modify the `assets/js/config.js` file to add your Google Maps API key:
-   ```javascript
-   const CONFIG = {
-     GOOGLE_MAPS_API_KEY: "YOUR_GOOGLE_MAPS_API_KEY",
-     // ...
-   };
-   ```
+### Installation
 
-   To get a Google Maps API key, follow the instructions on [this page](https://developers.google.com/maps/documentation/javascript/get-api-key).
+1. Clone the repository
 
-4. Open the `index.html` file in your browser to view the guide.
-
-## Structure
-
-The website is organized into main sections and annexes, with a responsive design for both desktop and mobile viewing.
-
-## Security
-
-The `assets/js/config.js` file contains sensitive information such as the Google Maps API key. This file is excluded from the Git repository via the `.gitignore` file.
-
-For production deployments, use environment variables from your hosting platform (like Netlify) to store API keys and other sensitive information.
-
-### Netlify Environment Variables
-
-To securely store your API keys, we use Netlify Environment Variables:
-
-1. Go to your Netlify dashboard
-2. Select your site
-3. Go to "Site settings" > "Build & deploy" > "Environment"
-4. Add the following environment variables:
-   - `GOOGLE_MAPS_API_KEY`: Your Google Maps API key
-   - `GOOGLE_ANALYTICS_ID`: Your Google Analytics measurement ID (G-KHZ18QKRHG)
-
-### How it works
-
-When Netlify builds your site, it will:
-
-1. Run the `build.js` script which generates the `config.js` file using the environment variables
-2. Deploy the site with the generated `config.js` file
-
-This way, your API keys are never stored in the repository and are only injected during the build process.
-
-## Local Development
-
-To run this website locally:
-
-1. Clone the repository:
    ```bash
-   git clone https://github.com/Monem-N/Houston.git
-   cd Houston
+   git clone https://github.com/yourusername/houston-guide.git
+   cd houston-guide
    ```
 
-2. Create a configuration file:
+1. Install dependencies
+
    ```bash
-   cp assets/js/config.example.js assets/js/config.js
+   npm install
    ```
 
-3. Edit the `config.js` file to add your Google Maps API key:
-   ```javascript
-   const CONFIG = {
-     GOOGLE_MAPS_API_KEY: "YOUR_GOOGLE_MAPS_API_KEY",
-     // ...
-   };
-   ```
+1. Start the development server
 
-4. Open the `index.html` file in your browser or use a local server:
    ```bash
-   # Using Python's built-in server
-   python -m http.server
-   # Or using Node.js with http-server
-   npx http-server
+   npm run dev
    ```
 
-## Updates
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-The content is regularly updated with the latest information about Houston and the FIRST Championship 2025.
+## Available Scripts
+
+- `npm run dev` - Starts the development server
+- `npm run build` - Builds the app for production
+- `npm run preview` - Previews the production build locally
+- `npm test` - Runs the test suite
+- `npm run test:watch` - Runs the test suite in watch mode
+- `npm run test:coverage` - Runs the test suite with coverage
+- `npm run lint` - Lints the codebase
+- `npm run format` - Formats the codebase with Prettier
+
+## Project Structure
+
+```plaintext
+houston-guide/
+├── public/                  # Static files
+├── src/                     # Source code
+│   ├── assets/              # Images, fonts, and other assets
+│   ├── components/          # Reusable components
+│   ├── pages/               # Page components
+│   ├── hooks/               # Custom React hooks
+│   ├── contexts/            # React contexts
+│   ├── layouts/             # Layout components
+│   ├── utils/               # Utility functions
+│   ├── theme/               # Material UI theme configuration
+│   ├── routes.tsx           # Route configuration
+│   ├── App.tsx              # Main App component
+│   └── main.tsx             # Entry point
+├── index.html               # HTML template
+├── vite.config.ts           # Vite configuration
+└── ...                      # Config files
+```
+
+## Asset Management
+
+### Naming Convention
+- `{category}-{context}-{name}-{size}.{ext}` (e.g., `attractions-space-center-desktop.jpg`).
+
+### Directory Structure
+```
+public/
+  assets/
+    images/
+      {category}/
+        {context}-{name}-{size}.{ext}
+```
+
+### Missing Images
+The following images are referenced in the code but are missing in the `public/assets/` directory:
+
+| Component           | Referenced Path                                   | Missing File                  |
+|---------------------|---------------------------------------------------|-------------------------------|
+| `HomePage.tsx`      | `/assets/images/attractions/space-center.jpg`     | `space-center-1.jpg`          |
+| `TouristanbulPage.tsx` | `/assets/images/attractions/mosquee-bleue.jpg` | _missing_                     |
+| `AttractionsPage.tsx` | `/assets/images/attractions/museum-natural-science.jpg` | _missing_                     |
+
+### Validation Script
+Run the following script to validate image references:
+```bash
+bash scripts/validate-assets.sh
+```
+
+## Deployment
+
+The application is configured for deployment on Netlify. The production build can be created with:
+
+```bash
+npm run build
+```
+
+This will generate optimized files in the `dist` directory that can be deployed to any static hosting service.
+
+### Environment Variables
+
+The application uses the following environment variables:
+
+- `VITE_GOOGLE_MAPS_API_KEY` - Google Maps API key
+- `VITE_SENTRY_DSN` - Sentry DSN for error tracking
+- `VITE_GOOGLE_ANALYTICS_ID` - Google Analytics ID (optional)
+- `VITE_GOOGLE_MAPS_MAP_ID` - Google Maps Map ID (optional)
+
+Ensure these variables are set in a `.env` file in the root directory.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

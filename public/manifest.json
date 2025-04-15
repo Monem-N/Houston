@@ -1,0 +1,29 @@
+{
+  "short_name": "Houston Guide",
+  "name": "Houston Travel Guide",
+  "description": "Your comprehensive guide for the FIRST Championship 2025 in Houston, Texas",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0066cc",
+  "background_color": "#ffffff",
+  "orientation": "portrait"
+}
