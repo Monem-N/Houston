@@ -1,0 +1,138 @@
+{
+  "spaceCenter": {
+    "name": "Space Center Houston",
+    "description": "The official visitor center of NASA Johnson Space Center, featuring spacecraft, artifacts, and interactive exhibits about space exploration.",
+    "address": "1601 E NASA Pkwy, Houston, TX 77058",
+    "website": "https://spacecenter.org/",
+    "hours": {
+      "weekdays": "10:00 AM - 5:00 PM",
+      "weekends": "10:00 AM - 6:00 PM"
+    },
+    "tickets": {
+      "adult": "$29.95",
+      "child": "$24.95",
+      "senior": "$27.95",
+      "member": "Free"
+    },
+    "recommendedTime": "4-5 hours",
+    "exhibits": {
+      "tramTour": {
+        "name": "NASA Tram Tour",
+        "description": "Tour of NASA Johnson Space Center, including Mission Control and Rocket Park"
+      },
+      "independence": {
+        "name": "Independence Plaza",
+        "description": "Shuttle Independence mounted on the original NASA 905 shuttle carrier aircraft"
+      },
+      "starship": {
+        "name": "Starship Gallery",
+        "description": "Collection of spacecraft including Apollo 17 command module and Lunar Samples Vault"
+      },
+      "mars": {
+        "name": "Mission Mars",
+        "description": "Interactive exhibit about Mars exploration with full-scale models"
+      },
+      "iss": {
+        "name": "International Space Station Gallery",
+        "description": "Learn about life aboard the ISS with interactive displays"
+      },
+      "rocketPark": {
+        "name": "Rocket Park",
+        "description": "View the enormous Saturn V rocket that took astronauts to the moon"
+      }
+    },
+    "tips": [
+      "Purchase tickets online in advance to avoid lines",
+      "Plan to spend at least 4-5 hours to see everything",
+      "The NASA Tram Tour can have long wait times; do this early in your visit",
+      "Download the Space Center Houston app for maps and schedules",
+      "Bring water and wear comfortable shoes",
+      "Check the daily schedule for special presentations and films",
+      "Consider the Space Center Houston Audio Tour for additional information"
+    ],
+    "transportation": [
+      "By Car: 30-45 minutes from downtown Houston via I-45 South",
+      "Parking: $5 per vehicle",
+      "Ride-sharing: Uber/Lyft available, approximately $35-45 from downtown",
+      "Public Transit: Limited options, consider renting a car or using ride-sharing"
+    ]
+  },
+  "kemah": {
+    "name": "Kemah Boardwalk",
+    "description": "A 60-acre waterfront entertainment complex with rides, restaurants, and shopping, located on Galveston Bay.",
+    "address": "215 Kipp Ave, Kemah, TX 77565",
+    "website": "https://www.kemahboardwalk.com/",
+    "hours": {
+      "weekdays": "11:00 AM - 9:00 PM",
+      "weekends": "10:30 AM - 10:00 PM"
+    },
+    "tickets": {
+      "allDayPass": "$29.99",
+      "individualRides": "$4.00 - $6.00 each"
+    },
+    "recommendedTime": "2-3 hours",
+    "attractions": [
+      {
+        "name": "Boardwalk Beast",
+        "description": "High-speed boat ride on Galveston Bay",
+        "type": "Ride"
+      },
+      {
+        "name": "Ferris Wheel",
+        "description": "65-foot wheel with views of Galveston Bay",
+        "type": "Ride"
+      },
+      {
+        "name": "Boardwalk Bullet",
+        "description": "Wooden roller coaster with 42-degree drop",
+        "type": "Ride"
+      },
+      {
+        "name": "Stingray Reef",
+        "description": "Touch and feed live stingrays",
+        "type": "Attraction"
+      },
+      {
+        "name": "Kemah Boardwalk Marina",
+        "description": "Full-service marina with boat slips",
+        "type": "Attraction"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Aquarium Restaurant",
+        "description": "Seafood restaurant with a 50,000-gallon aquarium",
+        "cuisine": "Seafood"
+      },
+      {
+        "name": "Landry's Seafood",
+        "description": "Gulf Coast seafood and steaks",
+        "cuisine": "Seafood"
+      },
+      {
+        "name": "Saltgrass Steak House",
+        "description": "Texas-style steakhouse",
+        "cuisine": "Steakhouse"
+      },
+      {
+        "name": "Bubba Gump Shrimp Co.",
+        "description": "Shrimp dishes inspired by the movie Forrest Gump",
+        "cuisine": "Seafood"
+      }
+    ],
+    "tips": [
+      "Visit on weekdays to avoid crowds",
+      "Check the weather forecast before visiting (many attractions are outdoors)",
+      "Consider the All-Day Ride Pass if you plan to enjoy multiple rides",
+      "Make restaurant reservations in advance, especially on weekends",
+      "Bring sunscreen and a hat for outdoor activities",
+      "Check the entertainment schedule for live music and special events"
+    ],
+    "transportation": [
+      "By Car: 35-50 minutes from downtown Houston via I-45 South",
+      "Parking: Free parking available",
+      "From Space Center Houston: 15-20 minutes by car",
+      "Public Transit: Limited options, consider renting a car or using ride-sharing"
+    ]
+  }
+}

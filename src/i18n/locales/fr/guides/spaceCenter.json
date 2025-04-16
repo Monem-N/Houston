@@ -1,0 +1,100 @@
+{
+  "title": "Guide du Space Center & Kemah",
+  "subtitle": "Explorez le Centre Spatial Johnson de la NASA et la promenade de Kemah",
+  "overview": {
+    "title": "Aperçu",
+    "subtitle": "Deux des attractions les plus populaires de Houston",
+    "description": "Le Space Center Houston et le Kemah Boardwalk sont deux des attractions les plus populaires de la région de Houston, situées l'une près de l'autre le long de la côte du Golfe. Le Space Center Houston offre une expérience éducative sur la NASA et l'exploration spatiale, tandis que le Kemah Boardwalk propose des divertissements, des restaurants et des manèges au bord de l'eau. Ce guide vous aidera à planifier votre visite de ces attractions pendant le Championnat FIRST.",
+    "spaceCenterName": "Space Center Houston",
+    "kemahName": "Kemah Boardwalk",
+    "from": "À partir de",
+    "ridesFrom": "Manèges à partir de 4,00$"
+  },
+  "spaceCenterSection": {
+    "title": "Space Center Houston",
+    "essentialInfo": "Informations essentielles",
+    "address": "Adresse",
+    "hours": "Horaires",
+    "weekdays": "Jours de semaine",
+    "weekends": "Week-ends",
+    "tickets": "Billets",
+    "adult": "Adulte",
+    "child": "Enfant (4-11 ans)",
+    "senior": "Senior (65+ ans)",
+    "member": "Membre",
+    "website": "Site web",
+    "recommendedTime": "Temps recommandé",
+    "visitorTips": "Conseils aux visiteurs",
+    "mustSeeExhibits": "Expositions à ne pas manquer",
+    "mustSee": "À voir absolument",
+    "gettingThere": "Comment s'y rendre"
+  },
+  "kemahSection": {
+    "title": "Kemah Boardwalk",
+    "essentialInfo": "Informations essentielles",
+    "popularAttractions": "Attractions populaires",
+    "diningOptions": "Options de restauration",
+    "gettingThere": "Comment s'y rendre"
+  },
+  "itineraries": {
+    "title": "Itinéraires suggérés",
+    "description": "Voici quelques itinéraires suggérés pour vous aider à planifier votre visite au Space Center Houston et au Kemah Boardwalk. Choisissez celui qui correspond le mieux à vos intérêts et au temps dont vous disposez.",
+    "fullDay": {
+      "title": "Journée complète Space Center & Kemah",
+      "schedule": [
+        "9h00 - Départ de Houston",
+        "10h00 - Arrivée au Space Center Houston",
+        "10h15 - Tour en tram de la NASA",
+        "12h00 - Déjeuner au Space Center",
+        "13h00 - Exploration d'Independence Plaza et de la Galerie Starship",
+        "15h00 - Départ pour Kemah Boardwalk",
+        "15h30 - Arrivée à Kemah Boardwalk",
+        "15h45 - Manèges et attractions",
+        "18h00 - Dîner dans un restaurant de Kemah",
+        "19h30 - Promenade du soir le long de la promenade",
+        "20h30 - Retour à Houston"
+      ]
+    },
+    "spaceCenterFocus": {
+      "title": "Journée au Space Center",
+      "schedule": [
+        "9h30 - Départ de Houston",
+        "10h30 - Arrivée au Space Center Houston",
+        "10h45 - Tour en tram de la NASA",
+        "12h30 - Déjeuner au Space Center",
+        "13h30 - Independence Plaza",
+        "14h30 - Galerie Starship",
+        "15h30 - Mission Mars et Galerie ISS",
+        "16h30 - Film au théâtre du Space Center",
+        "17h30 - Boutique de souvenirs et départ",
+        "18h30 - Retour à Houston"
+      ]
+    },
+    "kemahFocus": {
+      "title": "Journée à Kemah Boardwalk",
+      "schedule": [
+        "11h00 - Départ de Houston",
+        "12h00 - Arrivée à Kemah Boardwalk",
+        "12h15 - Déjeuner dans un restaurant de Kemah",
+        "13h30 - Manèges et attractions de la promenade",
+        "15h30 - Balade en bateau Boardwalk Beast",
+        "16h30 - Stingray Reef et shopping",
+        "18h00 - Dîner au restaurant Aquarium",
+        "19h30 - Divertissements du soir et manèges",
+        "21h00 - Retour à Houston"
+      ]
+    }
+  },
+  "relatedResources": {
+    "title": "Ressources connexes",
+    "maps": "Cartes",
+    "mapsDescription": "Cartes interactives de Houston incluant la zone du Space Center et de Kemah.",
+    "viewMaps": "Voir les cartes",
+    "transportation": "Transport",
+    "transportationDescription": "Informations sur les options de transport à Houston.",
+    "viewTransportation": "Voir les transports",
+    "arrivalDeparture": "Guide d'arrivée et de départ",
+    "arrivalDepartureDescription": "Informations pour l'arrivée et le départ de Houston.",
+    "viewGuide": "Voir le guide"
+  }
+}

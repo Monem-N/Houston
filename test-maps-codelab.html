@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Maps Platform 101 Test</title>
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Google Maps Platform 101 Test</h1>
+  <p>This is a simple test page based on the Google Maps Platform 101 React.js codelab.</p>
+  
+  <div id="map"></div>
+  
+  <script>
+    // Initialize and add the map
+    function initMap() {
+      console.log('initMap called');
+      
+      // The location of Houston
+      const houston = { lat: 29.7604, lng: -95.3698 };
+      
+      // The map, centered at Houston
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: houston,
+        mapId: 'af8bf941f1e27c9d'
+      });
+      
+      console.log('Map created:', map);
+      
+      // The marker, positioned at Houston
+      const marker = new google.maps.Marker({
+        position: houston,
+        map: map,
+        title: "Houston"
+      });
+      
+      console.log('Marker created:', marker);
+    }
+    
+    window.initMap = initMap;
+  </script>
+  
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdCsaf0TLy6vvX3rkPC-zno9nsHUeuH-0&callback=initMap&v=weekly"
+    defer
+  ></script>
+</body>
+</html>
