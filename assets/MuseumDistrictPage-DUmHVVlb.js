@@ -1,2 +1,0 @@
-import{u as e,j as t,B as i,T as r}from"./main-CW6jg1-I.js";function a(){const{t:s}=e("guides");return t.jsxs(i,{sx:{p:3},children:[t.jsx(r,{variant:"h4",gutterBottom:!0,children:s("museumDistrict.title")}),t.jsx(r,{paragraph:!0,children:s("museumDistrict.subtitle")}),t.jsx(r,{paragraph:!0,children:s("museumDistrict.description")})]})}export{a as default};
-//# sourceMappingURL=MuseumDistrictPage-DUmHVVlb.js.map
