@@ -1,4 +1,5 @@
 import { useState, useMemo, FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Container, Box, Grid, Alert } from '@mui/material';
 import { Map as MapIcon } from '@mui/icons-material';
 import ReduxLocationCard from '../components/common/LocationCard/ReduxLocationCard';
@@ -10,10 +11,18 @@ import { useAppSelector } from '../redux/hooks';
 import { selectFavorites } from '../redux/store';
 
 const FavoritesPage: FC = () => {
+  const { t } = useTranslation();
   const { isMobile } = useDeviceDetect();
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
 
   const favoriteLocations = useAppSelector(selectFavorites);
+
+  // Map FavoriteItem to Location
+  const mappedLocations: Location[] = favoriteLocations.map(favorite => ({
+    ...favorite,
+    position: favorite.position || { lat: 0, lng: 0 }, // Default position
+    category: favorite.category || 'Unknown', // Default category
+  }));
 
   // Memoize selected location to avoid unnecessary re-renders
   const memoizedSelectedLocation = useMemo(() => selectedLocation, [selectedLocation]);
@@ -41,52 +50,39 @@ const FavoritesPage: FC = () => {
   return (
     <Container maxWidth="lg">
       <PageHeader
-        title="Favorite Locations"
-        subtitle="Your saved locations in Houston"
+        title={t('favorites.title', 'Favorite Locations')}
+        subtitle={t('favorites.subtitle', 'Your saved locations in Houston')}
         data-testid="favorites-page-title"
       />
 
-      {favoriteLocations.length === 0 ? (
+      {mappedLocations.length === 0 ? (
         <Alert severity="info" sx={{ mb: 4 }}>
-          You haven&apos;t added any favorite locations yet. Browse the map or search for locations
-          to add them to your favorites.
+          {t('favorites.noFavorites', "You haven't added any favorite locations yet. Browse the map or search for locations to add them to your favorites.")}
         </Alert>
       ) : (
         <Grid container spacing={3}>
           {/* Favorites List */}
           <Grid item xs={12} md={6}>
-            <Section title="Your Favorites" titleIcon={<MapIcon color="primary" />}>
+            <Section title={t('favorites.yourFavorites', 'Your Favorites')} titleIcon={<MapIcon color="primary" />}>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {favoriteLocations.map(favorite => {
-                  const location: Location = {
-                    ...favorite,
-                    position:
-                      favorite.position?.lat && favorite.position?.lng
-                        ? favorite.position
-                        : { lat: 0, lng: 0 }, // Default position
-                    category: favorite.category || 'Unknown', // Default category
-                  };
-                  return (
-                    <ReduxLocationCard
-                      key={location.id}
-                      location={location}
-                      onClick={handleSelectLocation}
-                      onGetDirections={getDirections}
-                      selected={memoizedSelectedLocation?.id === location.id}
-                    />
-                  );
-                })}
+                {mappedLocations.map(location => (
+                  <ReduxLocationCard
+                    key={location.id}
+                    location={location}
+                    onClick={handleSelectLocation}
+                    onGetDirections={getDirections}
+                    selected={memoizedSelectedLocation?.id === location.id}
+                  />
+                ))}
               </Box>
             </Section>
           </Grid>
 
           {/* Map */}
           <Grid item xs={12} md={6}>
-            <Section title="Map View" titleIcon={<MapIcon color="primary" />}>
+            <Section title={t('favorites.mapView', 'Map View')} titleIcon={<MapIcon color="primary" />}>
               <ReactGoogleMap
-                locations={
-                  memoizedSelectedLocation ? [memoizedSelectedLocation] : favoriteLocations
-                }
+                locations={memoizedSelectedLocation ? [memoizedSelectedLocation] : mappedLocations}
                 height={isMobile ? 400 : 600}
                 mapId="af8bf941f1e27c9d"
                 zoom={memoizedSelectedLocation ? 15 : 11}

@@ -1,6 +1,6 @@
 /**
  * Environment variables utility
- * 
+ *
  * This file provides a centralized way to access environment variables
  * with proper fallbacks and type checking.
  */
@@ -20,15 +20,13 @@ export const SENTRY_DSN = import.meta.env.VITE_SENTRY_DSN || '';
 // Check if environment variables are set
 export const validateEnv = (): { valid: boolean; missing: string[] } => {
   const requiredVars = [
-    { name: 'GOOGLE_MAPS_API_KEY', value: GOOGLE_MAPS_API_KEY },
-    { name: 'GOOGLE_MAPS_MAP_ID', value: GOOGLE_MAPS_MAP_ID },
-    { name: 'GOOGLE_ANALYTICS_ID', value: GOOGLE_ANALYTICS_ID },
-    { name: 'SENTRY_DSN', value: SENTRY_DSN },
+    { name: 'VITE_GOOGLE_MAPS_API_KEY', value: GOOGLE_MAPS_API_KEY },
+    { name: 'VITE_GOOGLE_MAPS_MAP_ID', value: GOOGLE_MAPS_MAP_ID },
+    { name: 'VITE_GOOGLE_ANALYTICS_ID', value: GOOGLE_ANALYTICS_ID },
+    { name: 'VITE_SENTRY_DSN', value: SENTRY_DSN }
   ];
 
-  const missing = requiredVars
-    .filter(({ value }) => !value)
-    .map(({ name }) => name);
+  const missing = requiredVars.filter(({ value }) => !value).map(({ name }) => name);
 
   return {
     valid: missing.length === 0,

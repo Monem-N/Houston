@@ -18,6 +18,8 @@ const themeSlice = createSlice({
 interface FavoriteItem {
   id: string;
   name: string;
+  position?: { lat: number; lng: number }; // Optional position property
+  category?: string; // Optional category property
 }
 
 const favoritesSlice = createSlice({

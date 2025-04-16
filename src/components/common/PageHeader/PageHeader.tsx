@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDeviceDetect } from '../../../hooks/useDeviceDetect';
 import { Typography, Box, Breadcrumbs, Link, BoxProps, SxProps, Theme } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
@@ -27,6 +28,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   subtitleSx,
   ...props
 }) => {
+  const { t } = useTranslation();
   const { isMobile } = useDeviceDetect();
   return (
     <Box {...props} sx={{ mb: isMobile ? 3 : 4, ...props.sx }}>
@@ -41,7 +43,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 
             return isLast ? (
               <Typography key={item.label} color="text.primary">
-                {item.label}
+                {t(item.label, item.label)}
               </Typography>
             ) : (
               <Link
@@ -51,7 +53,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
                 color="inherit"
                 underline="hover"
               >
-                {item.label}
+                {t(item.label, item.label)}
               </Link>
             );
           })}
@@ -72,7 +74,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
             data-testid="page-title"
             sx={titleSx}
           >
-            {title}
+            {t(title, title)}
           </Typography>
 
           {subtitle && (
@@ -82,7 +84,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
               paragraph
               sx={subtitleSx}
             >
-              {subtitle}
+              {t(subtitle, subtitle)}
             </Typography>
           )}
         </Box>

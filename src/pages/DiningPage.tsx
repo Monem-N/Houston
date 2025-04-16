@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Typography, Box, Container, Grid, Chip, Rating } from '@mui/material';
 import {
   Restaurant as RestaurantIcon,
@@ -8,6 +9,7 @@ import {
 import { Card, PageHeader, Section } from '../components/common';
 
 const DiningPage: React.FC = () => {
+  const { t } = useTranslation();
   // Placeholder data for restaurants
   const restaurants = [
     {
@@ -83,18 +85,19 @@ const DiningPage: React.FC = () => {
   return (
     <Container maxWidth="lg">
       <PageHeader
-        title="Dining"
-        subtitle="Explore the best dining options in Houston near the FIRST Championship venues."
+        title={t('dining.title', 'Dining')}
+        subtitle={t('dining.subtitle', 'Explore the best dining options in Houston near the FIRST Championship venues.')}
         data-testid="page-title"
+        breadcrumbs={[{ label: t('navigation.home', 'Home'), path: '/'}, { label: t('navigation.dining', 'Dining') }]}
       />
 
-      <Section title="Featured Restaurants" titleIcon={<RestaurantIcon color="primary" />} divider>
+      <Section title={t('dining.featuredRestaurants', 'Featured Restaurants')} titleIcon={<RestaurantIcon color="primary" />} divider>
         <Grid container spacing={3}>
           {restaurants.map(restaurant => (
             <Grid item xs={12} sm={6} md={4} key={restaurant.id}>
               <Card
-                title={restaurant.name}
-                description={restaurant.description}
+                title={t(`dining.restaurants.${restaurant.id}.name`, restaurant.name)}
+                description={t(`dining.restaurants.${restaurant.id}.description`, restaurant.description)}
                 image={restaurant.image}
                 imageAlt={restaurant.name}
                 imageHeight={160}
@@ -110,7 +113,7 @@ const DiningPage: React.FC = () => {
                   >
                     <Chip
                       icon={getCategoryIcon(restaurant.category)}
-                      label={restaurant.type}
+                      label={t(`dining.restaurants.${restaurant.id}.type`, restaurant.type)}
                       size="small"
                       color={
                         restaurant.category === 'restaurant'

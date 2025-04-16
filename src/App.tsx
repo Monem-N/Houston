@@ -7,7 +7,12 @@ function App() {
   // Validate environment variables
   const { valid, missing } = validateEnv();
 
-  const requiredEnvVars = ['VITE_GOOGLE_MAPS_API_KEY', 'VITE_SENTRY_DSN'];
+  const requiredEnvVars = [
+    'VITE_GOOGLE_MAPS_API_KEY',
+    'VITE_GOOGLE_MAPS_MAP_ID',
+    'VITE_GOOGLE_ANALYTICS_ID',
+    'VITE_SENTRY_DSN',
+  ];
   const missingEnvVars = requiredEnvVars.filter(key => !import.meta.env[key]);
 
   if (missingEnvVars.length > 0) {

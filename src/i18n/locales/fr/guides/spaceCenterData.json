@@ -1,0 +1,138 @@
+{
+  "spaceCenter": {
+    "name": "Space Center Houston",
+    "description": "Le centre officiel des visiteurs du Centre spatial NASA Johnson, présentant des vaisseaux spatiaux, des artefacts et des expositions interactives sur l'exploration spatiale.",
+    "address": "1601 E NASA Pkwy, Houston, TX 77058",
+    "website": "https://spacecenter.org/",
+    "hours": {
+      "weekdays": "10h00 - 17h00",
+      "weekends": "10h00 - 18h00"
+    },
+    "tickets": {
+      "adult": "29,95$",
+      "child": "24,95$",
+      "senior": "27,95$",
+      "member": "Gratuit"
+    },
+    "recommendedTime": "4-5 heures",
+    "exhibits": {
+      "tramTour": {
+        "name": "Tour en Tram de la NASA",
+        "description": "Visite du Centre spatial Johnson de la NASA, incluant le Centre de contrôle des missions et le Parc des fusées"
+      },
+      "independence": {
+        "name": "Independence Plaza",
+        "description": "La navette Independence montée sur l'avion porteur original NASA 905"
+      },
+      "starship": {
+        "name": "Galerie Starship",
+        "description": "Collection de vaisseaux spatiaux comprenant le module de commande Apollo 17 et la Voûte des échantillons lunaires"
+      },
+      "mars": {
+        "name": "Mission Mars",
+        "description": "Exposition interactive sur l'exploration de Mars avec des modèles à l'échelle réelle"
+      },
+      "iss": {
+        "name": "Galerie de la Station Spatiale Internationale",
+        "description": "Découvrez la vie à bord de l'ISS avec des présentations interactives"
+      },
+      "rocketPark": {
+        "name": "Parc des Fusées",
+        "description": "Admirez l'énorme fusée Saturn V qui a emmené les astronautes sur la lune"
+      }
+    },
+    "tips": [
+      "Achetez vos billets en ligne à l'avance pour éviter les files d'attente",
+      "Prévoyez au moins 4-5 heures pour tout voir",
+      "Le Tour en Tram de la NASA peut avoir de longues files d'attente; faites-le tôt dans votre visite",
+      "Téléchargez l'application Space Center Houston pour les cartes et les horaires",
+      "Apportez de l'eau et portez des chaussures confortables",
+      "Consultez le programme quotidien pour les présentations spéciales et les films",
+      "Envisagez l'Audio Tour du Space Center Houston pour des informations supplémentaires"
+    ],
+    "transportation": [
+      "En voiture: 30-45 minutes du centre-ville de Houston via I-45 Sud",
+      "Stationnement: 5$ par véhicule",
+      "Covoiturage: Uber/Lyft disponible, environ 35-45$ depuis le centre-ville",
+      "Transport en commun: Options limitées, envisagez de louer une voiture ou d'utiliser le covoiturage"
+    ]
+  },
+  "kemah": {
+    "name": "Kemah Boardwalk",
+    "description": "Un complexe de divertissement au bord de l'eau de 60 acres avec des manèges, des restaurants et des boutiques, situé sur la baie de Galveston.",
+    "address": "215 Kipp Ave, Kemah, TX 77565",
+    "website": "https://www.kemahboardwalk.com/",
+    "hours": {
+      "weekdays": "11h00 - 21h00",
+      "weekends": "10h30 - 22h00"
+    },
+    "tickets": {
+      "allDayPass": "29,99$",
+      "individualRides": "4,00$ - 6,00$ chacun"
+    },
+    "recommendedTime": "2-3 heures",
+    "attractions": [
+      {
+        "name": "Boardwalk Beast",
+        "description": "Balade en bateau à grande vitesse sur la baie de Galveston",
+        "type": "Manège"
+      },
+      {
+        "name": "Grande Roue",
+        "description": "Roue de 20 mètres avec vue sur la baie de Galveston",
+        "type": "Manège"
+      },
+      {
+        "name": "Boardwalk Bullet",
+        "description": "Montagnes russes en bois avec une chute de 42 degrés",
+        "type": "Manège"
+      },
+      {
+        "name": "Stingray Reef",
+        "description": "Touchez et nourrissez des raies vivantes",
+        "type": "Attraction"
+      },
+      {
+        "name": "Marina de Kemah Boardwalk",
+        "description": "Marina à service complet avec places pour bateaux",
+        "type": "Attraction"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Aquarium Restaurant",
+        "description": "Restaurant de fruits de mer avec un aquarium de 190 000 litres",
+        "cuisine": "Fruits de mer"
+      },
+      {
+        "name": "Landry's Seafood",
+        "description": "Fruits de mer et steaks du Golfe",
+        "cuisine": "Fruits de mer"
+      },
+      {
+        "name": "Saltgrass Steak House",
+        "description": "Steakhouse de style texan",
+        "cuisine": "Steakhouse"
+      },
+      {
+        "name": "Bubba Gump Shrimp Co.",
+        "description": "Plats de crevettes inspirés du film Forrest Gump",
+        "cuisine": "Fruits de mer"
+      }
+    ],
+    "tips": [
+      "Visitez en semaine pour éviter les foules",
+      "Vérifiez les prévisions météo avant de visiter (de nombreuses attractions sont en plein air)",
+      "Envisagez le Pass Journée si vous prévoyez de profiter de plusieurs manèges",
+      "Faites des réservations de restaurant à l'avance, surtout les week-ends",
+      "Apportez de la crème solaire et un chapeau pour les activités de plein air",
+      "Consultez le programme des divertissements pour la musique live et les événements spéciaux"
+    ],
+    "transportation": [
+      "En voiture: 35-50 minutes du centre-ville de Houston via I-45 Sud",
+      "Stationnement: Stationnement gratuit disponible",
+      "Depuis Space Center Houston: 15-20 minutes en voiture",
+      "Transport en commun: Options limitées, envisagez de louer une voiture ou d'utiliser le covoiturage"
+    ]
+  }
+}

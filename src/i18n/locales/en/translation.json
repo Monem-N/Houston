@@ -1,0 +1,372 @@
+{
+  "app": {
+    "title": "Houston Travel Guide",
+    "language": "Language"
+  },
+  "menu": {
+    "title": "Menu",
+    "home": "Home",
+    "maps": "Maps",
+    "firstChampionship": "FIRST Championship",
+    "guides": {
+      "title": "Guides",
+      "dining": "Dining",
+      "attractions": "Attractions",
+      "shopping": "Shopping"
+    },
+    "itineraries": {
+      "title": "Itineraries",
+      "arrivalDeparture": "Arrival & Departure",
+      "hermannParkZoo": "Hermann Park & Zoo",
+      "museumDistrict": "Museum District",
+      "spaceCenterKemah": "Space Center & Kemah"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "introduction": "Introduction",
+    "maps": "Maps",
+    "dining": "Dining",
+    "attractions": "Attractions",
+    "shopping": "Shopping",
+    "safety": "Safety & Logistics",
+    "firstChampionship": "FIRST Championship",
+    "transportMaps": "Transport Maps",
+    "emergencyContacts": "Emergency Contacts",
+    "itineraries": "Itineraries",
+    "localDining": "Local Dining & Shopping",
+    "touristanbul": "Touristanbul",
+    "search": "Search",
+    "favorites": "Favorites",
+    "more": "More",
+    "localMaps": "Local Houston Maps"
+  },
+  "home": {
+    "welcome": "Welcome to Houston Travel Guide",
+    "subtitle": "Your comprehensive guide for the FIRST Championship 2025 in Houston, Texas",
+    "getStarted": "Get Started",
+    "featuredAttractions": "Featured Attractions",
+    "learnMore": "Learn More",
+    "quickLinks": "Quick Links"
+  },
+  "introduction": {
+    "title": "Introduction to Houston",
+    "subtitle": "Welcome to Space City",
+    "quickFacts": "Quick Facts",
+    "weather": "Weather",
+    "language": "Language",
+    "timezone": "Timezone",
+    "currency": "Currency"
+  },
+  "attractions": {
+    "title": "Attractions",
+    "subtitle": "Discover the best attractions and things to do in Houston during your visit.",
+    "overview": "Houston offers a wide variety of attractions for visitors, from world-class museums and cultural institutions to outdoor spaces and entertainment venues. Here are some of the most popular attractions to visit during your stay in Houston.",
+    "popularAttractions": "Popular Attractions",
+    "featuredAttractions": "Featured Attractions",
+    "featuredMuseums": "Featured Museums",
+    "buyTickets": "Buy Tickets",
+    "reviews": "{{count}} reviews",
+    "aboutArea": "About {{name}}",
+    "highlights": "Highlights",
+    "gettingThere": "Getting There",
+    "tips": "Tips",
+    "tabs": {
+      "all": "All Attractions",
+      "spaceCenter": "Space Center & Kemah",
+      "museumDistrict": "Museum District",
+      "hermannPark": "Hermann Park & Zoo"
+    },
+    "areas": {
+      "spaceCenter": {
+        "name": "Space Center & Kemah",
+        "description": "Explore NASA's Johnson Space Center and the nearby Kemah Boardwalk for a perfect blend of education and entertainment.",
+        "highlights": {
+          "1": "Tour NASA's Johnson Space Center and see real spacecraft",
+          "2": "Experience the Kemah Boardwalk with rides, restaurants, and shops",
+          "3": "Learn about America's space program and future missions",
+          "4": "Enjoy waterfront dining and entertainment"
+        },
+        "gettingThere": "Space Center Houston is located about 25 miles southeast of downtown Houston. Kemah Boardwalk is approximately 20 minutes further southeast. Driving is recommended, but guided tours are also available from downtown Houston.",
+        "tips": {
+          "1": "Plan at least 4-5 hours for Space Center Houston to see everything",
+          "2": "Buy Space Center tickets online in advance to avoid lines",
+          "3": "Visit Kemah Boardwalk in the evening for the best atmosphere",
+          "4": "Check the Space Center website for special events and astronaut appearances"
+        }
+      },
+      "museumDistrict": {
+        "name": "Museum District",
+        "description": "Houston's Museum District features 19 museums within a 1.5-mile radius, offering world-class exhibits in art, science, history, and culture.",
+        "highlights": {
+          "1": "Visit the Houston Museum of Natural Science with its dinosaur hall and planetarium",
+          "2": "Explore the Museum of Fine Arts with over 65,000 works spanning antiquity to present",
+          "3": "Experience the Children's Museum of Houston, rated one of the best in the country",
+          "4": "Discover the Health Museum, Holocaust Museum, and Contemporary Arts Museum"
+        },
+        "gettingThere": "The Museum District is located just south of downtown Houston. It's easily accessible via the METRORail Red Line, with several stations serving the area. Parking is available but can be limited on busy days.",
+        "tips": {
+          "1": "Many museums offer free admission on Thursdays",
+          "2": "Consider the Houston CityPASS if visiting multiple attractions",
+          "3": "The area is walkable, but the Houston heat can be intense - stay hydrated",
+          "4": "Some museums require timed entry tickets - check websites before visiting"
+        }
+      },
+      "hermannPark": {
+        "name": "Hermann Park & Zoo",
+        "description": "Hermann Park is a 445-acre urban park that includes the Houston Zoo, Japanese Garden, Miller Outdoor Theatre, and recreational facilities.",
+        "highlights": {
+          "1": "Visit the Houston Zoo with over 6,000 animals from 900 species",
+          "2": "Enjoy the Japanese Garden with traditional architecture and landscaping",
+          "3": "Ride the Hermann Park Railroad, perfect for families with children",
+          "4": "Catch a free performance at Miller Outdoor Theatre (seasonal)"
+        },
+        "gettingThere": "Hermann Park is located adjacent to the Museum District. It's accessible via the METRORail Red Line (Hermann Park/Rice University station). Parking is available in several lots throughout the park.",
+        "tips": {
+          "1": "The Houston Zoo is busiest on weekends and holidays - visit on weekdays if possible",
+          "2": "Bring a picnic to enjoy in designated areas of the park",
+          "3": "Rent a paddleboat on McGovern Lake for a relaxing experience",
+          "4": "Check the Miller Outdoor Theatre schedule for free performances"
+        }
+      }
+    }
+  },
+  "shopping": {
+    "title": "Shopping",
+    "subtitle": "Explore shopping options in Houston, from outlet malls to local stores.",
+    "options": "Shopping Options",
+    "overview": "Houston offers a variety of shopping experiences, from large outlet malls to upscale shopping centers and local stores. Here are some recommended shopping destinations for visitors during the FIRST Championship.",
+    "mallsDescription": "Houston is home to several large shopping malls and outlet centers. These destinations offer a wide variety of stores, from high-end luxury brands to discounted outlet shops.",
+    "storesTitle": "Stores & Shopping Districts",
+    "storesDescription": "In addition to malls, Houston has several individual stores and shopping districts that offer unique shopping experiences. These include big-box retailers and charming shopping neighborhoods.",
+    "comparisonDescription": "This comparison helps you decide where to shop based on your needs and budget. Prices are approximate and may vary.",
+    "website": "Website",
+    "directions": "Directions",
+    "viewOnMap": "View Shopping Locations on Map",
+    "categories": {
+      "mall": "Mall",
+      "district": "District",
+      "store": "Store",
+      "shoppingDistrict": "Shopping District"
+    },
+    "tabs": {
+      "all": "All Shopping",
+      "malls": "Malls & Outlets",
+      "stores": "Stores & Districts",
+      "comparison": "Price Comparison"
+    },
+    "comparison": {
+      "item": "Item",
+      "katyMills": "Katy Mills",
+      "galleria": "The Galleria",
+      "targetWalmart": "Target/Walmart",
+      "notes": "Notes",
+      "clothing": {
+        "title": "Clothing"
+      },
+      "electronics": {
+        "title": "Electronics"
+      },
+      "souvenirs": {
+        "title": "Souvenirs"
+      }
+    },
+    "tips": {
+      "title": "Shopping Tips",
+      "tip1": "Katy Mills is great for outlet shopping but is farther from downtown (25 miles).",
+      "tip2": "The Galleria offers high-end shopping and is closer to downtown (8 miles).",
+      "tip3": "Target and Walmart are best for everyday essentials and basic souvenirs.",
+      "tip4": "Consider transportation costs when deciding where to shop.",
+      "tip5": "Many malls offer visitor discount programs - ask at information desks."
+    },
+    "venues": {
+      "1": {
+        "name": "Katy Mills Mall",
+        "description": "A large outlet mall with over 175 stores, including designer brands at discounted prices."
+      },
+      "2": {
+        "name": "The Galleria",
+        "description": "Houston's premier shopping destination with over 400 stores, including high-end luxury brands."
+      },
+      "3": {
+        "name": "Target",
+        "description": "General merchandise retailer offering a wide variety of products including clothing, electronics, and groceries."
+      },
+      "4": {
+        "name": "Walmart Supercenter",
+        "description": "Large retail store offering a wide range of products at affordable prices, including groceries."
+      },
+      "5": {
+        "name": "Houston Premium Outlets",
+        "description": "Outdoor outlet mall featuring discounted designer and name-brand stores."
+      },
+      "6": {
+        "name": "Rice Village",
+        "description": "Charming shopping district with a mix of national retailers and local boutiques."
+      }
+    }
+  },
+  "common": {
+    "cardImage": "Card image"
+  },
+  "timeDisplay": {
+    "currentTime": "Current Time",
+    "tunis": "Tunis",
+    "houston": "Houston"
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "description": "The page you are looking for does not exist or has been moved. Please check the URL or navigate back to the home page.",
+    "returnHome": "Return to Home"
+  },
+  "search": {
+    "title": "Search",
+    "subtitle": "Find locations in Houston for the FIRST Championship 2025",
+    "list": "List",
+    "map": "Map",
+    "results": "Results",
+    "backToList": "Back to List",
+    "directions": "Directions"
+  },
+  "favorites": {
+    "title": "Favorite Locations",
+    "subtitle": "Your saved locations in Houston",
+    "noFavorites": "You haven't added any favorite locations yet. Browse the map or search for locations to add them to your favorites.",
+    "yourFavorites": "Your Favorites",
+    "mapView": "Map View"
+  },
+  "firstChampionship": {
+    "title": "FIRST Championship 2025",
+    "subtitle": "Everything you need to know about the FIRST Championship event in Houston, April 16-19, 2025.",
+    "eventOverview": "Event Overview",
+    "overview": {
+      "paragraph1": "The FIRST Championship is the culmination of the FIRST Robotics Competition season, bringing together teams from around the world to compete and celebrate STEM education.",
+      "paragraph2": "The 2025 Championship in Houston will feature competitions across all FIRST programs: FIRST LEGO League Jr., FIRST LEGO League, FIRST Tech Challenge, and FIRST Robotics Competition."
+    },
+    "location": "Houston, TX",
+    "dates": "April 16-19, 2025",
+    "teams": "600+ Teams",
+    "championship": "World Championship",
+    "schedule": {
+      "title": "Event Schedule"
+    },
+    "venues": {
+      "title": "Venues"
+    },
+    "importantInfo": "Important Information"
+  },
+  "maps": {
+    "title": "Maps",
+    "subtitle": "Interactive maps of Houston with points of interest for the FIRST Championship 2025.",
+    "tabs": {
+      "allLocations": "All Locations",
+      "attractions": "Attractions",
+      "restaurants": "Restaurants",
+      "shopping": "Shopping",
+      "hotels": "Hotels",
+      "transportation": "Transportation",
+      "firstChampionship": "FIRST Championship",
+      "itineraries": "Itineraries"
+    },
+    "sections": {
+      "allLocations": "All Locations",
+      "attractions": "Attractions",
+      "restaurants": "Restaurants",
+      "shopping": "Shopping",
+      "hotels": "Hotels",
+      "transportation": "Transportation",
+      "firstChampionshipVenues": "FIRST Championship Venues",
+      "travelItinerary": "Travel Itinerary: April 14-24, 2025"
+    },
+    "itinerary": {
+      "title": "Complete Travel Plan: April 14-24, 2025",
+      "description": "This itinerary covers the entire trip from departure in Tunis to return, including the FIRST Championship and exploration of Houston's attractions.",
+      "overview": "Overview:",
+      "detailedItinerary": "Detailed Itinerary:"
+    }
+  },
+  "dining": {
+    "title": "Dining",
+    "subtitle": "Explore the best dining options in Houston near the FIRST Championship venues.",
+    "featuredRestaurants": "Featured Restaurants",
+    "restaurants": {
+      "1": {
+        "name": "Houston Restaurant 1",
+        "type": "American",
+        "description": "A popular American restaurant with a variety of dishes."
+      },
+      "2": {
+        "name": "Houston Cafe 1",
+        "type": "Cafe",
+        "description": "A cozy cafe with great coffee and pastries."
+      },
+      "3": {
+        "name": "Houston Bar 1",
+        "type": "Bar & Grill",
+        "description": "A lively bar with good food and drinks."
+      },
+      "4": {
+        "name": "Houston Restaurant 2",
+        "type": "Mexican",
+        "description": "Authentic Mexican cuisine in a vibrant atmosphere."
+      },
+      "5": {
+        "name": "Houston Cafe 2",
+        "type": "Bakery",
+        "description": "Fresh baked goods and specialty coffees."
+      },
+      "6": {
+        "name": "Houston Restaurant 3",
+        "type": "Italian",
+        "description": "Traditional Italian dishes in a family-friendly setting."
+      }
+    }
+  },
+  "guides": {
+    "arrival": {
+      "title": "Guide for Arrival and Departure",
+      "dates": "April 14-15 & 23-24",
+      "airport": "Airport Information",
+      "transportation": "Transportation Options",
+      "hotels": "Hotel Check-in/Check-out"
+    },
+    "spaceCenter": {
+      "title": "Space Center & Kemah Guide",
+      "subtitle": "Explore NASA's Johnson Space Center and the Kemah Boardwalk",
+      "hours": "Opening Hours",
+      "tickets": "Ticket Information",
+      "exhibits": "Main Exhibits",
+      "transportation": "Getting There"
+    },
+    "spaceCenterKemah": {
+      "title": "Space Center & Kemah Guide",
+      "subtitle": "Explore NASA's Johnson Space Center and the Kemah Boardwalk",
+      "overview": {
+        "title": "Overview",
+        "subtitle": "Two of Houston's most popular attractions",
+        "description": "Space Center Houston and Kemah Boardwalk are two of the most popular attractions in the Houston area, located near each other along the Gulf Coast. Space Center Houston offers an educational experience about NASA and space exploration, while Kemah Boardwalk provides entertainment, dining, and amusement rides on the waterfront. This guide will help you plan your visit to these attractions during the FIRST Championship.",
+        "spaceCenterName": "Space Center Houston",
+        "kemahName": "Kemah Boardwalk",
+        "from": "From",
+        "ridesFrom": "Rides from $4.00"
+      }
+    },
+    "museumDistrict": {
+      "title": "Museum District Guide",
+      "subtitle": "Explore Houston's cultural hub",
+      "hours": "Opening Hours",
+      "tickets": "Ticket Information",
+      "museums": "Featured Museums",
+      "transportation": "Getting There",
+      "description": "The Houston Museum District is home to 19 museums, galleries, and cultural centers within a 1.5-mile radius of Hermann Park."
+    },
+    "hermannPark": {
+      "title": "Hermann Park & Zoo Guide",
+      "subtitle": "Explore Houston's urban oasis",
+      "hours": "Opening Hours",
+      "tickets": "Ticket Information",
+      "attractions": "Main Attractions",
+      "transportation": "Getting There"
+    }
+  }
+}

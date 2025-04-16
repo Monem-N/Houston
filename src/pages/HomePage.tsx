@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Typography, Box, Paper, Grid, Button, Container } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { Card, Section } from '../components/common';
+import { useTranslation } from 'react-i18next';
 
 const HomePage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <Container maxWidth="lg">
       <Section sx={{ mb: 6 }}>
@@ -32,10 +34,10 @@ const HomePage: React.FC = () => {
         >
           <Box sx={{ position: 'relative', color: 'white', textAlign: 'center' }}>
             <Typography variant="h3" component="h1" gutterBottom>
-              Welcome to Houston Travel Guide
+              {t('home.welcome', 'Welcome to Houston Travel Guide')}
             </Typography>
             <Typography variant="h6" paragraph>
-              Your comprehensive guide for the FIRST Championship 2025 in Houston, Texas
+              {t('home.subtitle', 'Your comprehensive guide for the FIRST Championship 2025 in Houston, Texas')}
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
               <Button
@@ -45,7 +47,7 @@ const HomePage: React.FC = () => {
                 component={RouterLink}
                 to="/maps"
               >
-                Explore Maps
+                {t('navigation.maps', 'Explore Maps')}
               </Button>
               <Button
                 variant="outlined"
@@ -55,14 +57,14 @@ const HomePage: React.FC = () => {
                 to="/first-championship"
                 sx={{ color: 'white', borderColor: 'white' }}
               >
-                FIRST Championship Info
+                {t('navigation.firstChampionship', 'FIRST Championship Info')}
               </Button>
             </Box>
           </Box>
         </Paper>
       </Section>
 
-      <Section title="Featured Attractions" sx={{ mb: 6 }}>
+      <Section title={t('home.featuredAttractions', 'Featured Attractions')} sx={{ mb: 6 }}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={4}>
             <Card
@@ -78,7 +80,7 @@ const HomePage: React.FC = () => {
                   to="/attractions"
                   size="small"
                 >
-                  Learn More
+                  {t('home.learnMore', 'Learn More')}
                 </Button>
               }
             />
@@ -98,7 +100,7 @@ const HomePage: React.FC = () => {
                   to="/attractions"
                   size="small"
                 >
-                  Learn More
+                  {t('home.learnMore', 'Learn More')}
                 </Button>
               }
             />
@@ -118,7 +120,7 @@ const HomePage: React.FC = () => {
                   to="/first-championship"
                   size="small"
                 >
-                  Learn More
+                  {t('home.learnMore', 'Learn More')}
                 </Button>
               }
             />
@@ -126,7 +128,7 @@ const HomePage: React.FC = () => {
         </Grid>
       </Section>
 
-      <Section title="Quick Links" sx={{ mb: 6 }}>
+      <Section title={t('home.quickLinks', 'Quick Links')} sx={{ mb: 6 }}>
         <Paper sx={{ p: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={3}>
@@ -138,7 +140,7 @@ const HomePage: React.FC = () => {
                 to="/maps"
                 sx={{ py: 2 }}
               >
-                Maps
+                {t('navigation.maps', 'Maps')}
               </Button>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
@@ -150,7 +152,7 @@ const HomePage: React.FC = () => {
                 to="/dining"
                 sx={{ py: 2 }}
               >
-                Dining
+                {t('navigation.dining', 'Dining')}
               </Button>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
@@ -162,7 +164,7 @@ const HomePage: React.FC = () => {
                 to="/attractions"
                 sx={{ py: 2 }}
               >
-                Attractions
+                {t('navigation.attractions', 'Attractions')}
               </Button>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
@@ -174,7 +176,7 @@ const HomePage: React.FC = () => {
                 to="/first-championship"
                 sx={{ py: 2 }}
               >
-                FIRST Championship
+                {t('navigation.firstChampionship', 'FIRST Championship')}
               </Button>
             </Grid>
           </Grid>

@@ -1,4 +1,5 @@
-import React, { useState, useRef, useCallback, useMemo, useEffect } from 'react';
+import * as React from 'react';
+import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import { useDeviceDetect } from '../../../hooks/useDeviceDetect';
 import { APIProvider, Map, AdvancedMarker, InfoWindow } from '@vis.gl/react-google-maps';
 import {
@@ -69,6 +70,8 @@ const MapMarkers: React.FC<{
   useCustomIcons: boolean;
   getMarkerIcon: (category: string) => React.ReactNode;
 }> = ({ locations, onMarkerClick, useCustomIcons, getMarkerIcon }) => {
+  const [hoveredMarker, setHoveredMarker] = React.useState<string | null>(null);
+
   return (
     <>
       {locations.map(location => (
@@ -77,8 +80,46 @@ const MapMarkers: React.FC<{
           position={location.position}
           title={location.name}
           onClick={() => onMarkerClick(location)}
+          ref={marker => {
+            if (marker) {
+              marker.addEventListener('mouseover', () => setHoveredMarker(location.id));
+              marker.addEventListener('mouseout', () => setHoveredMarker(null));
+            }
+          }}
         >
-          {useCustomIcons ? getMarkerIcon(location.category) : undefined}
+          {hoveredMarker === location.id ? (
+            <Box
+              sx={{
+                p: 1,
+                bgcolor: 'white',
+                borderRadius: 1,
+                boxShadow: 3,
+                maxWidth: 200,
+              }}
+            >
+              <Typography variant="subtitle2" gutterBottom>
+                {location.name}
+              </Typography>
+              {location.description && (
+                <Typography variant="body2" color="text.secondary">
+                  {location.description}
+                </Typography>
+              )}
+            </Box>
+          ) : useCustomIcons ? (
+            getMarkerIcon(location.category)
+          ) : (
+            <Box
+              sx={{
+                width: 24,
+                height: 24,
+                borderRadius: '50%',
+                bgcolor: '#4285F4',
+                border: '2px solid white',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+              }}
+            />
+          )}
         </AdvancedMarker>
       ))}
     </>

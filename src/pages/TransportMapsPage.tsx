@@ -39,7 +39,7 @@ const transportLocations: Location[] = [
     description:
       "Houston's largest international airport, located about 23 miles north of downtown.",
     address: '2800 N Terminal Rd, Houston, TX 77032',
-    image: '/assets/images/transport/iah-airport.jpg',
+    image: 'assets/images/transport/iah-airport.jpg',
   },
   {
     id: '2',

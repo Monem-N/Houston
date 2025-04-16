@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Typography,
   Box,
@@ -22,6 +23,7 @@ import {
 import { Card, PageHeader, Section } from '../components/common';
 
 const FirstChampionshipPage: React.FC = () => {
+  const { t } = useTranslation();
   // Event schedule data
   const schedule = [
     {
@@ -89,42 +91,38 @@ const FirstChampionshipPage: React.FC = () => {
   return (
     <Container maxWidth="lg">
       <PageHeader
-        title="FIRST Championship 2025"
-        subtitle="Everything you need to know about the FIRST Championship event in Houston, April 16-19, 2025."
+        title={t('firstChampionship.title', 'FIRST Championship 2025')}
+        subtitle={t('firstChampionship.subtitle', 'Everything you need to know about the FIRST Championship event in Houston, April 16-19, 2025.')}
         data-testid="page-title"
       />
 
       <Grid container spacing={4}>
         <Grid item xs={12} md={8}>
           <Section
-            title="Event Overview"
+            title={t('firstChampionship.eventOverview', 'Event Overview')}
             titleIcon={<EventIcon color="primary" />}
             divider
             sx={{ mb: 4 }}
           >
             <Box sx={{ mb: 3 }}>
               <Typography variant="body1" paragraph>
-                The FIRST Championship is the culmination of the FIRST Robotics Competition season,
-                bringing together teams from around the world to compete and celebrate STEM
-                education.
+                {t('firstChampionship.overview.paragraph1', 'The FIRST Championship is the culmination of the FIRST Robotics Competition season, bringing together teams from around the world to compete and celebrate STEM education.')}
               </Typography>
               <Typography variant="body1" paragraph>
-                The 2025 Championship in Houston will feature competitions across all FIRST
-                programs: FIRST LEGO League Jr., FIRST LEGO League, FIRST Tech Challenge, and FIRST
-                Robotics Competition.
+                {t('firstChampionship.overview.paragraph2', 'The 2025 Championship in Houston will feature competitions across all FIRST programs: FIRST LEGO League Jr., FIRST LEGO League, FIRST Tech Challenge, and FIRST Robotics Competition.')}
               </Typography>
             </Box>
 
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 3 }}>
-              <Chip icon={<LocationIcon />} label="Houston, TX" />
-              <Chip icon={<ScheduleIcon />} label="April 16-19, 2025" />
-              <Chip icon={<TeamIcon />} label="600+ Teams" />
-              <Chip icon={<TrophyIcon />} label="World Championship" />
+              <Chip icon={<LocationIcon />} label={t('firstChampionship.location', 'Houston, TX')} />
+              <Chip icon={<ScheduleIcon />} label={t('firstChampionship.dates', 'April 16-19, 2025')} />
+              <Chip icon={<TeamIcon />} label={t('firstChampionship.teams', '600+ Teams')} />
+              <Chip icon={<TrophyIcon />} label={t('firstChampionship.championship', 'World Championship')} />
             </Box>
           </Section>
 
           <Section
-            title="Event Schedule"
+            title={t('firstChampionship.schedule.title', 'Event Schedule')}
             titleIcon={<ScheduleIcon color="primary" />}
             divider
             sx={{ mb: 4 }}
@@ -162,7 +160,7 @@ const FirstChampionshipPage: React.FC = () => {
 
         <Grid item xs={12} md={4}>
           <Section
-            title="Venues"
+            title={t('firstChampionship.venues.title', 'Venues')}
             titleIcon={<LocationIcon color="primary" />}
             divider
             sx={{ mb: 4 }}
@@ -176,7 +174,7 @@ const FirstChampionshipPage: React.FC = () => {
             ))}
           </Section>
 
-          <Section title="Important Information" titleIcon={<InfoIcon color="primary" />} divider>
+          <Section title={t('firstChampionship.importantInfo', 'Important Information')} titleIcon={<InfoIcon color="primary" />} divider>
             <List dense>
               <ListItem>
                 <ListItemIcon>

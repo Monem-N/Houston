@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Card as MuiCard,
   CardProps as MuiCardProps,
@@ -30,6 +31,7 @@ const Card: React.FC<CardProps> = ({
   action,
   ...props
 }) => {
+  const { t } = useTranslation();
   return (
     <MuiCard
       {...props}
@@ -40,23 +42,23 @@ const Card: React.FC<CardProps> = ({
           component="img"
           height={imageHeight}
           image={image}
-          alt={imageAlt || title || 'Card image'}
+          alt={imageAlt ? t(imageAlt, imageAlt) : title ? t(title, title) : t('common.cardImage', 'Card image')}
         />
       )}
       <CardContent sx={{ flexGrow: 1 }}>
         {title && (
           <Typography variant="h6" component="h3" gutterBottom>
-            {title}
+            {t(title, title)}
           </Typography>
         )}
         {subtitle && (
           <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-            {subtitle}
+            {t(subtitle, subtitle)}
           </Typography>
         )}
         {description && (
           <Typography variant="body2" color="text.secondary" paragraph>
-            {description}
+            {t(description, description)}
           </Typography>
         )}
         {children}

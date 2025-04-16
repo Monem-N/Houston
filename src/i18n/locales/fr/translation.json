@@ -1,0 +1,371 @@
+{
+  "app": {
+    "title": "Guide de voyage à Houston",
+    "language": "Langue"
+  },
+  "menu": {
+    "title": "Menu",
+    "home": "Accueil",
+    "maps": "Cartes",
+    "firstChampionship": "Championnat FIRST",
+    "guides": {
+      "title": "Guides",
+      "dining": "Restauration",
+      "attractions": "Attractions",
+      "shopping": "Shopping"
+    },
+    "itineraries": {
+      "title": "Itinéraires",
+      "arrivalDeparture": "Arrivée & Départ",
+      "hermannParkZoo": "Parc Hermann & Zoo",
+      "museumDistrict": "Quartier des Musées",
+      "spaceCenterKemah": "Centre Spatial & Kemah"
+    }
+  },
+  "navigation": {
+    "home": "Accueil",
+    "introduction": "Introduction",
+    "maps": "Cartes",
+    "dining": "Restauration",
+    "attractions": "Attractions",
+    "shopping": "Shopping",
+    "safety": "Sécurité & Logistique",
+    "firstChampionship": "Championnat FIRST",
+    "transportMaps": "Cartes de transport",
+    "emergencyContacts": "Contacts d'urgence",
+    "itineraries": "Itinéraires",
+    "localDining": "Restauration & Shopping local",
+    "touristanbul": "Touristanbul",
+    "search": "Recherche",
+    "favorites": "Favoris",
+    "more": "Plus",
+    "localMaps": "Cartes locales de Houston"
+  },
+  "home": {
+    "welcome": "Bienvenue au Guide de Voyage de Houston",
+    "subtitle": "Votre guide complet pour le Championnat FIRST 2025 à Houston, Texas",
+    "getStarted": "Commencer",
+    "featuredAttractions": "Attractions Vedettes",
+    "learnMore": "En Savoir Plus",
+    "quickLinks": "Liens Rapides"
+  },
+  "introduction": {
+    "title": "Introduction à Houston",
+    "subtitle": "Bienvenue dans la Ville Spatiale",
+    "quickFacts": "Faits rapides",
+    "weather": "Météo",
+    "language": "Langue",
+    "timezone": "Fuseau horaire",
+    "currency": "Devise"
+  },
+  "attractions": {
+    "title": "Attractions",
+    "subtitle": "Découvrez les meilleures attractions et activités à Houston pendant votre séjour.",
+    "overview": "Houston offre une grande variété d'attractions pour les visiteurs, des musées de classe mondiale et des institutions culturelles aux espaces extérieurs et aux lieux de divertissement. Voici quelques-unes des attractions les plus populaires à visiter pendant votre séjour à Houston.",
+    "popularAttractions": "Attractions Populaires",
+    "featuredAttractions": "Attractions Vedettes",
+    "featuredMuseums": "Musées Vedettes",
+    "buyTickets": "Acheter des Billets",
+    "reviews": "{{count}} avis",
+    "aboutArea": "À propos de {{name}}",
+    "highlights": "Points forts",
+    "gettingThere": "Comment s'y rendre",
+    "tips": "Conseils",
+    "tabs": {
+      "all": "Toutes les Attractions",
+      "spaceCenter": "Centre Spatial & Kemah",
+      "museumDistrict": "Quartier des Musées",
+      "hermannPark": "Parc Hermann & Zoo"
+    },
+    "areas": {
+      "spaceCenter": {
+        "name": "Centre Spatial & Kemah",
+        "description": "Explorez le Centre Spatial Johnson de la NASA et la promenade de Kemah pour un mélange parfait d'éducation et de divertissement.",
+        "highlights": {
+          "1": "Visitez le Centre Spatial Johnson de la NASA et voyez de véritables vaisseaux spatiaux",
+          "2": "Profitez de la promenade de Kemah avec ses attractions, restaurants et boutiques",
+          "3": "Apprenez-en plus sur le programme spatial américain et les futures missions",
+          "4": "Profitez de la restauration et du divertissement au bord de l'eau"
+        },
+        "gettingThere": "Le Space Center Houston est situé à environ 40 kilomètres au sud-est du centre-ville de Houston. La promenade de Kemah est à environ 20 minutes plus au sud-est. La conduite est recommandée, mais des visites guidées sont également disponibles depuis le centre-ville de Houston.",
+        "tips": {
+          "1": "Prévoyez au moins 4-5 heures pour le Space Center Houston pour tout voir",
+          "2": "Achetez les billets du Space Center en ligne à l'avance pour éviter les files d'attente",
+          "3": "Visitez la promenade de Kemah en soirée pour la meilleure ambiance",
+          "4": "Consultez le site Web du Space Center pour les événements spéciaux et les apparitions d'astronautes"
+        }
+      },
+      "museumDistrict": {
+        "name": "Quartier des Musées",
+        "description": "Le quartier des musées de Houston comprend 19 musées dans un rayon de 2,4 kilomètres, offrant des expositions de classe mondiale en art, science, histoire et culture.",
+        "highlights": {
+          "1": "Visitez le Musée des sciences naturelles de Houston avec sa salle des dinosaures et son planétarium",
+          "2": "Explorez le Musée des beaux-arts avec plus de 65 000 œuvres allant de l'antiquité à nos jours",
+          "3": "Vivez l'expérience du Musée des enfants de Houston, classé parmi les meilleurs du pays",
+          "4": "Découvrez le Musée de la santé, le Musée de l'Holocauste et le Musée d'art contemporain"
+        },
+        "gettingThere": "Le quartier des musées est situé juste au sud du centre-ville de Houston. Il est facilement accessible via la ligne rouge du METRORail, avec plusieurs stations desservant la zone. Le stationnement est disponible mais peut être limité les jours d'affluence.",
+        "tips": {
+          "1": "De nombreux musées offrent une entrée gratuite le jeudi",
+          "2": "Envisagez le Houston CityPASS si vous visitez plusieurs attractions",
+          "3": "La zone est accessible à pied, mais la chaleur de Houston peut être intense - restez hydraté",
+          "4": "Certains musées nécessitent des billets d'entrée à heure fixe - vérifiez les sites Web avant de visiter"
+        }
+      },
+      "hermannPark": {
+        "name": "Parc Hermann & Zoo",
+        "description": "Le parc Hermann est un parc urbain de 180 hectares qui comprend le zoo de Houston, le jardin japonais, le théâtre en plein air Miller et des installations récréatives.",
+        "highlights": {
+          "1": "Visitez le zoo de Houston avec plus de 6 000 animaux de 900 espèces",
+          "2": "Profitez du jardin japonais avec son architecture et son paysage traditionnels",
+          "3": "Montez à bord du chemin de fer du parc Hermann, parfait pour les familles avec enfants",
+          "4": "Assistez à un spectacle gratuit au théâtre en plein air Miller (saisonnier)"
+        },
+        "gettingThere": "Le parc Hermann est situé à côté du quartier des musées. Il est accessible via la ligne rouge du METRORail (station Hermann Park/Rice University). Le stationnement est disponible dans plusieurs parkings à travers le parc.",
+        "tips": {
+          "1": "Le zoo de Houston est plus fréquenté les week-ends et jours fériés - visitez en semaine si possible",
+          "2": "Apportez un pique-nique pour profiter des zones désignées du parc",
+          "3": "Louez un pédalo sur le lac McGovern pour une expérience relaxante",
+          "4": "Consultez le programme du théâtre en plein air Miller pour les spectacles gratuits"
+        }
+      }
+    }
+  },
+  "shopping": {
+    "title": "Shopping",
+    "subtitle": "Explorez les options de shopping à Houston, des centres commerciaux aux boutiques locales.",
+    "options": "Options de Shopping",
+    "overview": "Houston offre une variété d'expériences de shopping, des grands centres commerciaux aux centres commerciaux haut de gamme et aux magasins locaux. Voici quelques destinations de shopping recommandées pour les visiteurs pendant le Championnat FIRST.",
+    "mallsDescription": "Houston abrite plusieurs grands centres commerciaux et centres de magasins d'usine. Ces destinations offrent une grande variété de magasins, des marques de luxe haut de gamme aux boutiques à prix réduits.",
+    "storesTitle": "Magasins et Quartiers Commerciaux",
+    "storesDescription": "En plus des centres commerciaux, Houston possède plusieurs magasins individuels et quartiers commerciaux qui offrent des expériences de shopping uniques. Ceux-ci incluent des grands magasins et des quartiers commerciaux charmants.",
+    "comparisonDescription": "Cette comparaison vous aide à décider où faire vos achats en fonction de vos besoins et de votre budget. Les prix sont approximatifs et peuvent varier.",
+    "website": "Site Web",
+    "directions": "Directions",
+    "viewOnMap": "Voir les Emplacements de Shopping sur la Carte",
+    "categories": {
+      "mall": "Centre Commercial",
+      "district": "Quartier",
+      "store": "Magasin",
+      "shoppingDistrict": "Quartier Commercial"
+    },
+    "tabs": {
+      "all": "Tout le Shopping",
+      "malls": "Centres Commerciaux & Outlets",
+      "stores": "Magasins & Quartiers",
+      "comparison": "Comparaison de Prix"
+    },
+    "comparison": {
+      "item": "Article",
+      "katyMills": "Katy Mills",
+      "galleria": "The Galleria",
+      "targetWalmart": "Target/Walmart",
+      "notes": "Notes",
+      "clothing": {
+        "title": "Vêtements"
+      },
+      "electronics": {
+        "title": "Électronique"
+      },
+      "souvenirs": {
+        "title": "Souvenirs"
+      }
+    },
+    "tips": {
+      "title": "Conseils de Shopping",
+      "tip1": "Katy Mills est idéal pour le shopping en outlet mais est plus éloigné du centre-ville (40 kilomètres).",
+      "tip2": "The Galleria offre du shopping haut de gamme et est plus proche du centre-ville (13 kilomètres).",
+      "tip3": "Target et Walmart sont les meilleurs pour les produits essentiels quotidiens et les souvenirs de base.",
+      "tip4": "Tenez compte des coûts de transport lorsque vous décidez où faire vos achats.",
+      "tip5": "De nombreux centres commerciaux offrent des programmes de réduction pour les visiteurs - renseignez-vous aux bureaux d'information."
+    },
+    "venues": {
+      "1": {
+        "name": "Katy Mills Mall",
+        "description": "Un grand centre commercial outlet avec plus de 175 magasins, y compris des marques de créateurs à prix réduits."
+      },
+      "2": {
+        "name": "The Galleria",
+        "description": "La principale destination de shopping de Houston avec plus de 400 magasins, y compris des marques de luxe haut de gamme."
+      },
+      "3": {
+        "name": "Target",
+        "description": "Détaillant de marchandises générales offrant une grande variété de produits, y compris des vêtements, de l'électronique et des produits d'épicerie."
+      },
+      "4": {
+        "name": "Walmart Supercenter",
+        "description": "Grand magasin de détail offrant une large gamme de produits à des prix abordables, y compris des produits d'épicerie."
+      },
+      "5": {
+        "name": "Houston Premium Outlets",
+        "description": "Centre commercial outlet en plein air proposant des magasins de créateurs et de marques à prix réduits."
+      },
+      "6": {
+        "name": "Rice Village",
+        "description": "Charmant quartier commercial avec un mélange de détaillants nationaux et de boutiques locales."
+      }
+    }
+  },
+  "common": {
+    "cardImage": "Image de carte"
+  },
+  "timeDisplay": {
+    "currentTime": "Heure Actuelle",
+    "tunis": "Tunis",
+    "houston": "Houston"
+  },
+  "notFound": {
+    "title": "404 - Page Non Trouvée",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée. Veuillez vérifier l'URL ou retourner à la page d'accueil.",
+    "returnHome": "Retour à l'Accueil"
+  },
+  "search": {
+    "title": "Recherche",
+    "subtitle": "Trouvez des lieux à Houston pour le Championnat FIRST 2025",
+    "list": "Liste",
+    "map": "Carte",
+    "results": "Résultats",
+    "backToList": "Retour à la Liste",
+    "directions": "Itinéraire"
+  },
+  "favorites": {
+    "title": "Lieux Favoris",
+    "subtitle": "Vos lieux enregistrés à Houston",
+    "noFavorites": "Vous n'avez pas encore ajouté de lieux favoris. Parcourez la carte ou recherchez des lieux pour les ajouter à vos favoris.",
+    "yourFavorites": "Vos Favoris",
+    "mapView": "Vue Carte"
+  },
+  "firstChampionship": {
+    "title": "Championnat FIRST 2025",
+    "subtitle": "Tout ce que vous devez savoir sur le Championnat FIRST à Houston, du 16 au 19 avril 2025.",
+    "eventOverview": "Aperçu de l'Événement",
+    "overview": {
+      "paragraph1": "Le Championnat FIRST est l'aboutissement de la saison de la Compétition de Robotique FIRST, réunissant des équipes du monde entier pour concourir et célébrer l'éducation STEM.",
+      "paragraph2": "Le Championnat 2025 à Houston présentera des compétitions dans tous les programmes FIRST : FIRST LEGO League Jr., FIRST LEGO League, FIRST Tech Challenge et FIRST Robotics Competition."
+    },
+    "location": "Houston, TX",
+    "dates": "16-19 avril 2025",
+    "teams": "Plus de 600 Équipes",
+    "championship": "Championnat Mondial",
+    "schedule": {
+      "title": "Programme de l'Événement"
+    },
+    "venues": {
+      "title": "Lieux"
+    },
+    "importantInfo": "Informations Importantes"
+  },
+  "maps": {
+    "title": "Cartes",
+    "subtitle": "Cartes interactives de Houston avec des points d'intérêt pour le Championnat FIRST 2025.",
+    "tabs": {
+      "allLocations": "Tous les Lieux",
+      "attractions": "Attractions",
+      "restaurants": "Restaurants",
+      "shopping": "Shopping",
+      "hotels": "Hôtels",
+      "transportation": "Transport",
+      "firstChampionship": "Championnat FIRST",
+      "itineraries": "Itinéraires"
+    },
+    "sections": {
+      "allLocations": "Tous les Lieux",
+      "attractions": "Attractions",
+      "restaurants": "Restaurants",
+      "shopping": "Shopping",
+      "hotels": "Hôtels",
+      "transportation": "Transport",
+      "firstChampionshipVenues": "Lieux du Championnat FIRST",
+      "travelItinerary": "Itinéraire de Voyage: 14-24 avril 2025"
+    },
+    "itinerary": {
+      "title": "Plan de Voyage Complet: 14-24 avril 2025",
+      "description": "Cet itinéraire couvre l'ensemble du voyage depuis le départ de Tunis jusqu'au retour, y compris le Championnat FIRST et l'exploration des attractions de Houston.",
+      "overview": "Aperçu :",
+      "detailedItinerary": "Itinéraire Détaillé :"
+    }
+  },
+  "dining": {
+    "title": "Restauration",
+    "subtitle": "Explorez les meilleures options de restauration à Houston près des lieux du Championnat FIRST.",
+    "featuredRestaurants": "Restaurants en vedette",
+    "restaurants": {
+      "1": {
+        "name": "Restaurant Houston 1",
+        "type": "Américain",
+        "description": "Un restaurant américain populaire avec une variété de plats."
+      },
+      "2": {
+        "name": "Café Houston 1",
+        "type": "Café",
+        "description": "Un café confortable avec d'excellents cafés et pâtisseries."
+      },
+      "3": {
+        "name": "Bar Houston 1",
+        "type": "Bar & Grill",
+        "description": "Un bar animé avec de la bonne nourriture et des boissons."
+      },
+      "4": {
+        "name": "Restaurant Houston 2",
+        "type": "Mexicain",
+        "description": "Cuisine mexicaine authentique dans une atmosphère vibrante."
+      },
+      "5": {
+        "name": "Café Houston 2",
+        "type": "Boulangerie",
+        "description": "Produits de boulangerie frais et cafés de spécialité."
+      },
+      "6": {
+        "name": "Restaurant Houston 3",
+        "type": "Italien",
+        "description": "Plats italiens traditionnels dans un cadre familial."
+      }
+    }
+  },
+  "guides": {
+    "arrival": {
+      "title": "Guide d'arrivée et de départ",
+      "dates": "14-15 & 23-24 avril",
+      "airport": "Informations sur l'aéroport",
+      "transportation": "Options de transport",
+      "hotels": "Enregistrement/départ de l'hôtel"
+    },
+    "spaceCenter": {
+      "title": "Guide du Space Center & Kemah",
+      "subtitle": "Explorez le Centre Spatial Johnson de la NASA et la promenade de Kemah",
+      "hours": "Heures d'ouverture",
+      "tickets": "Informations sur les billets",
+      "exhibits": "Expositions principales",
+      "transportation": "Comment s'y rendre"
+    },
+    "spaceCenterKemah": {
+      "title": "Guide du Space Center & Kemah",
+      "subtitle": "Explorez le Centre Spatial Johnson de la NASA et la promenade de Kemah",
+      "overview": {
+        "title": "Aperçu",
+        "subtitle": "Deux des attractions les plus populaires de Houston",
+        "description": "Le Space Center Houston et le Kemah Boardwalk sont deux des attractions les plus populaires de la région de Houston, situées l'une près de l'autre le long de la côte du Golfe. Le Space Center Houston offre une expérience éducative sur la NASA et l'exploration spatiale, tandis que le Kemah Boardwalk propose des divertissements, des restaurants et des manèges au bord de l'eau. Ce guide vous aidera à planifier votre visite de ces attractions pendant le Championnat FIRST.",
+        "spaceCenterName": "Space Center Houston",
+        "kemahName": "Kemah Boardwalk",
+        "from": "À partir de",
+        "ridesFrom": "Manèges à partir de 4,00$"
+      }
+    },
+    "museumDistrict": {
+      "title": "Guide du quartier des musées",
+      "subtitle": "Explorez le centre culturel de Houston",
+      "hours": "Heures d'ouverture",
+      "tickets": "Informations sur les billets",
+      "museums": "Musées en vedette",
+      "transportation": "Comment s'y rendre"
+    },
+    "hermannPark": {
+      "title": "Guide du parc Hermann & du zoo",
+      "subtitle": "Explorez l'oasis urbaine de Houston",
+      "hours": "Heures d'ouverture",
+      "tickets": "Informations sur les billets",
+      "attractions": "Attractions principales",
+      "transportation": "Comment s'y rendre"
+    }
+  }
+}

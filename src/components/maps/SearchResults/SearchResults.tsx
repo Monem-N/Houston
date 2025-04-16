@@ -18,8 +18,6 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   results,
   onResultClick,
   onGetDirections,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  getMarkerIcon,
   maxHeight = '400px',
   onAddToFavorites,
 }) => {

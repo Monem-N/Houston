@@ -123,6 +123,10 @@ npm run build
 
 This will generate optimized files in the `dist` directory that can be deployed to any static hosting service.
 
+### Asset Management
+- Image downloads use a separate Unsplash API key passed as script argument
+- Run download script with: `bash scripts/download-images.sh YOUR_UNSPLASH_KEY`
+
 ### Environment Variables
 
 The application uses the following environment variables:
@@ -133,6 +137,12 @@ The application uses the following environment variables:
 - `VITE_GOOGLE_MAPS_MAP_ID` - Google Maps Map ID (optional)
 
 Ensure these variables are set in a `.env` file in the root directory.
+
+**Security Note**:
+- Never commit `.env` files to version control
+- Keep credentials secure - only share with authorized team members
+- Rotate keys immediately if compromised
+- Use environment-specific variables for production deployments
 
 ## License
 

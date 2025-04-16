@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Container, Box, Grid, Typography, Button } from '@mui/material';
 import { Map as MapIcon, List as ListIcon } from '@mui/icons-material';
 import { PageHeader, Section } from '../components/common';
@@ -12,9 +13,9 @@ import { useAppDispatch } from '../store/hooks';
 import { addFavorite } from '../redux/store';
 
 const SearchPage: React.FC = () => {
+  const { t } = useTranslation();
   const { isMobile } = useDeviceDetect();
   // We track the search query in state but don't need to access it directly
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [filteredLocations, setFilteredLocations] = useState<Location[]>(allLocations);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
@@ -113,8 +114,8 @@ const SearchPage: React.FC = () => {
   return (
     <Container maxWidth="lg" sx={{ pb: isMobile ? 8 : 0 }}>
       <PageHeader
-        title="Search"
-        subtitle="Find locations in Houston for the FIRST Championship 2025"
+        title={t('search.title', 'Search')}
+        subtitle={t('search.subtitle', 'Find locations in Houston for the FIRST Championship 2025')}
       />
 
       <SearchBar
@@ -134,14 +135,14 @@ const SearchPage: React.FC = () => {
             onClick={() => setViewMode('list')}
             sx={{ mr: 1 }}
           >
-            List
+            {t('search.list', 'List')}
           </Button>
           <Button
             variant={viewMode === 'map' ? 'contained' : 'outlined'}
             startIcon={<MapIcon />}
             onClick={() => setViewMode('map')}
           >
-            Map
+            {t('search.map', 'Map')}
           </Button>
         </Box>
       )}
@@ -150,7 +151,7 @@ const SearchPage: React.FC = () => {
         {/* Search Results */}
         {(!isMobile || viewMode === 'list') && (
           <Grid item xs={12} md={4}>
-            <Section title="Results" titleIcon={<ListIcon color="primary" />}>
+            <Section title={t('search.results', 'Results')} titleIcon={<ListIcon color="primary" />}>
               <SearchResults
                 results={filteredLocations}
                 onResultClick={handleResultClick}
@@ -166,7 +167,7 @@ const SearchPage: React.FC = () => {
         {/* Map */}
         {(!isMobile || viewMode === 'map') && (
           <Grid item xs={12} md={8}>
-            <Section title="Map" titleIcon={<MapIcon color="primary" />}>
+            <Section title={t('search.map', 'Map')} titleIcon={<MapIcon color="primary" />}>
               <ReactGoogleMap
                 locations={filteredLocations}
                 height={isMobile ? '60vh' : '70vh'}
@@ -196,14 +197,14 @@ const SearchPage: React.FC = () => {
                     onClick={() => setViewMode('list')}
                     sx={{ mr: 1 }}
                   >
-                    Back to List
+                    {t('search.backToList', 'Back to List')}
                   </Button>
                   <Button
                     size="small"
                     startIcon={<MapIcon />}
                     onClick={() => getDirections(selectedLocation)}
                   >
-                    Directions
+                    {t('search.directions', 'Directions')}
                   </Button>
                 </Box>
               )}

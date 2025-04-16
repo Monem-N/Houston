@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Typography,
   Box,
@@ -57,6 +58,7 @@ interface AreaInfo {
 }
 
 const AttractionsPage: React.FC = () => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
@@ -66,62 +68,61 @@ const AttractionsPage: React.FC = () => {
   // All attractions data
   // Space Center & Kemah area information
   const spaceCenterAreaInfo: AreaInfo = {
-    name: 'Space Center & Kemah',
-    description:
-      "Explore NASA's Johnson Space Center and the nearby Kemah Boardwalk for a perfect blend of education and entertainment.",
+    name: t('attractions.areas.spaceCenter.name', 'Space Center & Kemah'),
+    description: t('attractions.areas.spaceCenter.description', "Explore NASA's Johnson Space Center and the nearby Kemah Boardwalk for a perfect blend of education and entertainment."),
     image: '/assets/images/attractions/space-center-area.jpg',
     highlights: [
-      "Tour NASA's Johnson Space Center and see real spacecraft",
-      'Experience the Kemah Boardwalk with rides, restaurants, and shops',
-      "Learn about America's space program and future missions",
-      'Enjoy waterfront dining and entertainment',
+      t('attractions.areas.spaceCenter.highlights.1', "Tour NASA's Johnson Space Center and see real spacecraft"),
+      t('attractions.areas.spaceCenter.highlights.2', 'Experience the Kemah Boardwalk with rides, restaurants, and shops'),
+      t('attractions.areas.spaceCenter.highlights.3', "Learn about America's space program and future missions"),
+      t('attractions.areas.spaceCenter.highlights.4', 'Enjoy waterfront dining and entertainment'),
     ],
-    gettingThere:
-      'Space Center Houston is located about 25 miles southeast of downtown Houston. Kemah Boardwalk is approximately 20 minutes further southeast. Driving is recommended, but guided tours are also available from downtown Houston.',
-    tips: ['Plan at least 4-5 hours for Space Center Houston to see everything',
-      'Buy Space Center tickets online in advance to avoid lines',
-      'Visit Kemah Boardwalk in the evening for the best atmosphere','Check the Space Center website for special events and astronaut appearances',
+    gettingThere: t('attractions.areas.spaceCenter.gettingThere', 'Space Center Houston is located about 25 miles southeast of downtown Houston. Kemah Boardwalk is approximately 20 minutes further southeast. Driving is recommended, but guided tours are also available from downtown Houston.'),
+    tips: [
+      t('attractions.areas.spaceCenter.tips.1', 'Plan at least 4-5 hours for Space Center Houston to see everything'),
+      t('attractions.areas.spaceCenter.tips.2', 'Buy Space Center tickets online in advance to avoid lines'),
+      t('attractions.areas.spaceCenter.tips.3', 'Visit Kemah Boardwalk in the evening for the best atmosphere'),
+      t('attractions.areas.spaceCenter.tips.4', 'Check the Space Center website for special events and astronaut appearances'),
     ],
   };
 
   // Museum District area information
   const museumDistrictAreaInfo: AreaInfo = {
-    name: 'Museum District',
-    description:
-      "Houston's Museum District features 19 museums within a 1.5-mile radius, offering world-class exhibits in art, science, history, and culture.",
+    name: t('attractions.areas.museumDistrict.name', 'Museum District'),
+    description: t('attractions.areas.museumDistrict.description', "Houston's Museum District features 19 museums within a 1.5-mile radius, offering world-class exhibits in art, science, history, and culture."),
     image: '/assets/images/attractions/museum-district-area.jpg',
     highlights: [
-      'Visit the Houston Museum of Natural Science with its dinosaur hall and planetarium',
-      'Explore the Museum of Fine Arts with over 65,000 works spanning antiquity to present',
-      "Experience the Children's Museum of Houston, rated one of the best in the country",
-      'Discover the Health Museum, Holocaust Museum, and Contemporary Arts Museum',
+      t('attractions.areas.museumDistrict.highlights.1', 'Visit the Houston Museum of Natural Science with its dinosaur hall and planetarium'),
+      t('attractions.areas.museumDistrict.highlights.2', 'Explore the Museum of Fine Arts with over 65,000 works spanning antiquity to present'),
+      t('attractions.areas.museumDistrict.highlights.3', "Experience the Children's Museum of Houston, rated one of the best in the country"),
+      t('attractions.areas.museumDistrict.highlights.4', 'Discover the Health Museum, Holocaust Museum, and Contemporary Arts Museum'),
     ],
-    gettingThere:
-      "The Museum District is located just south of downtown Houston. It's easily accessible via the METRORail Red Line, with several stations serving the area. Parking is available but can be limited on busy days.",
+    gettingThere: t('attractions.areas.museumDistrict.gettingThere', "The Museum District is located just south of downtown Houston. It's easily accessible via the METRORail Red Line, with several stations serving the area. Parking is available but can be limited on busy days."),
     tips: [
-      'Many museums offer free admission on Thursdays',
-      'Consider the Houston CityPASS if visiting multiple attractions',
-      'The area is walkable, but the Houston heat can be intense - stay hydrated','Some museums require timed entry tickets - check websites before visiting',
+      t('attractions.areas.museumDistrict.tips.1', 'Many museums offer free admission on Thursdays'),
+      t('attractions.areas.museumDistrict.tips.2', 'Consider the Houston CityPASS if visiting multiple attractions'),
+      t('attractions.areas.museumDistrict.tips.3', 'The area is walkable, but the Houston heat can be intense - stay hydrated'),
+      t('attractions.areas.museumDistrict.tips.4', 'Some museums require timed entry tickets - check websites before visiting'),
     ],
   };
 
   // Hermann Park & Zoo area information
   const hermannParkAreaInfo: AreaInfo = {
-    name: 'Hermann Park & Zoo',
-    description:
-      'Hermann Park is a 445-acre urban park that includes the Houston Zoo, Japanese Garden, Miller Outdoor Theatre, and recreational facilities.',
+    name: t('attractions.areas.hermannPark.name', 'Hermann Park & Zoo'),
+    description: t('attractions.areas.hermannPark.description', 'Hermann Park is a 445-acre urban park that includes the Houston Zoo, Japanese Garden, Miller Outdoor Theatre, and recreational facilities.'),
     image:'/assets/images/attractions/hermann-park-area.jpg',
     highlights: [
-      'Visit the Houston Zoo with over 6,000 animals from 900 species',
-      'Enjoy the Japanese Garden with traditional architecture and landscaping','Ride the Hermann Park Railroad, perfect for families with children',
-      'Catch a free performance at Miller Outdoor Theatre (seasonal)',
+      t('attractions.areas.hermannPark.highlights.1', 'Visit the Houston Zoo with over 6,000 animals from 900 species'),
+      t('attractions.areas.hermannPark.highlights.2', 'Enjoy the Japanese Garden with traditional architecture and landscaping'),
+      t('attractions.areas.hermannPark.highlights.3', 'Ride the Hermann Park Railroad, perfect for families with children'),
+      t('attractions.areas.hermannPark.highlights.4', 'Catch a free performance at Miller Outdoor Theatre (seasonal)'),
     ],
-    gettingThere:
-      "Hermann Park is located adjacent to the Museum District. It's accessible via the METRORail Red Line (Hermann Park/Rice University station). Parking is available in several lots throughout the park.",
+    gettingThere: t('attractions.areas.hermannPark.gettingThere', "Hermann Park is located adjacent to the Museum District. It's accessible via the METRORail Red Line (Hermann Park/Rice University station). Parking is available in several lots throughout the park."),
     tips: [
-      'The Houston Zoo is busiest on weekends and holidays - visit on weekdays if possible',
-      'Bring a picnic to enjoy in designated areas of the park',
-      'Rent a paddleboat on McGovern Lake for a relaxing experience','Check the Miller Outdoor Theatre schedule for free performances',
+      t('attractions.areas.hermannPark.tips.1', 'The Houston Zoo is busiest on weekends and holidays - visit on weekdays if possible'),
+      t('attractions.areas.hermannPark.tips.2', 'Bring a picnic to enjoy in designated areas of the park'),
+      t('attractions.areas.hermannPark.tips.3', 'Rent a paddleboat on McGovern Lake for a relaxing experience'),
+      t('attractions.areas.hermannPark.tips.4', 'Check the Miller Outdoor Theatre schedule for free performances'),
     ],
   };
 
@@ -387,7 +388,7 @@ const AttractionsPage: React.FC = () => {
               size="small"
               fullWidth
             >
-              Buy Tickets
+              {t('attractions.buyTickets', 'Buy Tickets')}
             </Button>
           )
         }
@@ -402,7 +403,7 @@ const AttractionsPage: React.FC = () => {
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Rating value={attraction.rating} readOnly precision={0.1} size="small" />
                 <Typography variant="body2" color="text.secondary" sx={{ ml: 0.5 }}>
-                  ({attraction.reviewCount})
+                  ({t('attractions.reviews', '{{count}} reviews', { count: attraction.reviewCount })})
                 </Typography>
               </Box>
             )}
@@ -452,14 +453,14 @@ const AttractionsPage: React.FC = () => {
         </Grid>
         <Grid item xs={12} md={8}>
           <Typography variant="h5" gutterBottom>
-            About {areaInfo.name}
+            {t('attractions.aboutArea', 'About {{name}}', { name: areaInfo.name })}
           </Typography>
           <Typography variant="body1" paragraph>
             {areaInfo.description}
           </Typography>
 
           <Typography variant="subtitle1" gutterBottom>
-            <strong>Highlights:</strong>
+            <strong>{t('attractions.highlights', 'Highlights')}:</strong>
           </Typography>
           <List dense>
             {areaInfo.highlights.map((highlight, index) => (
@@ -473,14 +474,14 @@ const AttractionsPage: React.FC = () => {
           </List>
 
           <Typography variant="subtitle1" gutterBottom>
-            <strong>Getting There:</strong>
+            <strong>{t('attractions.gettingThere', 'Getting There')}:</strong>
           </Typography>
           <Typography variant="body2" paragraph>
             {areaInfo.gettingThere}
           </Typography>
 
           <Typography variant="subtitle1" gutterBottom>
-            <strong>Tips:</strong>
+            <strong>{t('attractions.tips', 'Tips')}:</strong>
           </Typography>
           <List dense>
             {areaInfo.tips.map((tip, index) => (
@@ -500,10 +501,10 @@ const AttractionsPage: React.FC = () => {
   return (
     <Container maxWidth="lg">
       <PageHeader
-        title="Attractions"
-        subtitle="Discover the best attractions and things to do in Houston during your visit."
+        title={t('attractions.title', 'Attractions')}
+        subtitle={t('attractions.subtitle', 'Discover the best attractions and things to do in Houston during your visit.')}
         data-testid="page-title"
-        breadcrumbs={[{ label: 'Home', path: '/'}, { label: 'Attractions' }]}
+        breadcrumbs={[{ label: t('navigation.home', 'Home'), path: '/'}, { label: t('navigation.attractions', 'Attractions') }]}
       />
 
       <Box sx={{ borderBottom: 1, borderColor:'divider', mb: 3 }}>
@@ -516,25 +517,25 @@ const AttractionsPage: React.FC = () => {
         >
           <Tab
             icon={<AttractionsIcon />}
-            label="All Attractions"
+            label={t('attractions.tabs.all', 'All Attractions')}
             id="tab-0"
             aria-controls="tabpanel-0"
           />
           <Tab
             icon={<RocketIcon />}
-            label="Space Center & Kemah"
+            label={t('attractions.tabs.spaceCenter', 'Space Center & Kemah')}
             id="tab-1"
             aria-controls="tabpanel-1"
           />
           <Tab
             icon={<MuseumIcon />}
-            label="Museum District"
+            label={t('attractions.tabs.museumDistrict', 'Museum District')}
             id="tab-2"
             aria-controls="tabpanel-2"
           />
           <Tab
             icon={<ParkIcon />}
-            label="Hermann Park & Zoo"
+            label={t('attractions.tabs.hermannPark', 'Hermann Park & Zoo')}
             id="tab-3"
             aria-controls="tabpanel-3"
           />
@@ -545,14 +546,12 @@ const AttractionsPage: React.FC = () => {
       <Box role="tabpanel" hidden={activeTab !== 0} id="tabpanel-0" aria-labelledby="tab-0">
         {activeTab === 0 && (
           <Section
-            title="Popular Attractions"
+            title={t('attractions.popularAttractions', 'Popular Attractions')}
             titleIcon={<AttractionsIcon color="primary" />}
             divider
           >
             <Typography variant="body1" paragraph>
-              Houston offers a wide variety of attractions for visitors, from world-class museums
-              and cultural institutions to outdoor spaces and entertainment venues. Here are some of
-              the most popular attractions to visit during your stay in Houston.
+              {t('attractions.overview', 'Houston offers a wide variety of attractions for visitors, from world-class museums and cultural institutions to outdoor spaces and entertainment venues. Here are some of the most popular attractions to visit during your stay in Houston.')}
             </Typography>
 
             <Grid container spacing={3}>
@@ -567,14 +566,14 @@ const AttractionsPage: React.FC = () => {
         {activeTab === 1 && (
           <>
             <Section
-              title="Space Center & Kemah"
+              title={t('attractions.areas.spaceCenter.name', 'Space Center & Kemah')}
               titleIcon={<RocketIcon color="primary" />}
               divider
             >
               {renderAreaInfo(spaceCenterAreaInfo)}
 
               <Typography variant="h6" gutterBottom>
-                Featured Attractions
+                {t('attractions.featuredAttractions', 'Featured Attractions')}
               </Typography>
               <Grid container spacing={3}>
                 {getSpaceCenterAttractions().map(attraction => renderAttractionCard(attraction))}
@@ -588,11 +587,11 @@ const AttractionsPage: React.FC = () => {
       <Box role="tabpanel" hidden={activeTab !== 2} id="tabpanel-2" aria-labelledby="tab-2">
         {activeTab === 2 && (
           <>
-            <Section title="Museum District" titleIcon={<MuseumIcon color="primary" />} divider>
+            <Section title={t('attractions.areas.museumDistrict.name', 'Museum District')} titleIcon={<MuseumIcon color="primary" />} divider>
               {renderAreaInfo(museumDistrictAreaInfo)}
 
               <Typography variant="h6" gutterBottom>
-                Featured Museums
+                {t('attractions.featuredMuseums', 'Featured Museums')}
               </Typography>
               <Grid container spacing={3}>
                 {getMuseumDistrictAttractions().map(attraction => renderAttractionCard(attraction))}
@@ -606,11 +605,11 @@ const AttractionsPage: React.FC = () => {
       <Box role="tabpanel" hidden={activeTab !== 3} id="tabpanel-3" aria-labelledby="tab-3">
         {activeTab === 3 && (
           <>
-            <Section title="Hermann Park & Zoo" titleIcon={<ParkIcon color="primary" />} divider>
+            <Section title={t('attractions.areas.hermannPark.name', 'Hermann Park & Zoo')} titleIcon={<ParkIcon color="primary" />} divider>
               {renderAreaInfo(hermannParkAreaInfo)}
 
               <Typography variant="h6" gutterBottom>
-                Featured Attractions
+                {t('attractions.featuredAttractions', 'Featured Attractions')}
               </Typography>
               <Grid container spacing={3}>
                 {getHermannParkAttractions().map(attraction => renderAttractionCard(attraction))}

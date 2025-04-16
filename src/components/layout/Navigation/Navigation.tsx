@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   AppBar,
   Toolbar,
@@ -16,6 +17,8 @@ import {
   Container,
   Divider,
   useTheme,
+  Menu,
+  MenuItem,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -31,6 +34,7 @@ import {
   Favorite as FavoriteIcon,
   ExpandLess,
   ExpandMore,
+  Language as LanguageIcon,
   // Unused icon
   // Feedback as FeedbackIcon,
   LocalAirport as TravelIcon,
@@ -44,6 +48,7 @@ import {
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import ThemeToggle from '../../common/ThemeToggle/ThemeToggle';
+import TimeDisplay from '../../common/TimeDisplay';
 
 // Define the navigation items structure
 interface NavItem {
@@ -86,49 +91,59 @@ const Navigation: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openSubMenus, setOpenSubMenus] = useState<Record<string, boolean>>({});
+  const { t, i18n } = useTranslation();
+  const [languageMenuAnchor, setLanguageMenuAnchor] = useState<null | HTMLElement>(null);
+
+  const handleLanguageMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setLanguageMenuAnchor(event.currentTarget);
+  };
+
+  const handleLanguageMenuClose = () => {
+    setLanguageMenuAnchor(null);
+  };
+
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+    handleLanguageMenuClose();
+  };
 
   // Define navigation items
   const navItems: NavItem[] = [
-    { label: 'Home', path: '/', icon: <HomeIcon /> },
-    { label: 'Introduction', path: '/introduction', icon: <InfoIcon /> },
-    { label: 'Attractions', path: '/attractions', icon: <AttractionsIcon /> },
-    { label: 'Dining', path: '/dining', icon: <RestaurantIcon /> },
-    { label: 'Shopping', path: '/shopping', icon: <ShoppingIcon /> },
-    { label: 'Maps', path: '/maps', icon: <MapIcon /> },
-    { label: 'Search', path: '/search', icon: <SearchIcon /> },
-    { label: 'Favorites', path: '/favorites', icon: <FavoriteIcon /> },
-    { label: 'FIRST Championship', path: '/first-championship', icon: <EventIcon /> },
-    { label: 'Safety & Logistics', path: '/safety-logistics', icon: <SecurityIcon /> },
+    { label: t('navigation.home'), path: '/', icon: <HomeIcon /> },
+    { label: t('navigation.maps'), path: '/maps', icon: <MapIcon /> },
+    { label: t('navigation.firstChampionship'), path: '/first-championship', icon: <EventIcon /> },
+    { label: t('navigation.search', 'Search'), path: '/search', icon: <SearchIcon /> },
+    { label: t('navigation.favorites', 'Favorites'), path: '/favorites', icon: <FavoriteIcon /> },
     {
-      label: 'Annexes',
+      label: t('menu.guides.title', 'Guides'),
       icon: <InfoIcon />,
       children: [
-        { label: 'Transport Maps', path: '/annexes/transport-maps', icon: <TransportIcon /> },
-        { label: 'Local Houston Maps', path: '/annexes/local-houston-maps', icon: <MapIcon /> },
-        {
-          label: 'Emergency Contacts',
-          path: '/annexes/emergency-contacts',
-          icon: <EmergencyIcon />,
-        },
-        { label: 'Touristanbul', path: '/annexes/touristanbul', icon: <TravelIcon /> },
-        {
-          label: 'Local Dining & Shopping',
-          path: '/annexes/local-dining-shopping',
-          icon: <LocalShoppingIcon />,
-        },
+        { label: t('navigation.dining'), path: '/dining', icon: <RestaurantIcon /> },
+        { label: t('navigation.attractions'), path: '/attractions', icon: <AttractionsIcon /> },
+        { label: t('navigation.shopping'), path: '/shopping', icon: <ShoppingIcon /> },
       ],
     },
     {
-      label: 'More',
+      label: t('navigation.itineraries'),
+      icon: <ItineraryIcon />,
+      children: [
+        { label: t('guides.arrival.title'), path: '/guides/arrival-departure', icon: <TravelIcon /> },
+        { label: t('guides.hermannPark.title'), path: '/guides/hermann-park-zoo', icon: <AttractionsIcon /> },
+        { label: t('guides.museumDistrict.title'), path: '/guides/museum-district', icon: <AttractionsIcon /> },
+        { label: t('guides.spaceCenter.title'), path: '/guides/space-center-kemah', icon: <AttractionsIcon /> },
+      ],
+    },
+    {
+      label: t('navigation.more', 'More'),
       icon: <InfoIcon />,
       children: [
-        // FeedbackPage and ThematicIndexPage removed per user request
-        { label: 'Itineraries', path: '/itineraries', icon: <ItineraryIcon /> },
-        // Removed DirectMapsPage
-        // Removed VeryBasicMapPage
-        // Removed IframeMapPage
-        // Removed NewMapPage
-        // Removed ReactGoogleMapPage
+        { label: t('navigation.introduction'), path: '/introduction', icon: <InfoIcon /> },
+        { label: t('navigation.safety'), path: '/safety-logistics', icon: <SecurityIcon /> },
+        { label: t('navigation.transportMaps'), path: '/annexes/transport-maps', icon: <TransportIcon /> },
+        { label: t('navigation.localMaps', 'Local Houston Maps'), path: '/annexes/local-houston-maps', icon: <MapIcon /> },
+        { label: t('navigation.emergencyContacts'), path: '/annexes/emergency-contacts', icon: <EmergencyIcon /> },
+        { label: t('navigation.touristanbul'), path: '/annexes/touristanbul', icon: <TravelIcon /> },
+        { label: t('navigation.localDining'), path: '/annexes/local-dining-shopping', icon: <LocalShoppingIcon /> },
       ],
     },
   ];
@@ -214,13 +229,10 @@ const Navigation: React.FC = () => {
         return (
           <Button
             key={item.label}
-            href={item.path || '#'}
+            component={RouterLink}
+            to={item.path || '#'}
             startIcon={item.icon}
             className={isActive(item.path || '') ? 'active' : ''}
-            onClick={e => {
-              e.preventDefault();
-              window.location.href = item.path || '#';
-            }}
             sx={{ margin: theme => theme.spacing(0, 1), color: 'inherit' }}
           >
             {item.label}
@@ -275,20 +287,43 @@ const Navigation: React.FC = () => {
       <AppBar position="sticky" color="default" elevation={1}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Typography
-              variant="h6"
-              component={RouterLink}
-              to="/"
-              sx={{
-                mr: 2,
-                fontWeight: 700,
-                color: 'inherit',
-                textDecoration: 'none',
-                flexGrow: { xs: 1, md: 0 },
-              }}
+            <Box sx={{ display: 'flex', flexDirection: 'column', mr: 2, flexGrow: { xs: 1, md: 0 } }}>
+              <Typography
+                variant="h6"
+                component={RouterLink}
+                to="/"
+                sx={{
+                  fontWeight: 700,
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                {t('app.title', 'Houston Guide')}
+              </Typography>
+              <TimeDisplay />
+            </Box>
+
+            {/* Language switcher */}
+            <IconButton
+              color="inherit"
+              onClick={handleLanguageMenuOpen}
+              sx={{ mr: 1 }}
+              aria-label="change language"
             >
-              Houston Guide
-            </Typography>
+              <LanguageIcon />
+            </IconButton>
+            <Menu
+              anchorEl={languageMenuAnchor}
+              open={Boolean(languageMenuAnchor)}
+              onClose={handleLanguageMenuClose}
+            >
+              <MenuItem onClick={() => changeLanguage('en')} selected={i18n.language === 'en'}>
+                English
+              </MenuItem>
+              <MenuItem onClick={() => changeLanguage('fr')} selected={i18n.language === 'fr'}>
+                Français
+              </MenuItem>
+            </Menu>
 
             {/* Theme toggle button */}
             <Box sx={{ mr: 2 }}>
@@ -319,7 +354,7 @@ const Navigation: React.FC = () => {
       >
         <DrawerHeader>
           <Typography variant="h6" sx={{ flexGrow: 1, ml: 2 }}>
-            Houston Guide
+            {t('app.title', 'Houston Guide')}
           </Typography>
           <IconButton onClick={toggleDrawer(false)}>
             <MenuIcon />

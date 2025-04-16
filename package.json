@@ -24,8 +24,12 @@
     "@reduxjs/toolkit": "^2.6.1",
     "@sentry/browser": "^9.12.0",
     "@vis.gl/react-google-maps": "^1.5.2",
+    "i18next": "^25.0.0",
+    "i18next-browser-languagedetector": "^8.0.4",
+    "i18next-http-backend": "^3.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^15.4.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.21.1"
   },

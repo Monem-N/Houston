@@ -1,4 +1,5 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import * as React from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { trackPageView } from './utils/analytics';
 import { Box, CircularProgress } from '@mui/material';
@@ -15,6 +16,10 @@ const DiningPage = lazy(() => import('./pages/DiningPage'));
 const ShoppingPage = lazy(() => import('./pages/ShoppingPage'));
 const SafetyLogisticsPage = lazy(() => import('./pages/SafetyLogisticsPage'));
 const FirstChampionshipPage = lazy(() => import('./pages/FirstChampionshipPage'));
+const ArrivalDeparturePage = lazy(() => import('./pages/ArrivalDeparturePage'));
+const HermannParkZooPage = lazy(() => import('./pages/HermannParkZooPage'));
+const MuseumDistrictPage = lazy(() => import('./pages/MuseumDistrictPage'));
+const SpaceCenterKemahPage = lazy(() => import('./pages/SpaceCenterKemahPage'));
 const TransportMapsPage = lazy(() => import('./pages/TransportMapsPage'));
 const LocalHoustonMapsPage = lazy(() => import('./pages/LocalHoustonMapsPage'));
 const EmergencyContactsPage = lazy(() => import('./pages/EmergencyContactsPage'));
@@ -74,7 +79,13 @@ const AppRoutes: React.FC = () => {
           <Route path="/dining" element={<DiningPage />} />
           <Route path="/first-championship" element={<FirstChampionshipPage />} />
 
-          {/* Pages to be implemented */}
+          {/* Guides ajoutés */}
+          <Route path="/arrival-departure" element={<ArrivalDeparturePage />} />
+          <Route path="/hermann-park-zoo" element={<HermannParkZooPage />} />
+          <Route path="/museum-district" element={<MuseumDistrictPage />} />
+          <Route path="/guides/space-center-kemah" element={<SpaceCenterKemahPage />} />
+
+          {/* Pages à implémenter */}
           <Route path="/shopping" element={<ShoppingPage />} />
           <Route path="/safety-logistics" element={<SafetyLogisticsPage />} />
 

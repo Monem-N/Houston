@@ -2,7 +2,40 @@
 
 This log documents the detailed progress, decisions, and challenges encountered during the creation of a completely new React with Material UI application for the Houston Travel Guide.
 
-## [Current Date] - Fresh Approach Initialization
+## May 15, 2024 - Redux Implementation and Google Maps Fixes
+
+### Actions Completed
+- Implemented Redux Toolkit for state management
+  - Created store configuration with theme and favorites slices
+  - Set up typed hooks for better TypeScript integration
+  - Added Redux Provider to the application root
+  - Created a simple Redux test component to verify the setup
+- Fixed Google Maps API issues
+  - Updated Google Maps library configuration from 'directions' to 'routes'
+  - Fixed DirectionsRenderer component to use the new API
+  - Updated directionsUtils.ts to use async/await instead of callbacks
+  - Added better error handling for Google Maps API calls
+- Updated itinerary in MapsPage.tsx
+  - Created comprehensive itinerary for April 14-24, 2025
+  - Fixed airport information to use George Bush Intercontinental Airport
+  - Added hotel as starting point for each day's itinerary
+  - Enhanced UI for itinerary display with better typography and layout
+
+### Decisions Made
+- Used Redux Toolkit for state management to provide a centralized store for application state
+- Implemented typed hooks for better TypeScript integration and developer experience
+- Updated Google Maps API implementation to use the latest API features
+- Enhanced itinerary display with a more user-friendly interface
+
+### Challenges and Solutions
+- Challenge: Google Maps API changes breaking existing functionality
+  - Solution: Updated DirectionsRenderer component and directionsUtils.ts to use the new API
+- Challenge: Managing application state across components
+  - Solution: Implemented Redux Toolkit for centralized state management
+- Challenge: Creating a comprehensive itinerary with correct locations
+  - Solution: Used location IDs from the data file to ensure accurate mapping
+
+## April 20, 2023 - Fresh Approach Initialization
 
 ### Actions Completed
 - Created new git branch `feature/material-ui-new` for fresh implementation
@@ -33,6 +66,23 @@ This log documents the detailed progress, decisions, and challenges encountered 
   - Solution: Used current best practices and tools for configuration
 - Challenge: Creating a responsive layout that works well on all devices
   - Solution: Used Material UI's responsive utilities and breakpoints
+
+### [Current Date] - Implémentation des guides et itinéraires
+
+**Actions réalisées**
+- Implémenté les pages de guides :
+  - Guide arrivée/départ
+  - Parc zoologique Hermann Park
+  - District des musées
+  - Centre spatial Kemah
+- Intégration complète de la page des itinéraires
+- Mise à jour des routes correspondantes
+
+**Décisions prises**
+- Utilisation du layout principal pour une navigation cohérente
+- Chargement différé des composants pour optimiser les performances
+
+**Prochaines étapes**
 
 ### Next Steps
 

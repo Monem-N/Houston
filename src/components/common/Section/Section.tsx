@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDeviceDetect } from '../../../hooks/useDeviceDetect';
 import { Box, Typography, Divider, BoxProps, SxProps, Theme } from '@mui/material';
 
@@ -23,6 +24,7 @@ const Section: React.FC<SectionProps> = ({
   contentSx,
   ...props
 }) => {
+  const { t } = useTranslation();
   const { isMobile } = useDeviceDetect();
   return (
     <Box component="section" {...props} sx={{ mb: isMobile ? 3 : 4, ...props.sx }}>
@@ -30,14 +32,14 @@ const Section: React.FC<SectionProps> = ({
         <Box sx={{ display: 'flex', alignItems: 'center', mb: isMobile ? 1.5 : 2 }}>
           {titleIcon && <Box sx={{ mr: 1 }}>{titleIcon}</Box>}
           <Typography variant={isMobile ? 'h6' : 'h5'} component="h2" sx={titleSx}>
-            {title}
+            {t(title, title)}
           </Typography>
         </Box>
       )}
 
       {subtitle && (
         <Typography variant="subtitle1" color="text.secondary" paragraph sx={subtitleSx}>
-          {subtitle}
+          {t(subtitle, subtitle)}
         </Typography>
       )}
 

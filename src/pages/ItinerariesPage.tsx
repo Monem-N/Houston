@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Typography,
@@ -61,9 +61,31 @@ interface Itinerary {
 const SUGGESTED_ITINERARIES: Itinerary[] = [
   {
     id: 'jour1',
-    title: 'Jour 1: Space Center & Kemah',
+    title: 'Jour 1: Arrivée à Houston',
+    description: 'Arrivée à Houston et installation à l’hôtel',
+    color: '#4285F4',
+    waypoints: [
+      {
+        name: 'Aéroport de Houston',
+        lat: 29.9902,
+        lng: -95.3368,
+        description: 'Arrivée à l’aéroport de Houston',
+        stopover: true,
+      },
+      {
+        name: 'Hôtel Crowne Plaza',
+        lat: 29.7328,
+        lng: -95.416,
+        description: 'Installation à l’hôtel Crowne Plaza Houston Med-Ctr Galleria Area',
+        stopover: true,
+      },
+    ],
+  },
+  {
+    id: 'jour2',
+    title: 'Jour 2: Space Center & Kemah',
     description: 'Découverte du Space Center Houston et de Kemah Boardwalk',
-    color: '#4285F4', // Bleu Google
+    color: '#DB4437',
     waypoints: [
       {
         name: 'Hôtel (départ)',
@@ -110,131 +132,10 @@ const SUGGESTED_ITINERARIES: Itinerary[] = [
     ],
   },
   {
-    id: 'jour2',
-    title: 'Jour 2: Museum District & Hermann Park',
-    description: 'Exploration du quartier des musées et du parc Hermann',
-    color: '#DB4437', // Rouge Google
-    waypoints: [
-      {
-        name: 'Hôtel (départ)',
-        lat: 29.7328,
-        lng: -95.416,
-        description: "Départ de l'hôtel Crowne Plaza Houston Med-Ctr Galleria Area",
-        stopover: true,
-      },
-      {
-        name: 'Museum of Natural Science',
-        lat: 29.7221,
-        lng: -95.3898,
-        description: 'Visite du musée des sciences naturelles (prévoir 2h)',
-        stopover: true,
-      },
-      {
-        name: 'Museum of Fine Arts',
-        lat: 29.726,
-        lng: -95.3909,
-        description: 'Visite du musée des beaux-arts (prévoir 1h30)',
-        stopover: true,
-      },
-      {
-        name: 'Déjeuner au MFA Café',
-        lat: 29.726,
-        lng: -95.3909,
-        description: 'Déjeuner au café du musée des beaux-arts',
-        stopover: true,
-      },
-      {
-        name: 'Hermann Park',
-        lat: 29.7194,
-        lng: -95.3909,
-        description: 'Promenade dans le parc Hermann (prévoir 1h)',
-        stopover: true,
-      },
-      {
-        name: 'Houston Zoo',
-        lat: 29.7146,
-        lng: -95.3909,
-        description: 'Visite du zoo de Houston (prévoir 2h)',
-        stopover: true,
-      },
-      {
-        name: 'Dîner au quartier Rice Village',
-        lat: 29.7158,
-        lng: -95.4153,
-        description: "Dîner dans l'un des restaurants du quartier Rice Village",
-        stopover: true,
-      },
-      {
-        name: "Retour à l'hôtel",
-        lat: 29.7328,
-        lng: -95.416,
-        description: "Retour à l'hôtel Crowne Plaza",
-        stopover: true,
-      },
-    ],
-  },
-  {
     id: 'jour3',
-    title: 'Jour 3: Shopping & Downtown',
-    description: 'Journée shopping et découverte du centre-ville',
-    color: '#F4B400', // Jaune Google
-    waypoints: [
-      {
-        name: 'Hôtel (départ)',
-        lat: 29.7328,
-        lng: -95.416,
-        description: "Départ de l'hôtel Crowne Plaza Houston Med-Ctr Galleria Area",
-        stopover: true,
-      },
-      {
-        name: 'The Galleria',
-        lat: 29.7399,
-        lng: -95.4647,
-        description: 'Shopping au centre commercial The Galleria (prévoir 2h)',
-        stopover: true,
-      },
-      {
-        name: 'Déjeuner à The Galleria',
-        lat: 29.7399,
-        lng: -95.4647,
-        description: "Déjeuner dans l'un des restaurants du centre commercial",
-        stopover: true,
-      },
-      {
-        name: 'Downtown Houston',
-        lat: 29.7604,
-        lng: -95.3698,
-        description: 'Visite du centre-ville de Houston (prévoir 2h)',
-        stopover: true,
-      },
-      {
-        name: 'Discovery Green',
-        lat: 29.7536,
-        lng: -95.3573,
-        description: 'Promenade dans le parc urbain Discovery Green (prévoir 1h)',
-        stopover: true,
-      },
-      {
-        name: 'Dîner au centre-ville',
-        lat: 29.7604,
-        lng: -95.3698,
-        description: "Dîner dans l'un des restaurants du centre-ville",
-        stopover: true,
-      },
-      {
-        name: "Retour à l'hôtel",
-        lat: 29.7328,
-        lng: -95.416,
-        description: "Retour à l'hôtel Crowne Plaza",
-        stopover: true,
-      },
-    ],
-  },
-  {
-    id: 'jour4',
-    title: 'Jour 4: FIRST Championship',
-    description: 'Journée dédiée au FIRST Championship',
-    color: '#0F9D58', // Vert Google
+    title: 'Jour 3: FIRST Championship',
+    description: 'Participation au FIRST Championship au George R. Brown Convention Center',
+    color: '#0F9D58',
     waypoints: [
       {
         name: 'Hôtel (départ)',
@@ -281,10 +182,10 @@ const SUGGESTED_ITINERARIES: Itinerary[] = [
     ],
   },
   {
-    id: 'jour5',
-    title: 'Jour 5: Katy Mills & Gastronomie',
-    description: 'Shopping à Katy Mills et découverte de la gastronomie texane',
-    color: '#9C27B0', // Violet
+    id: 'jour4',
+    title: 'Jour 4: Hermann Park & Zoo de Houston',
+    description: 'Exploration de Hermann Park et du Zoo de Houston',
+    color: '#F4B400',
     waypoints: [
       {
         name: 'Hôtel (départ)',
@@ -294,31 +195,31 @@ const SUGGESTED_ITINERARIES: Itinerary[] = [
         stopover: true,
       },
       {
-        name: 'Katy Mills',
-        lat: 29.7778,
-        lng: -95.8151,
-        description: 'Shopping au centre commercial Katy Mills (prévoir 3h)',
+        name: 'Hermann Park',
+        lat: 29.7194,
+        lng: -95.3909,
+        description: 'Promenade dans le parc Hermann (prévoir 1h)',
         stopover: true,
       },
       {
-        name: 'Déjeuner à Katy Mills',
-        lat: 29.7778,
-        lng: -95.8151,
-        description: "Déjeuner dans l'un des restaurants du centre commercial",
+        name: 'Zoo de Houston',
+        lat: 29.7146,
+        lng: -95.3909,
+        description: 'Visite du zoo de Houston (prévoir 2h)',
         stopover: true,
       },
       {
-        name: 'Retour à Houston',
-        lat: 29.7604,
-        lng: -95.3698,
-        description: 'Retour au centre de Houston',
+        name: 'Déjeuner au Café Pinewood',
+        lat: 29.7194,
+        lng: -95.3909,
+        description: 'Déjeuner au Café Pinewood dans Hermann Park',
         stopover: true,
       },
       {
-        name: 'Dîner gastronomique',
-        lat: 29.7604,
-        lng: -95.3698,
-        description: 'Dîner dans un restaurant texan authentique',
+        name: 'Jardin Japonais',
+        lat: 29.7194,
+        lng: -95.3909,
+        description: 'Promenade dans le Jardin Japonais',
         stopover: true,
       },
       {
@@ -348,7 +249,17 @@ interface ItineraryComparison {
 const ITINERARY_COMPARISON: ItineraryComparison[] = [
   {
     id: 'jour1',
-    title: 'Jour 1: Space Center & Kemah',
+    title: 'Jour 1: Arrivée à Houston',
+    duration: 'Demi-journée',
+    distance: '10 miles',
+    attractions: 1,
+    walkingLevel: 1,
+    idealFor: 'Voyageurs arrivant à Houston',
+    tickets: 'Gratuit',
+  },
+  {
+    id: 'jour2',
+    title: 'Jour 2: Space Center & Kemah',
     duration: 'Journée complète',
     distance: '45 miles',
     attractions: 5,
@@ -358,28 +269,8 @@ const ITINERARY_COMPARISON: ItineraryComparison[] = [
     ticketLink: 'https://tickets.spacecenter.org/webstore/shop/viewitems.aspx',
   },
   {
-    id: 'jour2',
-    title: 'Jour 2: Museum District & Hermann Park',
-    duration: 'Journée complète',
-    distance: '10 miles',
-    attractions: 4,
-    walkingLevel: 5,
-    idealFor: "Amateurs d'art et de nature",
-    tickets: 'Divers musées',
-  },
-  {
     id: 'jour3',
-    title: 'Jour 3: Shopping & Downtown',
-    duration: 'Journée complète',
-    distance: '15 miles',
-    attractions: 3,
-    walkingLevel: 4,
-    idealFor: 'Amateurs de shopping',
-    tickets: 'Gratuit',
-  },
-  {
-    id: 'jour4',
-    title: 'Jour 4: FIRST Championship',
+    title: 'Jour 3: FIRST Championship',
     duration: 'Journée complète',
     distance: '5 miles',
     attractions: 5,
@@ -388,14 +279,14 @@ const ITINERARY_COMPARISON: ItineraryComparison[] = [
     tickets: 'Inclus',
   },
   {
-    id: 'jour5',
-    title: 'Jour 5: Katy Mills & Gastronomie',
+    id: 'jour4',
+    title: 'Jour 4: Hermann Park & Zoo de Houston',
     duration: 'Journée complète',
-    distance: '35 miles',
+    distance: '10 miles',
     attractions: 4,
-    walkingLevel: 3,
-    idealFor: 'Gourmets et shoppers',
-    tickets: 'Gratuit',
+    walkingLevel: 4,
+    idealFor: 'Amateurs de nature et d’animaux',
+    tickets: 'Zoo de Houston',
   },
 ];
 
@@ -420,11 +311,11 @@ const ItineraryMap: React.FC<{ itinerary: Itinerary }> = ({ itinerary }) => {
           Carte Interactive
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Cette carte afficherait normalement l'itinéraire {itinerary.title} avec{' '}
-          {itinerary.waypoints.length} points d'arrêt.
+          Cette carte afficherait normalement l&apos;itinéraire {itinerary.title} avec{' '}
+          {itinerary.waypoints.length} points d&apos;arrêt.
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-          Intégration Google Maps requise pour afficher l'itinéraire complet.
+          Intégration Google Maps requise pour afficher l&apos;itinéraire complet.
         </Typography>
       </Box>
     </Paper>
@@ -458,7 +349,7 @@ const ItineraryCard: React.FC<{ itinerary: Itinerary; onSelect: (id: string) => 
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary" gutterBottom>
-          Points d'intérêt: {itinerary.waypoints.length - 2} (hors départ et retour)
+          Points d&apos;intérêt: {itinerary.waypoints.length - 2} (hors départ et retour)
         </Typography>
         <List dense>
           {itinerary.waypoints.slice(1, -1).map((waypoint, index) => (
@@ -479,7 +370,7 @@ const ItineraryCard: React.FC<{ itinerary: Itinerary; onSelect: (id: string) => 
           startIcon={<MapIcon />}
           sx={{ borderColor: itinerary.color, color: itinerary.color }}
         >
-          Voir l'itinéraire
+          Voir l&#39;itinéraire
         </Button>
       </CardActions>
     </Card>
@@ -527,9 +418,9 @@ const ItinerariesPage: React.FC = () => {
         <Typography paragraph>
           Ces itinéraires sont des suggestions que vous pouvez adapter selon vos préférences et
           votre emploi du temps. Les temps de visite sont approximatifs et peuvent varier en
-          fonction de votre rythme et de vos centres d'intérêt.
+          fonction de votre rythme et de vos centres d&apos;intérêt.
         </Typography>
-
+        <Typography paragraph sx={{ mb: 3 }} dangerouslySetInnerHTML={{ __html: '&apos;' }} />
         <Alert severity="info" sx={{ mt: 2, mb: 3 }}>
           <Typography variant="subtitle1" gutterBottom>
             Comment utiliser ces itinéraires
@@ -559,8 +450,8 @@ const ItinerariesPage: React.FC = () => {
             <ScheduleIcon sx={{ mr: 1 }} /> Itinéraires par jour
           </Typography>
           <Typography paragraph>
-            Voici nos suggestions d'itinéraires pour un séjour de 5 jours à Houston, incluant le
-            FIRST Championship et les principales attractions de la ville.
+            Voici nos suggestions d&apos;itinéraires pour un séjour de 5 jours à Houston, incluant{' '}
+            le FIRST Championship et les principales attractions de la ville.
           </Typography>
 
           {SUGGESTED_ITINERARIES.map(itinerary => (
@@ -584,36 +475,43 @@ const ItinerariesPage: React.FC = () => {
                 {selectedItinerary.title}
               </Typography>
               <Typography paragraph>{selectedItinerary.description}</Typography>
-
+              
               <ItineraryMap itinerary={selectedItinerary} />
 
               <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
-                Points d'arrêt
+                Points d&apos;arrêt
               </Typography>
-              <List>
-                {selectedItinerary.waypoints.map((waypoint, index) => (
-                  <ListItem key={index} alignItems="flex-start">
-                    <ListItemIcon>
-                      <Box
-                        sx={{
-                          width: 30,
-                          height: 30,
-                          borderRadius: '50%',
-                          backgroundColor: selectedItinerary.color,
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: 'white',
-                          fontWeight: 'bold',
-                        }}
-                      >
-                        {index + 1}
-                      </Box>
-                    </ListItemIcon>
-                    <ListItemText primary={waypoint.name} secondary={waypoint.description} />
-                  </ListItem>
-                ))}
-              </List>
+              {selectedItinerary.waypoints.length > 0 && (
+                <List>
+                  {selectedItinerary.waypoints.map((waypoint, index) => (
+                    <ListItem key={index} alignItems="flex-start">
+                      <ListItemIcon>
+                        <Box
+                          sx={{
+                            width: 30,
+                            height: 30,
+                            borderRadius: '50%',
+                            backgroundColor: selectedItinerary.color,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          {index + 1}
+                        </Box>
+                      </ListItemIcon>
+                      <ListItemText primary={waypoint.name} secondary={waypoint.description} />
+                    </ListItem>
+                  ))}
+                </List>
+              )}
+              {selectedItinerary.waypoints.length === 0 && (
+                <Typography variant="body2" color="text.secondary">
+                  Aucun point d'arrêt disponible pour cet itinéraire.
+                </Typography>
+              )}
             </Paper>
           </Grid>
         )}
@@ -721,9 +619,9 @@ const ItinerariesPage: React.FC = () => {
             <Card elevation={2} sx={{ height: '100%' }}>
               <CardHeader avatar={<SunnyIcon />} title="Météo" />
               <CardContent>
-                <Typography variant="body2">
-                  Houston peut être chaud et humide en avril. Prévoyez des vêtements légers, de la
-                  crème solaire et une bouteille d'eau réutilisable.
+                <Typography variant="body2" paragraph>
+                  Houston peut être chaud et humide en avril. Prévoyez des vêtements légers, de&nbsp;
+                  l&apos;a&nbsp; crème solaire et une bouteille d&apos;eau réutilisable.
                 </Typography>
               </CardContent>
             </Card>
@@ -733,9 +631,8 @@ const ItinerariesPage: React.FC = () => {
             <Card elevation={2} sx={{ height: '100%' }}>
               <CardHeader avatar={<RestaurantIcon />} title="Repas" />
               <CardContent>
-                <Typography variant="body2">
-                  Les itinéraires incluent des suggestions de repas, mais n'hésitez pas à explorer
-                  d'autres options gastronomiques de Houston.
+                <Typography variant="body2" paragraph>
+                  Les itinéraires incluent des suggestions de repas, mais n&apos;hésitez pas à explorer d&apos;autres options gastronomiques de Houston.
                 </Typography>
               </CardContent>
             </Card>
@@ -746,8 +643,7 @@ const ItinerariesPage: React.FC = () => {
               <CardHeader avatar={<TicketIcon />} title="Billets" />
               <CardContent>
                 <Typography variant="body2" paragraph>
-                  Achetez vos billets pour les attractions à l'avance pour éviter les files
-                  d'attente et bénéficier de tarifs réduits.
+                  Achetez vos billets pour les attractions à l&apos;avance pour éviter les files d&apos;attente et bénéficier de tarifs réduits.
                 </Typography>
                 <Typography variant="subtitle2" gutterBottom>
                   Liens utiles :
@@ -758,7 +654,7 @@ const ItinerariesPage: React.FC = () => {
                   rel="noopener"
                 >
                   Billets Space Center Houston
-                </Link>
+                </Link> 
               </CardContent>
             </Card>
           </Grid>
@@ -766,7 +662,7 @@ const ItinerariesPage: React.FC = () => {
           <Grid item xs={12} sm={6} md={3}>
             <Card elevation={2} sx={{ height: '100%' }}>
               <CardHeader avatar={<ScheduleIcon />} title="Temps libre" />
-              <CardContent>
+              <CardContent> 
                 <Typography variant="body2">
                   Prévoyez du temps libre dans votre emploi du temps pour vous reposer ou explorer
                   des découvertes imprévues.

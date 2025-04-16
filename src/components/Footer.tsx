@@ -44,18 +44,18 @@ const Footer = () => {
             <Typography variant="h6" gutterBottom>
               Annexes
             </Typography>
-            <Link component={RouterLink} to="/transport-maps" color="inherit" display="block">
+            <Link component={RouterLink} to="/annexes/transport-maps" color="inherit" display="block">
               Transport Maps
             </Link>
-            <Link component={RouterLink} to="/emergency-contacts" color="inherit" display="block">
+            <Link component={RouterLink} to="/annexes/emergency-contacts" color="inherit" display="block">
               Emergency Contacts
             </Link>
-            <Link component={RouterLink} to="/touristanbul" color="inherit" display="block">
+            <Link component={RouterLink} to="/annexes/touristanbul" color="inherit" display="block">
               Touristanbul
             </Link>
             <Link
               component={RouterLink}
-              to="/local-dining-shopping"
+              to="/annexes/local-dining-shopping"
               color="inherit"
               display="block"
             >

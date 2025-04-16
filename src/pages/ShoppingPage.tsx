@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Container,
   Typography,
@@ -238,6 +239,7 @@ const shoppingComparisons: ShoppingComparison[] = [
 ];
 
 const ShoppingPage: React.FC = () => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
@@ -252,10 +254,10 @@ const ShoppingPage: React.FC = () => {
   return (
     <Container maxWidth="lg">
       <PageHeader
-        title="Shopping"
-        subtitle="Explore shopping options in Houston, from outlet malls to local stores."
+        title={t('shopping.title', 'Shopping')}
+        subtitle={t('shopping.subtitle', 'Explore shopping options in Houston, from outlet malls to local stores.')}
         data-testid="page-title"
-        breadcrumbs={[{ label: 'Home', path: '/' }, { label: 'Shopping' }]}
+        breadcrumbs={[{ label: t('navigation.home', 'Home'), path: '/' }, { label: t('navigation.shopping', 'Shopping') }]}
       />
 
       <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 3 }}>
@@ -266,17 +268,17 @@ const ShoppingPage: React.FC = () => {
           variant="scrollable"
           scrollButtons="auto"
         >
-          <Tab icon={<ShoppingIcon />} label="All Shopping" id="tab-0" aria-controls="tabpanel-0" />
-          <Tab icon={<MallIcon />} label="Malls & Outlets" id="tab-1" aria-controls="tabpanel-1" />
+          <Tab icon={<ShoppingIcon />} label={t('shopping.tabs.all', 'All Shopping')} id="tab-0" aria-controls="tabpanel-0" />
+          <Tab icon={<MallIcon />} label={t('shopping.tabs.malls', 'Malls & Outlets')} id="tab-1" aria-controls="tabpanel-1" />
           <Tab
             icon={<StoreIcon />}
-            label="Stores & Districts"
+            label={t('shopping.tabs.stores', 'Stores & Districts')}
             id="tab-2"
             aria-controls="tabpanel-2"
           />
           <Tab
             icon={<CompareIcon />}
-            label="Price Comparison"
+            label={t('shopping.tabs.comparison', 'Price Comparison')}
             id="tab-3" aria-controls="tabpanel-3"
           />
         </Tabs>
@@ -285,19 +287,17 @@ const ShoppingPage: React.FC = () => {
       {/* All Shopping Tab */}
       <Box role="tabpanel" hidden={activeTab !== 0} id="tabpanel-0" aria-labelledby="tab-0">
         {activeTab === 0 && (
-          <Section title="Shopping Options" titleIcon={<ShoppingIcon color="primary" />} divider>
+          <Section title={t('shopping.options', 'Shopping Options')} titleIcon={<ShoppingIcon color="primary" />} divider>
             <Typography variant="body1" paragraph>
-              Houston offers a variety of shopping experiences, from large outlet malls to upscale
-              shopping centers and local stores. Here are some recommended shopping destinations for
-              visitors during the FIRST Championship.
+              {t('shopping.overview', 'Houston offers a variety of shopping experiences, from large outlet malls to upscale shopping centers and local stores. Here are some recommended shopping destinations for visitors during the FIRST Championship.')}
             </Typography>
 
             <Grid container spacing={3}>
               {shoppingVenues.map(venue => (
                 <Grid item xs={12} sm={6} md={4} key={venue.id}>
                   <Card
-                    title={venue.name}
-                    description={venue.description}
+                    title={t(`shopping.venues.${venue.id}.name`, venue.name)}
+                    description={t(`shopping.venues.${venue.id}.description`, venue.description)}
                     image={venue.image}
                     imageAlt={venue.name}
                     imageHeight={180}
@@ -313,7 +313,7 @@ const ShoppingPage: React.FC = () => {
                             size="small"
                             sx={{ mr: 1 }}
                           >
-                            Website
+                            {t('shopping.website', 'Website')}
                           </Button>
                         )}
                         {venue.directions && (
@@ -326,7 +326,7 @@ const ShoppingPage: React.FC = () => {
                             size="small"
                             startIcon={<DirectionsIcon />}
                           >
-                            Directions
+                            {t('shopping.directions', 'Directions')}
                           </Button>
                         )}
                       </Box>
@@ -344,10 +344,10 @@ const ShoppingPage: React.FC = () => {
                         <Chip
                           label={
                             venue.category === 'mall'
-                              ? 'Mall'
+                              ? t('shopping.categories.mall', 'Mall')
                               : venue.category === 'district'
-                                ? 'District'
-                                : 'Store'
+                                ? t('shopping.categories.district', 'District')
+                                : t('shopping.categories.store', 'Store')
                           }
                           size="small"
                           color={
@@ -401,19 +401,17 @@ const ShoppingPage: React.FC = () => {
       {/* Malls & Outlets Tab */}
       <Box role="tabpanel" hidden={activeTab !== 1} id="tabpanel-1" aria-labelledby="tab-1">
         {activeTab === 1 && (
-          <Section title="Malls & Outlets" titleIcon={<MallIcon color="primary" />} divider>
+          <Section title={t('shopping.tabs.malls', 'Malls & Outlets')} titleIcon={<MallIcon color="primary" />} divider>
             <Typography variant="body1" paragraph>
-              Houston is home to several large shopping malls and outlet centers. These destinations
-              offer a wide variety of stores, from high-end luxury brands to discounted outlet
-              shops.
+              {t('shopping.mallsDescription', 'Houston is home to several large shopping malls and outlet centers. These destinations offer a wide variety of stores, from high-end luxury brands to discounted outlet shops.')}
             </Typography>
 
             <Grid container spacing={3}>
               {getMalls().map(venue => (
                 <Grid item xs={12} sm={6} key={venue.id}>
                   <Card
-                    title={venue.name}
-                    description={venue.description}
+                    title={t(`shopping.venues.${venue.id}.name`, venue.name)}
+                    description={t(`shopping.venues.${venue.id}.description`, venue.description)}
                     image={venue.image}
                     imageAlt={venue.name}
                     imageHeight={200}
@@ -429,7 +427,7 @@ const ShoppingPage: React.FC = () => {
                             size="small"
                             sx={{ mr: 1 }}
                           >
-                            Website
+                            {t('shopping.website', 'Website')}
                           </Button>
                         )}
                         {venue.directions && (
@@ -442,7 +440,7 @@ const ShoppingPage: React.FC = () => {
                             size="small"
                             startIcon={<DirectionsIcon />}
                           >
-                            Directions
+                            {t('shopping.directions', 'Directions')}
                           </Button>
                         )}
                       </Box>
@@ -491,22 +489,20 @@ const ShoppingPage: React.FC = () => {
       <Box role="tabpanel" hidden={activeTab !== 2} id="tabpanel-2" aria-labelledby="tab-2">
         {activeTab === 2 && (
           <Section
-            title="Stores & Shopping Districts"
+            title={t('shopping.storesTitle', 'Stores & Shopping Districts')}
             titleIcon={<StoreIcon color="primary" />}
             divider
           >
             <Typography variant="body1" paragraph>
-              In addition to malls, Houston has several individual stores and shopping districts
-              that offer unique shopping experiences. These include big-box retailers and charming
-              shopping neighborhoods.
+              {t('shopping.storesDescription', 'In addition to malls, Houston has several individual stores and shopping districts that offer unique shopping experiences. These include big-box retailers and charming shopping neighborhoods.')}
             </Typography>
 
             <Grid container spacing={3}>
               {getStores().map(venue => (
                 <Grid item xs={12} sm={6} key={venue.id}>
                   <Card
-                    title={venue.name}
-                    description={venue.description}
+                    title={t(`shopping.venues.${venue.id}.name`, venue.name)}
+                    description={t(`shopping.venues.${venue.id}.description`, venue.description)}
                     image={venue.image}
                     imageAlt={venue.name}
                     imageHeight={200}
@@ -522,7 +518,7 @@ const ShoppingPage: React.FC = () => {
                             size="small"
                             sx={{ mr: 1 }}
                           >
-                            Website
+                            {t('shopping.website', 'Website')}
                           </Button>
                         )}
                         {venue.directions && (
@@ -535,7 +531,7 @@ const ShoppingPage: React.FC = () => {
                             size="small"
                             startIcon={<DirectionsIcon />}
                           >
-                            Directions
+                            {t('shopping.directions', 'Directions')}
                           </Button>
                         )}
                       </Box>
@@ -544,7 +540,7 @@ const ShoppingPage: React.FC = () => {
                     <Box sx={{ mb: 2 }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                         <Chip
-                          label={venue.category === 'district' ? 'Shopping District' : 'Store'}
+                          label={venue.category === 'district' ? t('shopping.categories.shoppingDistrict', 'Shopping District') : t('shopping.categories.store', 'Store')}
                           size="small"
                           color={venue.category === 'district' ? 'secondary' : 'default'}
                         />
@@ -584,16 +580,15 @@ const ShoppingPage: React.FC = () => {
       {/* Price Comparison Tab */}
       <Box role="tabpanel" hidden={activeTab !== 3} id="tabpanel-3" aria-labelledby="tab-3">
         {activeTab === 3 && (
-          <Section title="Price Comparison" titleIcon={<CompareIcon color="primary" />} divider>
+          <Section title={t('shopping.tabs.comparison', 'Price Comparison')} titleIcon={<CompareIcon color="primary" />} divider>
             <Typography variant="body1" paragraph>
-              This comparison helps you decide where to shop based on your needs and budget. Prices
-              are approximate and may vary.
+              {t('shopping.comparisonDescription', 'This comparison helps you decide where to shop based on your needs and budget. Prices are approximate and may vary.')}
             </Typography>
 
             {shoppingComparisons.map(comparison => (
               <Box key={comparison.category} sx={{ mb: 4 }}>
                 <Typography variant="h6" gutterBottom color="primary">
-                  {comparison.category}
+                  {t(`shopping.comparison.${comparison.category.toLowerCase()}.title`, comparison.category)}
                 </Typography>
 
                 <TableContainer component={Paper} variant="outlined">
@@ -601,19 +596,19 @@ const ShoppingPage: React.FC = () => {
                     <TableHead>
                       <TableRow sx={{ backgroundColor: 'action.hover' }}>
                         <TableCell>
-                          <strong>Item</strong>
+                          <strong>{t('shopping.comparison.item', 'Item')}</strong>
                         </TableCell>
                         <TableCell>
-                          <strong>Katy Mills</strong>
+                          <strong>{t('shopping.comparison.katyMills', 'Katy Mills')}</strong>
                         </TableCell>
                         <TableCell>
-                          <strong>The Galleria</strong>
+                          <strong>{t('shopping.comparison.galleria', 'The Galleria')}</strong>
                         </TableCell>
                         <TableCell>
-                          <strong>Target/Walmart</strong>
+                          <strong>{t('shopping.comparison.targetWalmart', 'Target/Walmart')}</strong>
                         </TableCell>
                         <TableCell>
-                          <strong>Notes</strong>
+                          <strong>{t('shopping.comparison.notes', 'Notes')}</strong>
                         </TableCell>
                       </TableRow>
                     </TableHead>
@@ -635,16 +630,16 @@ const ShoppingPage: React.FC = () => {
 
             <Box sx={{ mt: 4 }}>
               <Typography variant="subtitle1" gutterBottom>
-                Shopping Tips:
+                {t('shopping.tips.title', 'Shopping Tips')}:
               </Typography>
               <ul>
                 <li>
-                  Katy Mills is great for outlet shopping but is farther from downtown (25 miles).
+                  {t('shopping.tips.tip1', 'Katy Mills is great for outlet shopping but is farther from downtown (25 miles).')}
                 </li>
-                <li>The Galleria offers high-end shopping and is closer to downtown (8 miles).</li>
-                <li>Target and Walmart are best for everyday essentials and basic souvenirs.</li>
-                <li>Consider transportation costs when deciding where to shop.</li>
-                <li>Many malls offer visitor discount programs - ask at information desks.</li>
+                <li>{t('shopping.tips.tip2', 'The Galleria offers high-end shopping and is closer to downtown (8 miles).')}</li>
+                <li>{t('shopping.tips.tip3', 'Target and Walmart are best for everyday essentials and basic souvenirs.')}</li>
+                <li>{t('shopping.tips.tip4', 'Consider transportation costs when deciding where to shop.')}</li>
+                <li>{t('shopping.tips.tip5', 'Many malls offer visitor discount programs - ask at information desks.')}</li>
               </ul>
 
               <Box sx={{ mt: 2 }}>
@@ -655,7 +650,7 @@ const ShoppingPage: React.FC = () => {
                   to="/maps"
                   startIcon={<DirectionsIcon />}
                 >
-                  View Shopping Locations on Map
+                  {t('shopping.viewOnMap', 'View Shopping Locations on Map')}
                 </Button>
               </Box>
             </Box>
