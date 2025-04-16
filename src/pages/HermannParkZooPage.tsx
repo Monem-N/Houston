@@ -1,14 +1,18 @@
 import { useTranslation } from 'react-i18next';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Container, Paper } from '@mui/material';
+import { PageHeader } from '../components/common';
 
 export default function HermannParkZooPage() {
-  const { t } = useTranslation('guides');
+  const { t } = useTranslation();
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h4" gutterBottom>
-        {t('hermannPark.title')}
-      </Typography>
-      <Typography paragraph>{t('hermannPark.description')}</Typography>
-    </Box>
+    <Container maxWidth="lg">
+      <PageHeader
+        title={t('guides.hermannPark.title')}
+        subtitle={t('guides.hermannPark.subtitle')}
+      />
+      <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
+        <Typography paragraph>{t('guides.hermannPark.description')}</Typography>
+      </Paper>
+    </Container>
   );
 }

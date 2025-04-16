@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Guide de voyage à Houston",
+    "title": "Guide de Houston",
     "language": "Langue"
   },
   "menu": {
@@ -34,6 +34,7 @@
     "transportMaps": "Cartes de transport",
     "emergencyContacts": "Contacts d'urgence",
     "itineraries": "Itinéraires",
+    "guides": "Guides de Voyage",
     "localDining": "Restauration & Shopping local",
     "touristanbul": "Touristanbul",
     "search": "Recherche",
@@ -354,6 +355,7 @@
     "museumDistrict": {
       "title": "Guide du quartier des musées",
       "subtitle": "Explorez le centre culturel de Houston",
+      "description": "Le quartier des musées de Houston abrite 19 musées, galeries et centres culturels dans un rayon de 2,4 kilomètres autour du parc Hermann. Ce guide vous aidera à planifier votre visite pendant le Championnat FIRST.",
       "hours": "Heures d'ouverture",
       "tickets": "Informations sur les billets",
       "museums": "Musées en vedette",
@@ -362,6 +364,7 @@
     "hermannPark": {
       "title": "Guide du parc Hermann & du zoo",
       "subtitle": "Explorez l'oasis urbaine de Houston",
+      "description": "Le parc Hermann est un parc urbain de 180 hectares qui comprend le zoo de Houston, le jardin japonais, le théâtre en plein air Miller et des installations récréatives. Ce guide vous aidera à planifier votre visite pendant le Championnat FIRST.",
       "hours": "Heures d'ouverture",
       "tickets": "Informations sur les billets",
       "attractions": "Attractions principales",

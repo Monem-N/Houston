@@ -7,10 +7,9 @@ import { fetchDirections, calculateRouteInfo } from '../../../utils/directionsUt
 
 interface RouteInfoProps {
   locations: Location[];
-  apiKey: string;
 }
 
-const RouteInfo: React.FC<RouteInfoProps> = ({ locations, apiKey }) => {
+const RouteInfo: React.FC<RouteInfoProps> = ({ locations }) => {
   const { isMobile } = useDeviceDetect();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -28,7 +27,7 @@ const RouteInfo: React.FC<RouteInfoProps> = ({ locations, apiKey }) => {
 
       try {
         setIsLoading(true);
-        const directionsResult = await fetchDirections(locations, apiKey);
+        const directionsResult = await fetchDirections(locations);
 
         if (directionsResult) {
           const info = calculateRouteInfo(directionsResult);
@@ -43,7 +42,7 @@ const RouteInfo: React.FC<RouteInfoProps> = ({ locations, apiKey }) => {
     };
 
     getRouteInfo();
-  }, [locations, apiKey]);
+  }, [locations]);
 
   if (locations.length < 2) {
     return (

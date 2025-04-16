@@ -3,14 +3,10 @@ import { Location } from '../components/maps/types';
 /**
  * Fetches directions between multiple locations using Google Maps Directions API
  * @param locations Array of locations to get directions for (in order)
- * @param apiKey Google Maps API key
  * @returns Promise with the directions result
  */
 export const fetchDirections = async (
-  locations: Location[],
-  // apiKey is not used directly in this function but kept for API consistency
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  apiKey: string
+  locations: Location[]
 ): Promise<google.maps.DirectionsResult | null> => {
   if (!locations || locations.length < 2) {
     console.error('At least 2 locations are required to fetch directions');

@@ -4,6 +4,7 @@
   "private": true,
   "description": "Houston Travel Guide built with React, Material UI, and Vite",
   "type": "module",
+  "homepage": "https://<your-username>.github.io/Houston",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,7 +13,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}'"
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "deploy:gh-pages": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -56,6 +58,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "gh-pages": "^6.3.0",
     "jsdom": "^23.0.1",
     "prettier": "^3.1.1",
     "typescript": "^5.3.3",

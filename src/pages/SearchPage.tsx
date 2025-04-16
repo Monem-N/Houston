@@ -15,8 +15,7 @@ import { addFavorite } from '../redux/store';
 const SearchPage: React.FC = () => {
   const { t } = useTranslation();
   const { isMobile } = useDeviceDetect();
-  // We track the search query in state but don't need to access it directly
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  // Removed unused searchQuery state
   const [filteredLocations, setFilteredLocations] = useState<Location[]>(allLocations);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [viewMode, setViewMode] = useState<'map' | 'list'>(isMobile ? 'list' : 'map');
@@ -40,8 +39,8 @@ const SearchPage: React.FC = () => {
   }, [categories]);
 
   // Handle search
-  const handleSearch = useCallback((query: string, results: Location[]) => {
-    setSearchQuery(query);
+  const handleSearch = useCallback((_query: string, results: Location[]) => {
+    // Using underscore prefix for unused parameter
     setFilteredLocations(results);
   }, []);
 

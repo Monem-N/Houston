@@ -50,7 +50,7 @@ const DirectionsRenderer: React.FC<DirectionsRendererProps> = ({
       try {
         console.log('Fetching directions for locations:', locations);
         // Fetch directions using the utility function
-        const result = await fetchDirections(locations, '');
+        const result = await fetchDirections(locations);
 
         if (result) {
           console.log('Directions result received:', result);

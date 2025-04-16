@@ -34,6 +34,7 @@
     "transportMaps": "Transport Maps",
     "emergencyContacts": "Emergency Contacts",
     "itineraries": "Itineraries",
+    "guides": "Travel Guides",
     "localDining": "Local Dining & Shopping",
     "touristanbul": "Touristanbul",
     "search": "Search",
@@ -363,6 +364,7 @@
     "hermannPark": {
       "title": "Hermann Park & Zoo Guide",
       "subtitle": "Explore Houston's urban oasis",
+      "description": "Hermann Park is a 445-acre urban park that includes the Houston Zoo, Japanese Garden, Miller Outdoor Theatre, and recreational facilities. This guide will help you plan your visit during the FIRST Championship.",
       "hours": "Opening Hours",
       "tickets": "Ticket Information",
       "attractions": "Main Attractions",

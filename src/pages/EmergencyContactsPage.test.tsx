@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import EmergencyContactsPage from './EmergencyContactsPage';
+import EmergencyContactsPage from './annexes/EmergencyContactsPage';
 
 describe('EmergencyContactsPage', () => {
   const renderWithRouter = (ui: React.ReactElement) => {

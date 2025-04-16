@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, ReactNode, FC, Fragment, KeyboardEvent, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   AppBar,
@@ -54,7 +54,7 @@ import TimeDisplay from '../../common/TimeDisplay';
 interface NavItem {
   label: string;
   path?: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   children?: NavItem[];
 }
 
@@ -85,7 +85,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-start',
 }));
 
-const Navigation: React.FC = () => {
+const Navigation: FC = () => {
   const theme = useTheme();
   const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -127,10 +127,26 @@ const Navigation: React.FC = () => {
       label: t('navigation.itineraries'),
       icon: <ItineraryIcon />,
       children: [
-        { label: t('guides.arrival.title'), path: '/guides/arrival-departure', icon: <TravelIcon /> },
-        { label: t('guides.hermannPark.title'), path: '/guides/hermann-park-zoo', icon: <AttractionsIcon /> },
-        { label: t('guides.museumDistrict.title'), path: '/guides/museum-district', icon: <AttractionsIcon /> },
-        { label: t('guides.spaceCenter.title'), path: '/guides/space-center-kemah', icon: <AttractionsIcon /> },
+        {
+          label: t('guides.arrival.title'),
+          path: '/guides/arrival-departure',
+          icon: <TravelIcon />,
+        },
+        {
+          label: t('guides.hermannPark.title'),
+          path: '/guides/hermann-park-zoo',
+          icon: <AttractionsIcon />,
+        },
+        {
+          label: t('guides.museumDistrict.title'),
+          path: '/guides/museum-district',
+          icon: <AttractionsIcon />,
+        },
+        {
+          label: t('guides.spaceCenter.title'),
+          path: '/guides/space-center-kemah',
+          icon: <AttractionsIcon />,
+        },
       ],
     },
     {
@@ -139,22 +155,42 @@ const Navigation: React.FC = () => {
       children: [
         { label: t('navigation.introduction'), path: '/introduction', icon: <InfoIcon /> },
         { label: t('navigation.safety'), path: '/safety-logistics', icon: <SecurityIcon /> },
-        { label: t('navigation.transportMaps'), path: '/annexes/transport-maps', icon: <TransportIcon /> },
-        { label: t('navigation.localMaps', 'Local Houston Maps'), path: '/annexes/local-houston-maps', icon: <MapIcon /> },
-        { label: t('navigation.emergencyContacts'), path: '/annexes/emergency-contacts', icon: <EmergencyIcon /> },
-        { label: t('navigation.touristanbul'), path: '/annexes/touristanbul', icon: <TravelIcon /> },
-        { label: t('navigation.localDining'), path: '/annexes/local-dining-shopping', icon: <LocalShoppingIcon /> },
+        {
+          label: t('navigation.transportMaps'),
+          path: '/annexes/transport-maps',
+          icon: <TransportIcon />,
+        },
+        {
+          label: t('navigation.localMaps', 'Local Houston Maps'),
+          path: '/annexes/local-houston-maps',
+          icon: <MapIcon />,
+        },
+        {
+          label: t('navigation.emergencyContacts'),
+          path: '/annexes/emergency-contacts',
+          icon: <EmergencyIcon />,
+        },
+        {
+          label: t('navigation.touristanbul'),
+          path: '/annexes/touristanbul',
+          icon: <TravelIcon />,
+        },
+        {
+          label: t('navigation.localDining'),
+          path: '/annexes/local-dining-shopping',
+          icon: <LocalShoppingIcon />,
+        },
       ],
     },
   ];
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return;
+    if (event.type === 'keydown') {
+      const keyboardEvent = event as KeyboardEvent;
+      if (keyboardEvent.key === 'Tab' || keyboardEvent.key === 'Shift') {
+        return;
+      }
+
     }
     setDrawerOpen(open);
   };
@@ -185,7 +221,7 @@ const Navigation: React.FC = () => {
                 },
               }}
             >
-              <NavButton color="inherit" endIcon={<ExpandMore />}>
+              <NavButton color="inherit" startIcon={item.icon} endIcon={<ExpandMore />}>
                 {item.label}
               </NavButton>
               <Box
@@ -249,7 +285,7 @@ const Navigation: React.FC = () => {
         const hasChildren = item.children && item.children.length > 0;
 
         return (
-          <React.Fragment key={item.label}>
+          <Fragment key={item.label}>
             {item.path ? (
               <ListItem
                 component={RouterLink}
@@ -276,7 +312,7 @@ const Navigation: React.FC = () => {
                 {renderDrawerItems(item.children!, level + 1)}
               </Collapse>
             )}
-          </React.Fragment>
+          </Fragment>
         );
       })}
     </List>
@@ -287,7 +323,9 @@ const Navigation: React.FC = () => {
       <AppBar position="sticky" color="default" elevation={1}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box sx={{ display: 'flex', flexDirection: 'column', mr: 2, flexGrow: { xs: 1, md: 0 } }}>
+            <Box
+              sx={{ display: 'flex', flexDirection: 'column', mr: 2, flexGrow: { xs: 1, md: 0 } }}
+            >
               <Typography
                 variant="h6"
                 component={RouterLink}

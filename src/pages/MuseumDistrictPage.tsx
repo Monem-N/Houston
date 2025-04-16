@@ -1,15 +1,18 @@
 import { useTranslation } from 'react-i18next';
-import { Box, Typography } from '@mui/material';
+import { Container, Typography, Paper } from '@mui/material';
+import { PageHeader } from '../components/common';
 
 export default function MuseumDistrictPage() {
-  const { t } = useTranslation('guides');
+  const { t } = useTranslation();
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h4" gutterBottom>
-        {t('museumDistrict.title')}
-      </Typography>
-      <Typography paragraph>{t('museumDistrict.subtitle')}</Typography>
-      <Typography paragraph>{t('museumDistrict.description')}</Typography>
-    </Box>
+    <Container maxWidth="lg">
+      <PageHeader
+        title={t('guides.museumDistrict.title')}
+        subtitle={t('guides.museumDistrict.subtitle')}
+      />
+      <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
+        <Typography paragraph>{t('guides.museumDistrict.description')}</Typography>
+      </Paper>
+    </Container>
   );
 }

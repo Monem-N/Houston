@@ -31,7 +31,7 @@ const SearchAutocomplete: React.FC<SearchAutocompleteProps> = ({
   placeholder = 'Search for a place in Houston...',
   // apiKey is not used directly but kept for future use
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  apiKey,
+  // apiKey,
 }) => {
   const { isMobile } = useDeviceDetect();
   const [placeAutocomplete, setPlaceAutocomplete] =
