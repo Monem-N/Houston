@@ -20,11 +20,12 @@ const ArrivalDeparturePage = lazy(() => import('./pages/ArrivalDeparturePage'));
 const HermannParkZooPage = lazy(() => import('./pages/HermannParkZooPage'));
 const MuseumDistrictPage = lazy(() => import('./pages/MuseumDistrictPage'));
 const SpaceCenterKemahPage = lazy(() => import('./pages/SpaceCenterKemahPage'));
-const TransportMapsPage = lazy(() => import('./pages/annexes/TransportMapsPage'));
-const LocalHoustonMapsPage = lazy(() => import('./pages/annexes/LocalHoustonMapsPage'));
-const EmergencyContactsPage = lazy(() => import('./pages/annexes/EmergencyContactsPage'));
-const TouristanbulPage = lazy(() => import('./pages/annexes/TouristanbulPage'));
-const LocalDiningShoppingPage = lazy(() => import('./pages/annexes/LocalDiningShoppingPage'));
+// Import annexes pages with explicit file extension
+const TransportMapsPage = lazy(() => import('./pages/annexes/TransportMapsPage.tsx'));
+const LocalHoustonMapsPage = lazy(() => import('./pages/annexes/LocalHoustonMapsPage.tsx'));
+const EmergencyContactsPage = lazy(() => import('./pages/annexes/EmergencyContactsPage.tsx'));
+const TouristanbulPage = lazy(() => import('./pages/annexes/TouristanbulPage.tsx'));
+const LocalDiningShoppingPage = lazy(() => import('./pages/annexes/LocalDiningShoppingPage.tsx'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 // Removed DirectMapsPage
 // Removed VeryBasicMapPage

@@ -1,4 +1,4 @@
-import { useState, ReactNode, FC, Fragment, KeyboardEvent, MouseEvent } from 'react';
+import { useState, ReactNode, FC, Fragment, KeyboardEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   AppBar,
@@ -190,7 +190,6 @@ const Navigation: FC = () => {
       if (keyboardEvent.key === 'Tab' || keyboardEvent.key === 'Shift') {
         return;
       }
-
     }
     setDrawerOpen(open);
   };

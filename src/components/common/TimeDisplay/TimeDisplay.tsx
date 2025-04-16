@@ -16,7 +16,7 @@ const TimeDisplay: React.FC = () => {
       const tunisDate = new Date();
       // Houston time (UTC-6 or UTC-5 depending on daylight saving)
       const houstonDate = new Date();
-      
+
       // Format the times
       const tunisTimeStr = new Intl.DateTimeFormat('fr-FR', {
         timeZone: 'Africa/Tunis',
@@ -24,33 +24,33 @@ const TimeDisplay: React.FC = () => {
         minute: '2-digit',
         hour12: false
       }).format(tunisDate);
-      
-      const houstonTimeStr = new Intl.DateTimeFormat('en-US', {
+
+      const houstonTimeStr = new Intl.DateTimeFormat('fr-FR', {
         timeZone: 'America/Chicago',
         hour: '2-digit',
         minute: '2-digit',
-        hour12: true
+        hour12: false
       }).format(houstonDate);
-      
+
       setTunisTime(tunisTimeStr);
       setHoustonTime(houstonTimeStr);
     };
 
     // Update times immediately
     updateTimes();
-    
+
     // Update times every minute
     const intervalId = setInterval(updateTimes, 60000);
-    
+
     // Clean up interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <Box 
-      sx={{ 
-        display: 'flex', 
-        alignItems: 'center', 
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
         mt: 0.5,

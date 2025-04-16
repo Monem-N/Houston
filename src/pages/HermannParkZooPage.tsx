@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Box, Typography, Container, Paper } from '@mui/material';
+import { Typography, Container, Paper } from '@mui/material';
 import { PageHeader } from '../components/common';
 
 export default function HermannParkZooPage() {
