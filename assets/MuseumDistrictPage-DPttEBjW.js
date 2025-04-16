@@ -1,2 +1,0 @@
-import{u as e,j as s,C as i,P as r,T as a}from"./main-B8WG6TEV.js";import{P as u}from"./PageHeader-BwE9L6F5.js";function o(){const{t}=e();return s.jsxs(i,{maxWidth:"lg",children:[s.jsx(u,{title:t("guides.museumDistrict.title"),subtitle:t("guides.museumDistrict.subtitle")}),s.jsx(r,{elevation:2,sx:{p:3,mb:4},children:s.jsx(a,{paragraph:!0,children:t("guides.museumDistrict.description")})})]})}export{o as default};
-//# sourceMappingURL=MuseumDistrictPage-DPttEBjW.js.map
